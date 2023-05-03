@@ -2,16 +2,23 @@
   position: fixed;
   top: 0;
   left: 0;
-  padding: 20px 0;
+  padding: 10px 0;
   background: #f1f1f1;
   width: 100%;
+
+  &__wrapper {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
 }
 
 .header-nav {
   width: fit-content;
   margin: 0 auto;
+  color: black;
 }
-
 
 .header-nav-list {
   padding: 0;
