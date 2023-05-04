@@ -1,0 +1,30 @@
+@import './variables';
+
+.user-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  width: 40px;
+  height: 40px;
+  font-weight: 400;
+  border-radius: 50%;
+  font-size: 16px;
+  color: white;
+  background: rgba($headerGreen, 0.85);
+  transition: 0.3s background, 0.3s transform;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background: $headerGreen;
+    transition: 0.3s background;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition: 0.2s transform;
+  }
+}

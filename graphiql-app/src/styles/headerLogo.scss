@@ -1,0 +1,29 @@
+@import './variables.scss';
+@import './animation.scss';
+
+.headerLogo {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__img {
+    background: url(../../public/algorithm.png) no-repeat center;
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+  }
+
+  &__text {
+    color: $headerGreen;
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img {
+  animation: logoImg 0.5s linear;
+}
+
