@@ -25,7 +25,7 @@ function Header() {
 
   return (
     <header className="header">
-      <div className="header__wrapper">
+      <div className="header__wrapper container wrapper">
         <HeaderLogo />
         <nav className="header-nav">
           <ul className="header-nav-list">
