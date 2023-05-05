@@ -1,14 +1,35 @@
 @keyframes logoImg {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   33% {
-      transform: rotate(-5deg);
+    transform: rotate(-5deg);
   }
   66% {
-      transform: rotate(5deg);
+    transform: rotate(5deg);
   }
   100% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes appear-from-right {
+  0% {
+    transform: translateX(100%);
+  }
+  80% {
+    transform: translateX(-8px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes appear-from-hide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(300px);
   }
 }
