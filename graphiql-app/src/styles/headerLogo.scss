@@ -9,10 +9,9 @@
   }
 
   &__img {
-    background: url('/algorithm.png') no-repeat center;
     width: 60px;
     height: 60px;
-    background-size: contain;
+    position: relative;
   }
 
   &__text {
@@ -23,6 +22,216 @@
   }
 }
 
+.circle-big {
+  background-color: white;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid $mintGreen;
+  position: absolute;
+  z-index: 2;
+}
+
+.circle-small {
+  background-color: white;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  border: 2px solid $mintGreen;
+  position: absolute;
+  z-index: 2;
+}
+
+.line {
+  position: absolute;
+  border-radius: 0.5px;
+  border: 1px solid $mintGreen;
+}
+
+.line-gradient {
+  border: 1px solid transparent;
+  border-image: linear-gradient(to bottom left, $headerGreen, $mintGreen);
+  border-image-slice: 1;
+}
+
+.line-gradient-reverse {
+  border: 1px solid transparent;
+  border-image: linear-gradient(to bottom left, $mintGreen, $headerGreen);
+  border-image-slice: 1;
+}
+
+.circle-gradient {
+  border: 2px solid $headerGreen;
+}
+
+.circle-top {
+  top: 2px;
+  left: 28px;
+}
+
+.circle-left-top {
+  top: 10px;
+  left: 8px;
+}
+
+.circle-left-bottom {
+  top: 40px;
+  left: 0px;
+}
+
+.circle-right-bottom {
+  top: 50px;
+  left: 50px;
+}
+
+.circle-right-top {
+  top: 20px;
+  left: 43px;
+}
+
+.circle-center {
+  top: 30px;
+  left: 25px;
+}
+
+.line-right-top {
+  transform-origin: bottom right;
+  width: 15px;
+  top: 20px;
+  left: 29.5px;
+  transform: rotate(53deg);
+}
+
+.line-right-bottom {
+  transform-origin: bottom left;
+  width: 27px;
+  top: 24.5px;
+  left: 47px;
+  transform: rotate(76deg);
+}
+
+.line-bottom {
+  transform-origin: bottom left;
+  width: 43px;
+  top: 45px;
+  left: 8px;
+  transform: rotate(12deg);
+}
+
+.line-right {
+  transform-origin: bottom right;
+  width: 25px;
+  top: 39px;
+  left: -21px;
+  transform: rotate(102deg);
+}
+
+.line-left-top {
+  transform-origin: bottom right;
+  width: 40px;
+  top: 39.5px;
+  left: -35px;
+  transform: rotate(127deg);
+}
+
+.line-center-bottom-left {
+  width: 20px;
+  top: 38px;
+  left: 7px;
+  transform: rotate(153deg);
+}
+
+.line-center-bottom-right {
+  transform-origin: bottom left;
+  width: 26px;
+  top: 35px;
+  left: 30px;
+  transform: rotate(39deg);
+}
+
+.line-center-top-right {
+  width: 15px;
+  top: 27.5px;
+  left: 30px;
+  transform: rotate(152deg);
+}
+
+.line-center-top-left {
+  transform-origin: bottom right;
+  width: 20px;
+  top: 30px;
+  left: 6px;
+  transform: rotate(49deg);
+}
+
+.line-center-top {
+  transform-origin: bottom right;
+  width: 20px;
+  top: 29px;
+  left: 8px;
+  transform: rotate(101deg);
+}
+
+.line-top {
+  transform-origin: bottom left;
+  width: 30px;
+  top: 20px;
+  left: 45px;
+  transform: rotate(196deg);
+}
+
 .headerLogo__wrapper:hover > .headerLogo__img {
-  animation: logoImg 0.5s linear;
+  animation: logoImg  infinite 2.2s cubic-bezier(0.5, 0.1, 0.6, 0.55);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .circle-top {
+  animation: circle-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-right-top {
+  animation: line-right-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-left-top {
+  animation: line-left-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-center-top {
+  animation: line-center-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .circle-right-bottom {
+  animation: circle-right-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-bottom {
+  animation: line-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-center-bottom-right {
+  animation: line-center-bottom-right infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-right-bottom {
+  animation: line-right-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .circle-left-top {
+  animation: circle-left-top infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-right {
+  animation: line-right infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-center-top-left {
+  animation: line-center-top-left infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__img > .line-top {
+  animation: line-top infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
