@@ -1,5 +1,5 @@
 function HomePage() {
-  return <div className="homePage-container">Home page contents</div>;
+  return <div className="homePage-container container wrapper">Home page contents</div>;
 }
 
 export default HomePage;

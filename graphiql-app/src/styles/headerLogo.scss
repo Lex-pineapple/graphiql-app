@@ -9,7 +9,7 @@
   }
 
   &__img {
-    background: url(../../public/algorithm.png) no-repeat center;
+    background: url('/algorithm.png') no-repeat center;
     width: 60px;
     height: 60px;
     background-size: contain;
@@ -26,4 +26,3 @@
 .headerLogo__wrapper:hover > .headerLogo__img {
   animation: logoImg 0.5s linear;
 }
-
