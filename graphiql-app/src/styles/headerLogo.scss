@@ -8,7 +8,7 @@
     gap: 10px;
   }
 
-  &__imgssss {
+  &__img {
     width: 60px;
     height: 60px;
     position: relative;
@@ -184,54 +184,54 @@
   transform: rotate(196deg);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss {
+.headerLogo__wrapper:hover > .headerLogo__img {
   animation: logoImg  infinite 2.2s cubic-bezier(0.5, 0.1, 0.6, 0.55);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .circle-top {
+.headerLogo__wrapper:hover > .headerLogo__img > .circle-top {
   animation: circle-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-right-top {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-right-top {
   animation: line-right-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-left-top {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-left-top {
   animation: line-left-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-center-top {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-center-top {
   animation: line-center-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .circle-right-bottom {
+.headerLogo__wrapper:hover > .headerLogo__img > .circle-right-bottom {
   animation: circle-right-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-bottom {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-bottom {
   animation: line-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-center-bottom-right {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-center-bottom-right {
   animation: line-center-bottom-right infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-right-bottom {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-right-bottom {
   animation: line-right-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .circle-left-top {
+.headerLogo__wrapper:hover > .headerLogo__img > .circle-left-top {
   animation: circle-left-top infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-right {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-right {
   animation: line-right infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-center-top-left {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-center-top-left {
   animation: line-center-top-left infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
 
-.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-top {
+.headerLogo__wrapper:hover > .headerLogo__img > .line-top {
   animation: line-top infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }

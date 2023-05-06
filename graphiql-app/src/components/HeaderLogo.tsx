@@ -4,7 +4,7 @@ import './../styles/headerLogo.scss';
 export const HeaderLogo = () => {
   return (
     <Link to="/" className="headerLogo__wrapper">
-      <div className="headerLogo__imgssss">
+      <div className="headerLogo__img">
         <span className="circle-big circle-top"></span>
         <span className="circle-small circle-left-top"></span>
         <span className="circle-small circle-right-top"></span>
