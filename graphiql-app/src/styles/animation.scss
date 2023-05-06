@@ -3,10 +3,10 @@
     transform: rotate(0deg);
   }
   33% {
-    transform: rotate(-5deg);
+    transform: rotate(-20deg);
   }
   66% {
-    transform: rotate(5deg);
+    transform: rotate(10deg);
   }
   100% {
     transform: rotate(0deg);
@@ -42,7 +42,7 @@
 
 @keyframes line-right-top {
   50% {
-    transform: rotate(43deg) scaleX(1.22);
+    transform: rotate(40deg) scaleX(1.25);
   }
 }
 
@@ -151,5 +151,23 @@
   }
   75% {
     transform: rotate(218deg) scaleX(1.23);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
