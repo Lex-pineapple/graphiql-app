@@ -30,25 +30,27 @@
 }
 
 .circle-big {
+  background-color: white;
   display: inline-block;
   vertical-align: middle;
   border-radius: 50%;
-  width: 5.5px;
-  height: 5.5px;
+  width: 6px;
+  height: 6px;
   border: 2px solid #43c69a;
-  border-top: 2px solid #43c69a;
   position: absolute;
+  z-index: 2;
 }
 
 .circle-small {
+  background-color: white;
   display: inline-block;
   vertical-align: middle;
   border-radius: 50%;
   width: 4px;
   height: 4px;
   border: 2px solid #43c69a;
-  border-top: 2px solid #43c69a;
   position: absolute;
+  z-index: 2;
 }
 
 .line {
@@ -96,15 +98,15 @@
 
 .line-right-bottom {
   transform-origin: bottom left;
-  width: 23px;
-  top: 25px;
+  width: 25px;
+  top: 24.5px;
   left: 47px;
   transform: rotate(76deg);
 }
 
 .line-bottom {
   transform-origin: bottom left;
-  width: 41px;
+  width: 42px;
   top: 45px;
   left: 8px;
   transform: rotate(12deg);
@@ -122,7 +124,7 @@
   transform-origin: bottom right;
   width: 40px;
   top: 39.5px;
-  left: -37px;
+  left: -35px;
   transform: rotate(127deg);
 }
 
@@ -150,7 +152,7 @@
 
 .line-center-top-left {
   transform-origin: bottom right;
-  width: 18px;
+  width: 19px;
   top: 30px;
   left: 6px;
   transform: rotate(49deg);
@@ -160,7 +162,7 @@
   transform-origin: bottom right;
   width: 19px;
   top: 29px;
-  left: 8px;
+  left: 8.5px;
   transform: rotate(101deg);
 }
 
@@ -171,9 +173,6 @@
   left: 45px;
   transform: rotate(196deg);
 }
-
-
-
 
 .headerLogo__wrapper:hover > .headerLogo__imgssss > .circle-top {
   animation: circle-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);

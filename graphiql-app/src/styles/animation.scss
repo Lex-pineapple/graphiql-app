@@ -84,7 +84,7 @@
 
 @keyframes line-center-bottom-right {
   25% {
-    transform: rotate(80deg) scaleX(0.61);
+    transform: rotate(80deg) scaleX(0.64);
   }
   50% {
     transform: rotate(39deg) scaleX(1);
@@ -96,13 +96,13 @@
 
 @keyframes line-right-bottom {
   25% {
-    transform: rotate(114deg) scaleX(1.15);
+    transform: rotate(114deg) scaleX(1.1);
   }
   50% {
     transform: rotate(76deg) scaleX(1);
   }
   75% {
-    transform: rotate(45deg) scaleX(1);
+    transform: rotate(45deg) scaleX(0.93);
   }
 }
 
@@ -144,7 +144,7 @@
 
 @keyframes line-top {
   25% {
-    transform: rotate(197deg) scaleX(1.5);
+    transform: rotate(197deg) scaleX(1.55);
   }
   50% {
     transform: rotate(196deg) scaleX(1);
