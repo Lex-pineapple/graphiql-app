@@ -15,6 +15,12 @@
     background-size: contain;
   }
 
+  &__imgssss {
+    width: 60px;
+    height: 60px;
+    position: relative;
+  }
+
   &__text {
     color: $headerGreen;
     font-family: 'Roboto', sans-serif;
@@ -23,6 +29,196 @@
   }
 }
 
-.headerLogo__wrapper:hover > .headerLogo__img {
-  animation: logoImg 0.5s linear;
+.circle-big {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 5.5px;
+  height: 5.5px;
+  border: 2px solid #43c69a;
+  border-top: 2px solid #43c69a;
+  position: absolute;
+}
+
+.circle-small {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  border: 2px solid #43c69a;
+  border-top: 2px solid #43c69a;
+  position: absolute;
+}
+
+.line {
+  position: absolute;
+  border-radius: 0.5px;
+  border: 1px solid #43c69a;
+}
+
+.circle-top {
+  top: 2px;
+}
+
+.circle-left-top {
+  top: 10px;
+  left: 8px;
+}
+
+.circle-left-bottom {
+  top: 40px;
+  left: 0px;
+}
+
+.circle-right-bottom {
+  top: 50px;
+  left: 50px;
+}
+
+.circle-right-top {
+  top: 20px;
+  left: 43px;
+}
+
+.circle-center {
+  top: 30px;
+  left: 25px;
+}
+
+.line-right-top {
+  transform-origin: bottom right;
+  width: 14px;
+  top: 20px;
+  left: 29.5px;
+  transform: rotate(56deg);
+}
+
+.line-right-bottom {
+  transform-origin: bottom left;
+  width: 23px;
+  top: 25px;
+  left: 47px;
+  transform: rotate(76deg);
+}
+
+.line-bottom {
+  transform-origin: bottom left;
+  width: 41px;
+  top: 45px;
+  left: 8px;
+  transform: rotate(12deg);
+}
+
+.line-right {
+  transform-origin: bottom right;
+  width: 23px;
+  top: 39px;
+  left: -21px;
+  transform: rotate(102deg);
+}
+
+.line-left-top {
+  transform-origin: bottom right;
+  width: 40px;
+  top: 39.5px;
+  left: -37px;
+  transform: rotate(127deg);
+}
+
+.line-center-bottom-left {
+  width: 18px;
+  top: 38px;
+  left: 7px;
+  transform: rotate(153deg);
+}
+
+.line-center-bottom-right {
+  transform-origin: bottom left;
+  width: 25px;
+  top: 35px;
+  left: 30px;
+  transform: rotate(39deg);
+}
+
+.line-center-top-right {
+  width: 13px;
+  top: 27.5px;
+  left: 30px;
+  transform: rotate(152deg);
+}
+
+.line-center-top-left {
+  transform-origin: bottom right;
+  width: 18px;
+  top: 30px;
+  left: 6px;
+  transform: rotate(49deg);
+}
+
+.line-center-top {
+  transform-origin: bottom right;
+  width: 19px;
+  top: 29px;
+  left: 8px;
+  transform: rotate(101deg);
+}
+
+.line-top {
+  transform-origin: bottom left;
+  width: 29px;
+  top: 20px;
+  left: 45px;
+  transform: rotate(196deg);
+}
+
+
+
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .circle-top {
+  animation: circle-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-right-top {
+  animation: line-right-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-left-top {
+  animation: line-left-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-center-top {
+  animation: line-center-top infinite 1.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .circle-right-bottom {
+  animation: circle-right-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-bottom {
+  animation: line-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-center-bottom-right {
+  animation: line-center-bottom-right infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-right-bottom {
+  animation: line-right-bottom infinite 2.2s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .circle-left-top {
+  animation: circle-left-top infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-right {
+  animation: line-right infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-center-top-left {
+  animation: line-center-top-left infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
+}
+
+.headerLogo__wrapper:hover > .headerLogo__imgssss > .line-top {
+  animation: line-top infinite 1.8s cubic-bezier(0.5, 0.07, 0.6, 0.95);
 }
