@@ -3,3 +3,10 @@
 @import './normalize.css';
 
 $headerGreen: rgb(54, 168, 168);
+
+$backgroundGraphiQLPage: #f1f1f1;
+$panelontentShadow: rgba(0, 0, 0, 0.3) -1px 1px 6px 0px;
+$panelColor: rgb(255, 255, 255);
+$panelButtonBackgroundColor: $headerGreen;
+
+$cubicBezier: 250ms cubic-bezier(0.4, 0, 0.2, 1);

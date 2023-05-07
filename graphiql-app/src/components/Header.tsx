@@ -42,6 +42,9 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
               </Link>
             </li>
             <li className="header-nav-list__item">
+              <Link to="/graphiql">GraphiQL</Link>
+            </li>
+            <li className="header-nav-list__item">
               <Link to="/unknown">
                 <FormattedMessage id={Message.PAGE404TEST} />
               </Link>
