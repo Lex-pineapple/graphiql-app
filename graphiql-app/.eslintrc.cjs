@@ -3,7 +3,7 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:import/recommended',
+    // 'plugin:import/recommended' ,
     'plugin:import/typescript',
     'prettier',
     'plugin:react-hooks/recommended',
@@ -24,7 +24,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react-refresh', '@typescript-eslint', 'react', 'prettier', 'react-hooks'],
+  plugins: ['react-refresh', '@typescript-eslint', 'react', 'prettier', 'react-hooks', 'import'],
   rules: {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
@@ -47,6 +47,12 @@ module.exports = {
     react: {
       pragma: 'React',
       version: 'detect',
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.d.ts', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules'],
+      },
     },
   },
 };
