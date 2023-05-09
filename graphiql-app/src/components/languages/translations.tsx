@@ -8,6 +8,7 @@ export const translations = {
     [Message.Home]: 'Home',
     [Message.PAGE404TEST]: 'PAGE 404 TEST',
     [Message.SignIn]: 'Sign In',
+    [Message.SignOut]: 'Sign Out',
   },
   [LOCALES.RUSSIAN]: {
     [Message.Logout]: 'Выйти',
@@ -15,5 +16,6 @@ export const translations = {
     [Message.Home]: 'Домой',
     [Message.PAGE404TEST]: 'СТРАНИЦА 404 ТЕСТ',
     [Message.SignIn]: 'Войти',
+    [Message.SignOut]: 'Выйти',
   },
 };

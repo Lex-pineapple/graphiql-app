@@ -9,6 +9,7 @@ import { LOCALES } from './components/languages/locales';
 import Footer from './components/Footer';
 import LoginPage from './routes/LoginPage';
 import WelcomePage from './routes/WelcomePage';
+import SignOutPage from './routes/SignOutPage';
 
 function App() {
   const { currentLocale, setLocale } = LanguagesManager();
@@ -24,7 +25,10 @@ function App() {
         <div className="appContent">
           <Routes>
             <Route path="/" element={<WelcomePage />}></Route>
-            <Route path="/signin" element={<LoginPage />}></Route>
+            <Route path="/signin" element={<LoginPage authType="signin" />}></Route>
+            <Route path="/signup" element={<LoginPage authType="signup" />}></Route>
+            <Route path="/reset" element={<LoginPage authType="reset" />}></Route>
+            <Route path="/signout" element={<SignOutPage />}></Route>
             <Route path="*" element={<Page404 />}></Route>
           </Routes>
         </div>

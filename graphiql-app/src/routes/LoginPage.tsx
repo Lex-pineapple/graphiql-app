@@ -2,14 +2,9 @@ import { useState } from 'react';
 import SignIn from '../components/LoginComponents/SignIn';
 import SignUp from '../components/LoginComponents/SignUp';
 import '../styles/loginPage.scss';
+import ResetPassword from '../components/LoginComponents/ResetPassword';
 
-function LoginPage() {
-  const [authType, setAuthType] = useState('signin');
-
-  function handleAuthChange(type: string) {
-    setAuthType(type);
-  }
-
+function LoginPage({ authType }: { authType: string }) {
   return (
     <div className="auth-container">
       <div className="auth__img img">
@@ -24,11 +19,7 @@ function LoginPage() {
           <a href="https://github.com/graphql/graphiql" className="auth__img-github-logo"></a>
         </div>
       </div>
-      {authType === 'signin' ? (
-        <SignIn handleClick={handleAuthChange} />
-      ) : (
-        <SignUp handleClick={handleAuthChange} />
-      )}
+      {authType === 'signin' ? <SignIn /> : authType === 'signup' ? <SignUp /> : <ResetPassword />}
     </div>
   );
 }

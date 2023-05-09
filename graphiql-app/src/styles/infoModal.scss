@@ -1,0 +1,27 @@
+.info-modal {
+  &-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.156);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+  }
+
+  &-window {
+    position: absolute;
+    background: #ffffff;
+    padding: 30px;
+    width: 500px;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    border-radius: 20px;
+  }
+
+  &-text {
+    font-size: 32px;
+    font-weight: 700;
+  }
+}

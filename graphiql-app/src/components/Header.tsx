@@ -54,9 +54,12 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
           </ul>
         </nav>
         {logInStatus ? (
-          <UserIcon onClick={handleUserIconClick} />
-        ) : location.pathname !== '/signin' ? (
-          <AuthComponent />
+          <>
+            <AuthComponent type="signout" message={Message.SignOut} />
+            <UserIcon onClick={handleUserIconClick} />
+          </>
+        ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
+          <AuthComponent type="signin" message={Message.SignIn} />
         ) : (
           <></>
         )}
