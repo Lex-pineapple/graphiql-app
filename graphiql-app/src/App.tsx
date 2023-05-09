@@ -3,6 +3,7 @@ import './styles/App.scss';
 import Page404 from './routes/Page404';
 import HomePage from './routes/HomePage';
 import Header from './components/Header';
+import GraphiQLPage from './routes/GraphiQLPage';
 import { IntlProvider } from 'react-intl';
 import { LanguagesManager } from './components/languages/languagesManager';
 import { translations } from './components/languages/translations';
@@ -23,6 +24,7 @@ function App() {
         <div className="appContent">
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
+            <Route path="/graphiql" element={<GraphiQLPage />}></Route>
             <Route path="*" element={<Page404 />}></Route>
           </Routes>
         </div>
