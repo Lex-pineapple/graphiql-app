@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoadingModal from '../LoadingModal';
+import SignUpValidator from '../../helpers/signUpValidator';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -13,10 +14,22 @@ function SignUp() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const [validState, setValidState] = useState({
+    valid: false,
+    details: {
+      nameValid: true,
+      emailValid: true,
+      passwordValid: true,
+    },
+  });
+  const validator = new SignUpValidator();
 
   function register() {
-    if (!name) alert('please enter name');
-    registerWithEmailAndPassword(name, email, password);
+    const validationResult = validator.ValidateSignUp(name, email, password);
+    setValidState(validationResult);
+    if (validationResult.valid) {
+      registerWithEmailAndPassword(name, email, password);
+    }
   }
 
   useEffect(() => {
@@ -31,7 +44,9 @@ function SignUp() {
         navigate('/', { replace: true });
       }, 300);
     }
-  }, [user, loading, navigate]);
+  }, [user, loading, navigate, dispatch]);
+
+  console.log(validState.details.nameValid);
 
   return (
     <div className="signup__form">
@@ -45,6 +60,15 @@ function SignUp() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
+      <p
+        className={
+          !validState.details.nameValid
+            ? 'signup__form-input-validator-error-name active'
+            : 'signup__form-input-validator-error-name'
+        }
+      >
+        Name must be longer that 3 characters
+      </p>
       <p className="signup__form-input-header-text">Email</p>
       <input
         type="email"
@@ -53,6 +77,15 @@ function SignUp() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
+      <p
+        className={
+          !validState.details.emailValid
+            ? 'signup__form-input-validator-error-email active'
+            : 'signup__form-input-validator-error-email'
+        }
+      >
+        Please input the correct email
+      </p>
       <p className="signup__form-input-header-text">Password</p>
       <input
         type="password"
@@ -61,6 +94,16 @@ function SignUp() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+      <p
+        className={
+          !validState.details.passwordValid
+            ? 'signup__form-input-validator-error-password active'
+            : 'signup__form-input-validator-error-password'
+        }
+      >
+        The password must be at least 8 characters long, contain at least 1 uppercase letter and at
+        least 1 number
+      </p>
       <button className="signup__form-btn-signup btn-signup btn" onClick={register}>
         Get started now
       </button>
