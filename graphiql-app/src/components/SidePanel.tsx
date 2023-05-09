@@ -18,8 +18,8 @@ function SidePanel() {
           Docs
         </div>
       </div>
-      <div>
-        <div className="sidePanel-info">Docs info</div>
+      <div className="sidePanel-info">
+        <div>Docs info</div>
       </div>
     </div>
   );

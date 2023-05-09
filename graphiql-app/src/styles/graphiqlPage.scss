@@ -1,76 +1,76 @@
 @import './variables';
 
 .graphiQLPage {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex: 1;
+  min-height: calc(100vh - 132px);
+
+  &__editor {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    flex: 1 1 0%;
+    border: 10px solid $backgroundGraphiQLPage;
+    margin: 10px 0 10px 10px;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &__response {
+    display: flex;
     flex-direction: row;
-    flex: 1;
-    min-height: calc(100vh - 132px);
-
-    &__editor {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 0%;
-        background: $backgroundGraphiQLPage;
-        margin: 10px 0 10px 10px;
-        border-radius: 10px;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    &__response {
-        display: flex;
-        flex-direction: row;
-        flex: 1 1 0%;
-        padding: 16px;
-        margin: 10px 32px 10px 0;
-        border: 10px solid $backgroundGraphiQLPage;
-        border-radius: 10px;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-    }
+    flex: 1 1 0%;
+    padding: 16px;
+    margin: 10px 32px 10px 0;
+    background: $backgroundGraphiQLPage;
+    border-left: 0;
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
 }
 
 .query-editor {
-    display: flex;
-    flex: 1;
-    padding: 16px;
-    padding-right: 0;
+  display: flex;
+  flex: 1;
+  padding: 16px;
+  padding-right: 0;
 
-    &__text {
-        position: relative;
-        height: 100%;                
-        width: 100%;
-    }
+  &__text {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
 
-    &__toolbar {
-        position: relative;
-        width: 40px;
-        margin-left: 40px;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+  &__toolbar {
+    position: relative;
+    width: 60px;
+    margin-left: 40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 }
 
-
-
-.executeButton, 
+.executeButton,
 .cleanButton {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
-.button-icon{
-    width: 40px;
-    height: 40px;
+.button-icon {
+  width: 40px;
+  height: 40px;
 
-    &:hover {
-        animation: logoImg 0.5s linear;
-    }
+  &:hover {
+    animation: logoImg 0.5s linear;
+    filter: brightness(0.7) sepia(1) hue-rotate(140deg) saturate(6);
+  }
 }

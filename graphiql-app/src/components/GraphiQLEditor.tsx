@@ -1,5 +1,6 @@
 import ExecuteButton from '../assets/execute-button.svg';
-import cleanButton from '../assets/broom-clean.svg';
+import CleanButton from '../assets/broom-clean.svg';
+import EditorToolbar from './EditorToolbar';
 
 function GraphiQLEditor() {
   return (
@@ -13,10 +14,11 @@ function GraphiQLEditor() {
             <img className="button-icon" src={ExecuteButton} alt="Execute Button" />
           </button>
           <button className="cleanButton">
-            <img className="button-icon" src={cleanButton} alt="Clean Button" />
+            <img className="button-icon" src={CleanButton} alt="Clean Button" />
           </button>
         </div>
       </div>
+      <EditorToolbar />
     </section>
   );
 }
