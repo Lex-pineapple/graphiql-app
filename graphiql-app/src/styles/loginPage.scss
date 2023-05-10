@@ -172,6 +172,19 @@
   &__form-text--highlight {
     cursor: pointer;
   }
+
+  &__form-input-validator-error-email,
+  &__form-input-validator-error-password {
+    color: red;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+
+  &__form-input-validator-error-email.active, 
+  &__form-input-validator-error-password.active {
+    height: 20px;
+  }
 }
 
 .signup {

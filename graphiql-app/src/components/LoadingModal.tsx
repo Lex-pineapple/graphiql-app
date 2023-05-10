@@ -1,10 +1,19 @@
 import '../styles/infoModal.scss';
 
-function LoadingModal({ text }: { text: string }) {
+function LoadingModal({
+  text,
+  onClickOutside,
+}: {
+  text: string;
+  onClickOutside: (event: React.MouseEvent) => void;
+}) {
   return (
-    <div className="info-modal-overlay">
+    <div className="info-modal-overlay" onClick={onClickOutside}>
       <div className="info-modal-window">
         <div className="info-modal-text">{text}</div>
+        <div className="info-modal-close-btn" onClick={onClickOutside}>
+          ✕
+        </div>
       </div>
     </div>
   );

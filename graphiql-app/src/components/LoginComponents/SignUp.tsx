@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { auth, registerWithEmailAndPassword, signInWithGoogle } from '../../auth/firebase';
+import {
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+  checkUserEmail,
+} from '../../auth/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -14,6 +19,7 @@ function SignUp() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const [message, setMessage] = useState('');
   const [validState, setValidState] = useState({
     valid: false,
     details: {
@@ -24,10 +30,17 @@ function SignUp() {
   });
   const validator = new SignUpValidator();
 
-  function register() {
+  const handleCloseModalClick = () => {
+    setShowModal(!showModal);
+  };
+
+  async function register() {
     const validationResult = validator.ValidateSignUp(name, email, password);
+    const msg = await checkUserEmail(email, password);
+    setMessage(msg);
+    if (msg) setShowModal(true);
     setValidState(validationResult);
-    if (validationResult.valid) {
+    if (validationResult.valid && !msg) {
       registerWithEmailAndPassword(name, email, password);
     }
   }
@@ -38,6 +51,7 @@ function SignUp() {
       return;
     }
     if (user) {
+      setMessage('Sign up successful');
       setShowModal(true);
       dispatch({ type: 'login/loggedIn', payload: true });
       setTimeout(() => {
@@ -45,8 +59,6 @@ function SignUp() {
       }, 300);
     }
   }, [user, loading, navigate, dispatch]);
-
-  console.log(validState.details.nameValid);
 
   return (
     <div className="signup__form">
@@ -113,7 +125,7 @@ function SignUp() {
           Log in
         </Link>
       </div>
-      {showModal && <LoadingModal text={'Successfully registered user'} />}
+      {showModal && <LoadingModal text={message} onClickOutside={handleCloseModalClick} />}
     </div>
   );
 }

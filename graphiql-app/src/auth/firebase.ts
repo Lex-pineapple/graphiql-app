@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
+  fetchSignInMethodsForEmail,
 } from 'firebase/auth';
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 
@@ -80,6 +81,53 @@ const logout = () => {
   signOut(auth);
 };
 
+const checkUserEmail = async (email: string, password: string) => {
+  let message = '';
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        message = `Email address ${email} already in use.`;
+        break;
+      case 'auth/invalid-email':
+        message = `Email address ${email} is invalid.`;
+        break;
+      case 'auth/operation-not-allowed':
+        message = `Error during sign up.`;
+        break;
+      case 'auth/wrong-password':
+        message = 'Wrong password.';
+        break;
+      default:
+        message = error.message;
+        console.log(error.message);
+        break;
+    }
+  }
+  return message;
+};
+
+const checkUserExists = async (email: string) => {
+  const signInMethods = await fetchSignInMethodsForEmail(auth, email)
+  if (signInMethods.length > 0) return true;
+  return false;
+};
+
+const checkUserPassword = async (email: string, password: string) => {
+  let message = '';
+  try {
+    const res = await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    if (error.code == 'auth/wrong-password') {
+      message = 'Wrong password.';
+    } else {
+      console.log(error.message);
+    }
+  }
+  return message;
+}
+
 export {
   auth,
   db,
@@ -88,4 +136,7 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  checkUserEmail,
+  checkUserExists,
+  checkUserPassword,
 };
