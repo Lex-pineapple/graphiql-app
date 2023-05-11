@@ -36,12 +36,17 @@
   display: flex;
   flex: 1;
   padding: 16px;
-  padding-right: 0;
+  padding-right: 5px;
 
   &__text {
     position: relative;
     height: 100%;
     width: 100%;
+    outline: none;
+    resize: none;
+    border: none;
+    // border: 1px solid $headerGreen;
+    // border-radius: 5px;
   }
 
   &__toolbar {

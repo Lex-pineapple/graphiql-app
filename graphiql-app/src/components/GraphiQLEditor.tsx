@@ -1,16 +1,29 @@
 import ExecuteButton from '../assets/execute-button.svg';
 import CleanButton from '../assets/broom-clean.svg';
 import EditorToolbar from './EditorToolbar';
+import { useState } from 'react';
 
-function GraphiQLEditor() {
+function GraphiQLEditor({ sources }) {
+  const [textareaValue, setTextareaValue] = useState('');
+
+  const handelAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setTextareaValue(event.target.value);
+  };
+
+  const handelExecuteBtn = () => {
+    sources(textareaValue);
+  };
+
   return (
     <section className="graphiQLPage__editor">
       <div className="query-editor">
-        <div className="query-editor__text">
-          <p>Write your query or mutation here</p>
-        </div>
+        <textarea
+          placeholder="Write your query or mutation here"
+          className="query-editor__text"
+          onChange={handelAreaChanges}
+        ></textarea>
         <div className="query-editor__toolbar">
-          <button className="executeButton">
+          <button className="executeButton" onClick={handelExecuteBtn}>
             <img className="button-icon" src={ExecuteButton} alt="Execute Button" />
           </button>
           <button className="cleanButton">
