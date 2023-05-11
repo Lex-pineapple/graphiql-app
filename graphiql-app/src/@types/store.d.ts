@@ -1,3 +1,5 @@
+import { UserInfo } from 'firebase/auth';
+
 export interface IAuthInfoState {
   uid: string;
   name: string;
@@ -7,7 +9,7 @@ export interface IAuthInfoState {
 
 export interface IStore {
   auth: {
-    authInfo: IAuthInfoState;
+    authInfo: UserInfo;
     login: boolean;
   };
 }

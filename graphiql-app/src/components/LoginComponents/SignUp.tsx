@@ -1,33 +1,42 @@
 import { useEffect, useState } from 'react';
-import {
-  auth,
-  registerWithEmailAndPassword,
-  signInWithGoogle,
-  checkUserEmail,
-} from '../../auth/firebase';
+import { auth, registerWithEmailAndPassword } from '../../auth/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import LoadingModal from '../LoadingModal';
+import { useDispatch, useSelector } from 'react-redux';
+import InfoModal from '../InfoModal';
 import SignUpValidator from '../../helpers/signUpValidator';
+import { IStore } from '../../@types/store';
 
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [user, loading, error] = useAuthState(auth);
-  const dispatch = useDispatch();
+  const [user, loading] = useAuthState(auth);
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
-  const [message, setMessage] = useState('');
+  const [APIError, setAPIError] = useState({
+    type: '',
+    message: '',
+  });
   const [validState, setValidState] = useState({
     valid: false,
     details: {
-      nameValid: true,
-      emailValid: true,
-      passwordValid: true,
+      nameValid: {
+        res: true,
+        message: '',
+      },
+      emailValid: {
+        res: true,
+        message: '',
+      },
+      passwordValid: {
+        res: true,
+        message: '',
+      },
     },
   });
+  const userName = useSelector((store: IStore) => store.auth.authInfo.displayName);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const validator = new SignUpValidator();
 
   const handleCloseModalClick = () => {
@@ -36,12 +45,11 @@ function SignUp() {
 
   async function register() {
     const validationResult = validator.ValidateSignUp(name, email, password);
-    const msg = await checkUserEmail(email, password);
-    setMessage(msg);
-    if (msg) setShowModal(true);
     setValidState(validationResult);
-    if (validationResult.valid && !msg) {
-      registerWithEmailAndPassword(name, email, password);
+    if (validationResult.valid) {
+      const msg = await registerWithEmailAndPassword(name, email, password);
+      setAPIError(msg);
+      if (msg.type === 'other') setShowModal(true);
     }
   }
 
@@ -51,12 +59,15 @@ function SignUp() {
       return;
     }
     if (user) {
-      setMessage('Sign up successful');
-      setShowModal(true);
-      dispatch({ type: 'login/loggedIn', payload: true });
-      setTimeout(() => {
+      if (!userName) {
+        setShowModal(true);
+        dispatch({ type: 'login/loggedIn', payload: true });
+        setTimeout(() => {
+          navigate('/', { replace: true });
+        }, 2000);
+      } else {
         navigate('/', { replace: true });
-      }, 300);
+      }
     }
   }, [user, loading, navigate, dispatch]);
 
@@ -74,12 +85,12 @@ function SignUp() {
       />
       <p
         className={
-          !validState.details.nameValid
+          !validState.details.nameValid.res
             ? 'signup__form-input-validator-error-name active'
             : 'signup__form-input-validator-error-name'
         }
       >
-        Name must be longer that 3 characters
+        {validState.details.nameValid.message}
       </p>
       <p className="signup__form-input-header-text">Email</p>
       <input
@@ -91,12 +102,12 @@ function SignUp() {
       />
       <p
         className={
-          !validState.details.emailValid
+          !validState.details.emailValid.res || APIError.type === 'email'
             ? 'signup__form-input-validator-error-email active'
             : 'signup__form-input-validator-error-email'
         }
       >
-        Please input the correct email
+        {validState.details.emailValid.message || APIError.message}
       </p>
       <p className="signup__form-input-header-text">Password</p>
       <input
@@ -108,13 +119,12 @@ function SignUp() {
       />
       <p
         className={
-          !validState.details.passwordValid
+          !validState.details.passwordValid.res || APIError.type === 'password'
             ? 'signup__form-input-validator-error-password active'
             : 'signup__form-input-validator-error-password'
         }
       >
-        The password must be at least 8 characters long, contain at least 1 uppercase letter and at
-        least 1 number
+        {validState.details.passwordValid.message || APIError.message}
       </p>
       <button className="signup__form-btn-signup btn-signup btn" onClick={register}>
         Get started now
@@ -125,7 +135,12 @@ function SignUp() {
           Log in
         </Link>
       </div>
-      {showModal && <LoadingModal text={message} onClickOutside={handleCloseModalClick} />}
+      {showModal && (
+        <InfoModal
+          text={APIError.type === 'other' ? APIError.message :  'Sign up successful'}
+          onClickOutside={handleCloseModalClick}
+        />
+      )}
     </div>
   );
 }

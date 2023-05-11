@@ -8,6 +8,12 @@ import {
   sendPasswordResetEmail,
   signOut,
   fetchSignInMethodsForEmail,
+  setPersistence,
+  browserLocalPersistence,
+  onAuthStateChanged,
+  User,
+  UserInfo,
+  updateProfile,
 } from 'firebase/auth';
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
 
@@ -26,6 +32,8 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const googleProvider = new GoogleAuthProvider();
+
+// EITHER REMOVE OR ADD ERROR HANDLING
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
@@ -46,26 +54,120 @@ const signInWithGoogle = async () => {
 };
 
 const logInWithEmailAndPassword = async (email: string, password: string) => {
+  let errorObj = {
+    type: '',
+    message: '',
+  };
   try {
+    await setPersistence(auth, browserLocalPersistence);
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
-    console.error(error);
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorObj = {
+          type: 'email',
+          message: 'Invalid email',
+        };
+        break;
+      case 'auth/user-not-found':
+        errorObj = {
+          type: 'email',
+          message: `User ${email} does not exist`,
+        };
+        break;
+      case 'auth/wrong-password':
+        errorObj = {
+          type: 'password',
+          message: 'Wrong password',
+        };
+        break;
+      case 'auth/missing-password':
+        errorObj = {
+          type: 'password',
+          message: 'Please input password',
+        };
+        break;
+      default:
+        errorObj = {
+          type: 'other',
+          message: error.message,
+        };
+        break;
+    }
   }
+  return errorObj;
 };
 
 const registerWithEmailAndPassword = async (name: string, email: string, password: string) => {
+  let errorObj = {
+    type: '',
+    message: '',
+  };
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await addDoc(collection(db, 'users'), {
       uid: user.uid,
-      name,
+      name: name,
       authProvider: 'local',
       email,
     });
+    await updateProfile(user, {
+      displayName: name,
+    });
   } catch (error) {
-    console.error(error);
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        errorObj = {
+          type: 'email',
+          message: `Email address ${email} already in use.`,
+        };
+        break;
+      case 'auth/invalid-email':
+        errorObj = {
+          type: 'email',
+          message: `Email address ${email} is invalid.`,
+        };
+        break;
+      case 'auth/operation-not-allowed':
+        errorObj = {
+          type: 'other',
+          message: `Error during sign up.`,
+        };
+        break;
+      case 'auth/wrong-password':
+        errorObj = {
+          type: 'password',
+          message: `Wrong password.`,
+        };
+        break;
+      default:
+        errorObj = {
+          type: 'other',
+          message: error.message,
+        };
+        break;
+    }
   }
+  return errorObj;
+};
+
+const checkForAuthStatus = (
+  callback: (user: { status: boolean; data: UserInfo | object }) => void
+) => {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      callback({
+        status: true,
+        data: user.providerData[0],
+      });
+    } else {
+      callback({
+        status: false,
+        data: {},
+      });
+    }
+  });
 };
 
 const sendPasswordReset = async (email: string) => {
@@ -81,53 +183,6 @@ const logout = () => {
   signOut(auth);
 };
 
-const checkUserEmail = async (email: string, password: string) => {
-  let message = '';
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    switch (error.code) {
-      case 'auth/email-already-in-use':
-        message = `Email address ${email} already in use.`;
-        break;
-      case 'auth/invalid-email':
-        message = `Email address ${email} is invalid.`;
-        break;
-      case 'auth/operation-not-allowed':
-        message = `Error during sign up.`;
-        break;
-      case 'auth/wrong-password':
-        message = 'Wrong password.';
-        break;
-      default:
-        message = error.message;
-        console.log(error.message);
-        break;
-    }
-  }
-  return message;
-};
-
-const checkUserExists = async (email: string) => {
-  const signInMethods = await fetchSignInMethodsForEmail(auth, email)
-  if (signInMethods.length > 0) return true;
-  return false;
-};
-
-const checkUserPassword = async (email: string, password: string) => {
-  let message = '';
-  try {
-    const res = await signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    if (error.code == 'auth/wrong-password') {
-      message = 'Wrong password.';
-    } else {
-      console.log(error.message);
-    }
-  }
-  return message;
-}
-
 export {
   auth,
   db,
@@ -136,7 +191,8 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
-  checkUserEmail,
-  checkUserExists,
-  checkUserPassword,
+  checkForAuthStatus,
+  // checkUserEmail,
+  // checkUserExists,
+  // checkUserPassword,
 };

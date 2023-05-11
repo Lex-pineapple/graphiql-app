@@ -10,9 +10,20 @@ import Footer from './components/Footer';
 import LoginPage from './routes/LoginPage';
 import WelcomePage from './routes/WelcomePage';
 import SignOutPage from './routes/SignOutPage';
+import { checkForAuthStatus } from './auth/firebase';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 function App() {
   const { currentLocale, setLocale } = LanguagesManager();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    checkForAuthStatus((user) => {
+      dispatch({ type: 'login/loggedIn', payload: user.status });
+      dispatch({ type: 'auth/addUser', payload: user.data });
+    });
+  }, [dispatch]);
 
   return (
     <IntlProvider

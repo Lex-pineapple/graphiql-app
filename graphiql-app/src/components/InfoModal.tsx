@@ -1,6 +1,6 @@
 import '../styles/infoModal.scss';
 
-function LoadingModal({
+function InfoModal({
   text,
   onClickOutside,
 }: {
@@ -19,4 +19,4 @@ function LoadingModal({
   );
 }
 
-export default LoadingModal;
+export default InfoModal;

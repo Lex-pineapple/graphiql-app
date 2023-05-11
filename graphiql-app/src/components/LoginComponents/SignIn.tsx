@@ -1,27 +1,21 @@
 import { useEffect, useState } from 'react';
-import {
-  auth,
-  logInWithEmailAndPassword,
-  signInWithGoogle,
-  checkUserExists,
-  checkUserEmail,
-  checkUserPassword,
-} from '../../auth/firebase';
+import { auth, logInWithEmailAndPassword, signInWithGoogle } from '../../auth/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { useDispatch } from 'react-redux';
-import LoadingModal from '../LoadingModal';
+import { useDispatch, useSelector } from 'react-redux';
+import InfoModal from '../InfoModal';
+import { IStore } from '../../@types/store';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [showModal, setShowModal] = useState(false);
-  const [validState, setValidState] = useState({
-    email: true,
-    pwd: '',
+  const [APIError, setAPIError] = useState({
+    type: '',
+    message: '',
   });
+  const userName = useSelector((store: IStore) => store.auth.authInfo.displayName);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,24 +23,10 @@ function SignIn() {
     setShowModal(!showModal);
   };
 
-  async function validateLogIn(email: string, password: string) {
-    const emailRes = await checkUserExists(email);
-    const pwdRes = await checkUserPassword(email, password);
-    return {
-      email: emailRes,
-      pwd: pwdRes,
-    };
-  }
-
   async function logIn(email: string, password: string) {
-    const res = await validateLogIn(email, password);
-    console.log(res);
-    setValidState(res);
-    if (email && password) {
-      if (res.email && !res.pwd) {
-        logInWithEmailAndPassword(email, password);
-      }
-    }
+    const msg = await logInWithEmailAndPassword(email, password);
+    setAPIError(msg);
+    if (msg.type === 'other') setShowModal(true);
   }
 
   useEffect(() => {
@@ -54,11 +34,15 @@ function SignIn() {
       console.log('loading...');
     }
     if (user) {
-      setShowModal(true);
-      dispatch({ type: 'login/loggedIn', payload: true });
-      setTimeout(() => {
+      if (!userName) {
+        setShowModal(true);
+        dispatch({ type: 'login/loggedIn', payload: true });
+        setTimeout(() => {
+          navigate('/');
+        }, 1000);
+      } else {
         navigate('/');
-      }, 300);
+      }
     }
   }, [user, loading, navigate, dispatch]);
 
@@ -77,20 +61,16 @@ function SignIn() {
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
-          setValidState({
-            ...validState,
-            email: true,
-          });
         }}
       />
       <p
         className={
-          !validState.email
+          APIError.type === 'email'
             ? 'signin__form-input-validator-error-email active'
             : 'signup__form-input-validator-error-email'
         }
       >
-       {!validState.email && `The user ${email} does not exist`}
+        {APIError.type === 'email' && APIError.message}
       </p>
       <input
         type="password"
@@ -101,19 +81,18 @@ function SignIn() {
       />
       <p
         className={
-          validState.pwd
+          APIError.type === 'password'
             ? 'signin__form-input-validator-error-email active'
             : 'signup__form-input-validator-error-email'
         }
       >
-       {validState.pwd}
+        {APIError.type === 'password' && APIError.message}
       </p>
       <Link to="/reset" className="signin__form-text--highlight signin__form-text--right">
         Forgot password?
       </Link>
       <button
         className="signin__form-btn-login btn-login btn"
-        // onClick={() => setShowModal(true)}
         onClick={() => logIn(email, password)}
       >
         Log In
@@ -125,7 +104,10 @@ function SignIn() {
         </Link>
       </div>
       {showModal && (
-        <LoadingModal text={'Successfully logged in'} onClickOutside={handleCloseModalClick} />
+        <InfoModal
+          text={APIError.message || 'Successfully logged in'}
+          onClickOutside={handleCloseModalClick}
+        />
       )}
     </div>
   );

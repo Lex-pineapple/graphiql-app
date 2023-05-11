@@ -3,7 +3,7 @@ import '../../styles/resetPassword.scss';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, sendPasswordReset } from '../../auth/firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import LoadingModal from '../LoadingModal';
+import LoadingModal from '../InfoModal';
 
 function ResetPassword() {
   const [email, setEmail] = useState('');
