@@ -2,23 +2,24 @@ import '../styles/graphiqlPage.scss';
 import GraphiQLEditor from '../components/GraphiQLEditor';
 import GraphiQLResponse from '../components/GraphiQLResponse';
 import SidePanel from '../components/SidePanel';
-import { graphql } from 'graphql';
 import { useEffect, useState } from 'react';
-import { schema } from '../components/Schema';
+import { getResources } from '../components/api';
 
 function GraphiQLPage() {
-  const [isResult, setIsResult] = useState({});
+  const [isResult, setIsResult] = useState('');
   const [source, setSource] = useState('');
 
   useEffect(() => {
     if (source.length) {
-      graphql({ schema, source }).then((result) => {
-        setIsResult(result);
-      });
+      const fetchData = async () => {
+        const data = await getResources(source);
+        setIsResult(data);
+      };
+      fetchData();
     }
   }, [source]);
 
-  const handleChange = (value) => {
+  const handleChange = (value: string) => {
     setSource(value);
   };
 

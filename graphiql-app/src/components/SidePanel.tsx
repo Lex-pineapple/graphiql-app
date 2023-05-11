@@ -1,6 +1,49 @@
 import { useState } from 'react';
 import '../styles/sidePanel.scss';
 
+const charactersExample = `
+{
+  characters {
+    results {
+      id
+      name
+      status
+      species
+      type
+      gender
+      image
+      created
+    }
+  }
+}
+`;
+const locationExample = `
+{
+  locations {
+    results {
+      name
+      id
+      type
+      dimension
+      created
+    }
+  }
+}
+`;
+
+const episodeExample = `
+{
+  episodes {
+    results {
+      id
+      name
+      air_date
+      created
+    }
+  }
+}
+`;
+
 function SidePanel() {
   const [togglePanel, setTogglePanel] = useState(false);
 
@@ -20,6 +63,9 @@ function SidePanel() {
       </div>
       <div className="sidePanel-info">
         <div>Docs info</div>
+        <pre>{charactersExample}</pre>
+        <pre>{locationExample}</pre>
+        <pre>{episodeExample}</pre>
       </div>
     </div>
   );

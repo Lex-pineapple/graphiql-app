@@ -1,13 +1,12 @@
 @import './variables.scss';
 
 .footer {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   width: 100%;
   background: #f1f1f1;
 
   &__line {
-    border: 0.5px solid rgba($headerGreen, 0.5);
+    border: 0.5px solid rgba($headerGreen, 0.3);
     width: 100%;
   }
 

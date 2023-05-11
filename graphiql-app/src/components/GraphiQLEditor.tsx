@@ -3,7 +3,11 @@ import CleanButton from '../assets/broom-clean.svg';
 import EditorToolbar from './EditorToolbar';
 import { useState } from 'react';
 
-function GraphiQLEditor({ sources }) {
+interface GraphiQLEditorType {
+  sources: (value: string) => void;
+}
+
+function GraphiQLEditor({ sources }: GraphiQLEditorType) {
   const [textareaValue, setTextareaValue] = useState('');
 
   const handelAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {

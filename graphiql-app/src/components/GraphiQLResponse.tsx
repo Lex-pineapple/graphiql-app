@@ -1,11 +1,15 @@
-function GraphiQLResponse({ result }) {
-  const formattedResult = Object.keys(result).length ? JSON.stringify(result, null, 2) : '';
+interface GraphiQLResponseType {
+  result: string;
+}
+
+function GraphiQLResponse({ result }: GraphiQLResponseType) {
   return (
     <section className="graphiQLPage__response">
-      <div>
-        <div>response</div>
-        {formattedResult && <pre>{formattedResult}</pre>}
-      </div>
+      {result ? (
+        <pre className="graphiQLPage__response-text">{result}</pre>
+      ) : (
+        <div className="graphiQLPage__response-title">response</div>
+      )}
     </section>
   );
 }

@@ -30,6 +30,11 @@
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
+
+  &__response-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+  }
 }
 
 .query-editor {
@@ -73,9 +78,11 @@
 .button-icon {
   width: 40px;
   height: 40px;
+  transition: filter 0.3s;
 
   &:hover {
     animation: logoImg 0.5s linear;
     filter: brightness(0.7) sepia(1) hue-rotate(140deg) saturate(6);
+    transition: filter 0.3s;
   }
 }

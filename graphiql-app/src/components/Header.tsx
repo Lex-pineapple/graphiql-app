@@ -55,6 +55,7 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
         <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} />
       </div>
       {showModal && <UserModal onClickOutside={handleModalClickOutside} />}
+      <hr className="header__line"></hr>
     </header>
   );
 }
