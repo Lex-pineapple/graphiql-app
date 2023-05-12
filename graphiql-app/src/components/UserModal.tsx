@@ -17,7 +17,7 @@ export const UserModal = ({ onClickOutside }: ProfileModalProps) => {
         </div>
         <UserProfile />
         <hr className="modal-window__line"></hr>
-        <Link to={'/signout'} className="modal-window__log-out">
+        <Link to={'/signout'} onClick={onClickOutside} className="modal-window__log-out">
           <FormattedMessage id={Message.Logout} />
         </Link>
       </div>
