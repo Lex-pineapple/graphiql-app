@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import InfoModal from '../InfoModal';
 import { IStore } from '../../@types/store';
+import AuthSignInInput from './authSignInInput';
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -38,13 +39,13 @@ function SignIn() {
         setShowModal(true);
         dispatch({ type: 'login/loggedIn', payload: true });
         setTimeout(() => {
-          navigate('/');
+          navigate('/graphiql');
         }, 1000);
       } else {
-        navigate('/');
+        navigate('/graphiql');
       }
     }
-  }, [user, loading, navigate, dispatch]);
+  }, [user, loading, navigate, dispatch, userName]);
 
   return (
     <div className="signin__form">
@@ -54,40 +55,24 @@ function SignIn() {
         Log in with Google
       </button>
       <p className="signin__form-hr">or</p>
-      <input
+      <AuthSignInInput
         type="email"
-        className="signin__form-input input-email input"
         placeholder="Your email"
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
         }}
+        errorType={APIError.type}
+        errorMessage={APIError.message}
       />
-      <p
-        className={
-          APIError.type === 'email'
-            ? 'signin__form-input-validator-error-email active'
-            : 'signup__form-input-validator-error-email'
-        }
-      >
-        {APIError.type === 'email' && APIError.message}
-      </p>
-      <input
+      <AuthSignInInput
         type="password"
-        className="signin__form-input input-password input"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        errorType={APIError.type}
+        errorMessage={APIError.message}
       />
-      <p
-        className={
-          APIError.type === 'password'
-            ? 'signin__form-input-validator-error-email active'
-            : 'signup__form-input-validator-error-email'
-        }
-      >
-        {APIError.type === 'password' && APIError.message}
-      </p>
       <Link to="/reset" className="signin__form-text--highlight signin__form-text--right">
         Forgot password?
       </Link>

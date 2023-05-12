@@ -1,12 +1,11 @@
 import '../styles/infoModal.scss';
 
-function InfoModal({
-  text,
-  onClickOutside,
-}: {
+interface IInfoModalProps {
   text: string;
   onClickOutside: (event: React.MouseEvent) => void;
-}) {
+}
+
+function InfoModal({ text, onClickOutside }: IInfoModalProps) {
   return (
     <div className="info-modal-overlay" onClick={onClickOutside}>
       <div className="info-modal-window">

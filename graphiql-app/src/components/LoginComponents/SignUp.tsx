@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { auth, registerWithEmailAndPassword } from '../../auth/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import InfoModal from '../InfoModal';
 import SignUpValidator from '../../helpers/signUpValidator';
 import { IStore } from '../../@types/store';
+import AuthSignUpInput from './authSignUpInput';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -63,69 +64,45 @@ function SignUp() {
         setShowModal(true);
         dispatch({ type: 'login/loggedIn', payload: true });
         setTimeout(() => {
-          navigate('/', { replace: true });
+          navigate('/graphiql', { replace: true });
         }, 2000);
       } else {
-        navigate('/', { replace: true });
+        navigate('/graphiql', { replace: true });
       }
     }
-  }, [user, loading, navigate, dispatch]);
+  }, [user, loading, navigate, dispatch, userName]);
 
   return (
     <div className="signup__form">
       <div className="signup__form-bigtext">Sign up</div>
       <p className="signup__form-subtext">Join the GraphGl community.</p>
-      <p className="signup__form-input-header-text">Name</p>
-      <input
+      <AuthSignUpInput
+        name="name"
         type="text"
-        className="signup__form-input input-text input"
         placeholder="Your name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        errorType={!validState.details.nameValid.res}
+        errorMessage={validState.details.nameValid.message}
       />
-      <p
-        className={
-          !validState.details.nameValid.res
-            ? 'signup__form-input-validator-error-name active'
-            : 'signup__form-input-validator-error-name'
-        }
-      >
-        {validState.details.nameValid.message}
-      </p>
-      <p className="signup__form-input-header-text">Email</p>
-      <input
+      <AuthSignUpInput
+        name="email"
         type="email"
-        className="signup__form-input input-email input"
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        errorType={!validState.details.emailValid.res || APIError.type === 'email'}
+        errorMessage={validState.details.emailValid.message || APIError.message}
       />
-      <p
-        className={
-          !validState.details.emailValid.res || APIError.type === 'email'
-            ? 'signup__form-input-validator-error-email active'
-            : 'signup__form-input-validator-error-email'
-        }
-      >
-        {validState.details.emailValid.message || APIError.message}
-      </p>
-      <p className="signup__form-input-header-text">Password</p>
-      <input
+      <AuthSignUpInput
+        name="password"
         type="password"
-        className="signup__form-input input-password input"
         placeholder="Enter your password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        errorType={!validState.details.passwordValid.res || APIError.type === 'password'}
+        errorMessage={validState.details.passwordValid.message || APIError.message}
       />
-      <p
-        className={
-          !validState.details.passwordValid.res || APIError.type === 'password'
-            ? 'signup__form-input-validator-error-password active'
-            : 'signup__form-input-validator-error-password'
-        }
-      >
-        {validState.details.passwordValid.message || APIError.message}
-      </p>
       <button className="signup__form-btn-signup btn-signup btn" onClick={register}>
         Get started now
       </button>
@@ -137,7 +114,7 @@ function SignUp() {
       </div>
       {showModal && (
         <InfoModal
-          text={APIError.type === 'other' ? APIError.message :  'Sign up successful'}
+          text={APIError.type === 'other' ? APIError.message : 'Sign up successful'}
           onClickOutside={handleCloseModalClick}
         />
       )}

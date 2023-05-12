@@ -55,7 +55,7 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
         </nav>
         {logInStatus ? (
           <>
-            <AuthComponent type="signout" message={Message.SignOut} />
+            <AuthComponent type="graphiql" message={Message.GoToMainPage} />
             <UserIcon onClick={handleUserIconClick} />
           </>
         ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (

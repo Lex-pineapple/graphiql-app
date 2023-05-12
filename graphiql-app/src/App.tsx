@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './styles/App.scss';
 import Page404 from './routes/Page404';
 import Header from './components/Header';
@@ -11,19 +11,21 @@ import LoginPage from './routes/LoginPage';
 import WelcomePage from './routes/WelcomePage';
 import SignOutPage from './routes/SignOutPage';
 import { checkForAuthStatus } from './auth/firebase';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 function App() {
   const { currentLocale, setLocale } = LanguagesManager();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     checkForAuthStatus((user) => {
       dispatch({ type: 'login/loggedIn', payload: user.status });
       dispatch({ type: 'auth/addUser', payload: user.data });
+      // if (!user.status) navigate('/');
     });
-  }, [dispatch]);
+  }, [dispatch, navigate]);
 
   return (
     <IntlProvider

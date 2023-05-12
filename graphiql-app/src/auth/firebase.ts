@@ -171,12 +171,23 @@ const checkForAuthStatus = (
 };
 
 const sendPasswordReset = async (email: string) => {
+  let ret = {
+    res: '',
+    success: false,
+  };
   try {
     await sendPasswordResetEmail(auth, email);
-    //alert the password reset
+    ret = {
+      res: 'Email with instructions has been sent',
+      success: true,
+    };
   } catch (error) {
-    console.error(error);
+    ret = {
+      res: error.message,
+      success: false,
+    };
   }
+  return ret;
 };
 
 const logout = () => {

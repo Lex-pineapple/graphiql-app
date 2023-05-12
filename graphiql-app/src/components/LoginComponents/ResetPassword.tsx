@@ -3,13 +3,29 @@ import '../../styles/resetPassword.scss';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, sendPasswordReset } from '../../auth/firebase';
 import { Link, useNavigate } from 'react-router-dom';
-import LoadingModal from '../InfoModal';
+import InfoModal from '../InfoModal';
 
 function ResetPassword() {
   const [email, setEmail] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  const [modalText, setModalText] = useState('');
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+
+  const handleCloseModalClick = () => {
+    setShowModal(!showModal);
+  };
+
+  async function managePassowrdReset(email: string) {
+    const response = await sendPasswordReset(email);
+    setModalText(response.res);
+    setShowModal(true);
+    if (response.success) {
+      setTimeout(() => {
+        navigate('/signin');
+      }, 1000);
+    }
+  }
 
   useEffect(() => {
     if (loading) {
@@ -17,10 +33,7 @@ function ResetPassword() {
       return;
     }
     if (user) {
-      setShowModal(true);
-      setTimeout(() => {
-        navigate('/signin');
-      }, 300);
+      navigate('/graphiql');
     }
   }, [user, loading, navigate]);
 
@@ -37,7 +50,7 @@ function ResetPassword() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <button className="resetpwd__form-btn" onClick={() => sendPasswordReset(email)}>
+      <button className="resetpwd__form-btn" onClick={() => managePassowrdReset(email)}>
         Send password reset email
       </button>
       <p className="resetpwd__form-text">
@@ -46,7 +59,7 @@ function ResetPassword() {
           Register
         </Link>
       </p>
-      {showModal && <LoadingModal text={'Email with instructions has been sent'} />}
+      {showModal && <InfoModal text={modalText} onClickOutside={handleCloseModalClick} />}
     </div>
   );
 }

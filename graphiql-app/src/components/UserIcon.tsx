@@ -12,7 +12,7 @@ export const UserIcon = ({ onClick }: UserIconProps) => {
 
   return (
     <div onClick={onClick} className="user-icon">
-      {userName[0].toUpperCase() || 'AA'}
+      {userName ? userName[0].toUpperCase() : 'AA'}
     </div>
   );
 };
