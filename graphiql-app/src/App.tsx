@@ -2,6 +2,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import './styles/App.scss';
 import Page404 from './routes/Page404';
 import Header from './components/Header';
+import GraphiQLPage from './routes/GraphiQLPage';
 import { IntlProvider } from 'react-intl';
 import { LanguagesManager } from './components/languages/languagesManager';
 import { translations } from './components/languages/translations';
@@ -42,6 +43,7 @@ function App() {
             <Route path="/signup" element={<LoginPage authType="signup" />}></Route>
             <Route path="/reset" element={<LoginPage authType="reset" />}></Route>
             <Route path="/signout" element={<SignOutPage />}></Route>
+            <Route path="/graphiql" element={<GraphiQLPage />}></Route>
             <Route path="*" element={<Page404 />}></Route>
           </Routes>
         </div>
