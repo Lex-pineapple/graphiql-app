@@ -1,0 +1,68 @@
+@import './variables.scss';
+
+.signout {
+  &-container {
+    background: url('../assets/signIn-background-3.jpg') center/cover no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__modal {
+    background: $lightGrey;
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -250px;
+    text-align: center;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__modal-bigtext {
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  &__modal-btn-leave,
+  &__modal-btn-stay {
+    position: relative;
+    font-weight: 500;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  &__modal-btn-stay {
+    border: 1px solid $mintGreen;
+    background: $mintGreen;
+    margin-top: 30px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &__modal-btn-stay::after,
+  &__modal-btn-leave::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 2px 3px rgba($mintGreen, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &__modal-btn-stay:hover::after,
+  &__modal-btn-leave:hover::after {
+    opacity: 1;
+  } 
+}

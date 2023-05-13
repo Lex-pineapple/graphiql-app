@@ -1,12 +1,15 @@
 import '../styles/header.scss';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { HeaderLogo } from './HeaderLogo';
 import { LangSwitcher } from './LangSwitcher';
 import { UserIcon } from './UserIcon';
 import { UserModal } from './UserModal';
 import { FormattedMessage } from 'react-intl';
 import { Message } from './languages/messages';
+import { useSelector } from 'react-redux';
+import { IStore } from '../@types/store';
+import AuthComponent from './AuthComponent';
 
 interface HeaderProps {
   currentLocale: string;
@@ -15,6 +18,8 @@ interface HeaderProps {
 
 function Header({ currentLocale, setLocale }: HeaderProps) {
   const [showModal, setShowModal] = useState(false);
+  const location = useLocation();
+  const logInStatus = useSelector((store: IStore) => store.auth.login);
 
   const handleUserIconClick = () => {
     setShowModal(!showModal);
@@ -51,7 +56,16 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
             </li>
           </ul>
         </nav>
-        <UserIcon onClick={handleUserIconClick} />
+        {logInStatus ? (
+          <>
+            <AuthComponent type="graphiql" message={Message.GoToMainPage} />
+            <UserIcon onClick={handleUserIconClick} />
+          </>
+        ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
+          <AuthComponent type="signin" message={Message.SignIn} />
+        ) : (
+          <></>
+        )}
         <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} />
       </div>
       {showModal && <UserModal onClickOutside={handleModalClickOutside} />}
