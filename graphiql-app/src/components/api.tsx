@@ -4,9 +4,9 @@ export async function getResources(
   sourcesQuery: string,
   sourcesVariables: string
 ): Promise<string> {
-  const parsSourcesVariables = sourcesVariables && JSON.parse(sourcesVariables);
+  const parsSourcesVariables = () => sourcesVariables && JSON.parse(sourcesVariables);
   try {
-    parsSourcesVariables;
+    parsSourcesVariables();
   } catch (error) {
     return 'Error parsing variables data';
   }
@@ -18,7 +18,7 @@ export async function getResources(
       },
       body: JSON.stringify({
         query: sourcesQuery,
-        variables: parsSourcesVariables,
+        variables: parsSourcesVariables(),
       }),
     });
     const data = await results.json();
