@@ -4,18 +4,25 @@ import EditorToolbar from './EditorToolbar';
 import { useState } from 'react';
 
 interface GraphiQLEditorType {
-  sources: (value: string) => void;
+  sourcesQuery: (value: string) => void;
+  sourcesVariables: (value: string) => void;
 }
 
-function GraphiQLEditor({ sources }: GraphiQLEditorType) {
-  const [textareaValue, setTextareaValue] = useState('');
-
-  const handelAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextareaValue(event.target.value);
-  };
+function GraphiQLEditor({ sourcesQuery, sourcesVariables }: GraphiQLEditorType) {
+  const [queryAreaValue, setQueryAreaValue] = useState('');
+  const [variablesAreaValue, setVariablesAreaValue] = useState('');
 
   const handelExecuteBtn = () => {
-    sources(textareaValue);
+    sourcesQuery(queryAreaValue);
+    sourcesVariables(variablesAreaValue);
+  };
+
+  const handelQueryAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setQueryAreaValue(event.target.value);
+  };
+
+  const textAreaVariables = (data: string) => {
+    setVariablesAreaValue(data);
   };
 
   return (
@@ -24,7 +31,7 @@ function GraphiQLEditor({ sources }: GraphiQLEditorType) {
         <textarea
           placeholder="Write your query or mutation here"
           className="query-editor__text"
-          onChange={handelAreaChanges}
+          onChange={handelQueryAreaChanges}
         ></textarea>
         <div className="query-editor__toolbar">
           <button className="executeButton" onClick={handelExecuteBtn}>
@@ -35,7 +42,7 @@ function GraphiQLEditor({ sources }: GraphiQLEditorType) {
           </button>
         </div>
       </div>
-      <EditorToolbar />
+      <EditorToolbar textAreaVariables={textAreaVariables} />
     </section>
   );
 }

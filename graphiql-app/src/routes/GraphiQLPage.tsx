@@ -7,25 +7,29 @@ import { getResources } from '../components/api';
 
 function GraphiQLPage() {
   const [isResult, setIsResult] = useState('');
-  const [source, setSource] = useState('');
+  const [sourcesQuery, setSourcesQuery] = useState('');
+  const [sourcesVariables, setSourceVariables] = useState('');
+
+  const fetchData = async () => {
+    const data = await getResources(sourcesQuery, sourcesVariables);
+    setIsResult(data);
+  };
 
   useEffect(() => {
-    if (source.length) {
-      const fetchData = async () => {
-        const data = await getResources(source);
-        setIsResult(data);
-      };
-      fetchData();
-    }
-  }, [source]);
+    sourcesQuery && fetchData();
+  }, [sourcesQuery, sourcesVariables]);
 
-  const handleChange = (value: string) => {
-    setSource(value);
+  const queryChange = (value: string) => {
+    setSourcesQuery(value);
+  };
+
+  const variablesChanges = (value: string) => {
+    setSourceVariables(value);
   };
 
   return (
     <div className="graphiQLPage wrapper container">
-      <GraphiQLEditor sources={handleChange} />
+      <GraphiQLEditor sourcesQuery={queryChange} sourcesVariables={variablesChanges} />
       <GraphiQLResponse result={isResult} />
       <SidePanel />
     </div>

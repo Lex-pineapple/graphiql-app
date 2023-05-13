@@ -5,11 +5,7 @@ interface GraphiQLResponseType {
 function GraphiQLResponse({ result }: GraphiQLResponseType) {
   return (
     <section className="graphiQLPage__response">
-      {result ? (
-        <pre className="graphiQLPage__response-text">{result}</pre>
-      ) : (
-        <div className="graphiQLPage__response-title">response</div>
-      )}
+      {result && <pre className="graphiQLPage__response-text">{result}</pre>}
     </section>
   );
 }

@@ -1,7 +1,33 @@
 import { useState } from 'react';
 import '../styles/sidePanel.scss';
 
-const charactersExample = `
+const variables = `
+for Variables
+
+query Alive($status: String!) {
+  characters(filter: { status: $status }) {
+    results {
+      id
+      name
+      status
+      species
+      type
+      gender
+      image
+      created
+    }
+  }
+}
+
+Variables
+
+{
+  "status": "Alive"
+}
+
+`;
+
+const characters = `
 {
   characters {
     results {
@@ -17,7 +43,7 @@ const charactersExample = `
   }
 }
 `;
-const locationExample = `
+const location = `
 {
   locations {
     results {
@@ -31,7 +57,7 @@ const locationExample = `
 }
 `;
 
-const episodeExample = `
+const episode = `
 {
   episodes {
     results {
@@ -63,9 +89,14 @@ function SidePanel() {
       </div>
       <div className="sidePanel-info">
         <div>Docs info</div>
-        <pre>{charactersExample}</pre>
-        <pre>{locationExample}</pre>
-        <pre>{episodeExample}</pre>
+        <hr></hr>
+        <pre>{variables}</pre>
+        <hr></hr>
+        <pre>{characters}</pre>
+        <hr></hr>
+        <pre>{location}</pre>
+        <hr></hr>
+        <pre>{episode}</pre>
       </div>
     </div>
   );
