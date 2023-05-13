@@ -1,0 +1,284 @@
+@import './variables.scss'; 
+
+.auth {
+  &-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__img {
+    background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img-text-container {
+    position: relative;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+  }
+  
+  &__img-bigtext {
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  &__img-bigtext--highlight {
+    color: #e3e56f;
+  }
+
+  &__img-smalltext {
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 28px;
+  }
+
+  &__img-github-logo {
+    background: url('../assets/github-mark-white.svg') center/cover no-repeat;
+    position: absolute;
+    left: 30px;
+    bottom: 80px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+}
+
+.signin {
+  &__form {
+    width: 500px;
+  }
+
+  &__form-bigtext {
+    font-size: 108px;
+    font-weight: 900;
+  }
+
+  &__form-subtext {
+    margin: 10px 0;
+  }
+
+  &__form-btn-google,
+  &__form-btn-login,
+  &__form-input {
+    font-weight: 500;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 20px;
+  }
+  
+  &__form-btn-google {
+    border: 1px solid $mintGreen;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &__form-btn-google:hover {
+    background-color: $mintGreen;
+  }
+
+  &__form-btn-login {
+    position: relative;
+    background-color: black;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 30px 0;
+  }
+
+  &__form-btn-login::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 2px 3px rgba($mintGreen, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &__form-btn-login:hover::after {
+    opacity: 1;
+  } 
+
+  &__form-hr {
+    position: relative;
+    font-weight: 500;
+    margin: 30px 0;
+  }
+
+  &__form-hr::before,
+  &__form-hr::after {
+    position: absolute;
+    top: 55%;
+    overflow: hidden;
+    width: 30%;
+    height: 1px;
+    content: '';
+    background-color: $grey;
+  }
+
+  &__form-hr::after {
+    margin-left: 3%;
+  }
+
+  &__form-hr::before {
+    margin-left: -33%;
+    text-align: right;
+  }
+
+  &__form-input {
+    border: 1px solid $grey;
+    margin: 10px 0;
+    padding: 10px 20px;
+  }
+
+  &__form-input:focus {
+    outline-color: $dkGrey;
+  }
+
+  &__form-text--highlight {
+    color: $mintGreen;
+    font-weight: 700;
+  }
+
+  &__form-text--right {
+    width: 100%;
+    text-align: right;
+  }
+
+  &__form-text--under-container,
+  &__form-text--highlight {
+    display: inline-block;
+  }
+
+  &__form-text--highlight {
+    cursor: pointer;
+  }
+
+  &__form-input-validator-error-email,
+  &__form-input-validator-error-password {
+    color: red;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+
+  &__form-input-validator-error-email.active, 
+  &__form-input-validator-error-password.active {
+    height: 20px;
+  }
+}
+
+.signup {
+  &__form {
+    width: 500px;
+  }
+
+  &__form-bigtext {
+    font-size: 108px;
+    font-weight: 900;
+  }
+
+  &__form-subtext {
+    margin: 15px 0;
+  }
+
+  &__form-btn-signup,
+  &__form-input {
+    font-weight: 500;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 20px;
+  }
+
+  &__form-btn-signup {
+    position: relative;
+    background-color: black;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 30px 0;
+  }
+
+  &__form-btn-signup::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 2px 3px rgba($mintGreen, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &__form-btn-signup:hover::after {
+    opacity: 1;
+  } 
+
+  &__form-input {
+    border: 1px solid $grey;
+    margin: 10px 0;
+    padding: 10px 20px;
+  }
+
+  &__form-input:focus {
+    outline-color: $dkGrey;
+  }
+
+  &__form-text--highlight {
+    color: $mintGreen;
+    font-weight: 700;
+  }
+
+  &__form-input-header-text {
+    font-weight: 700;
+    font-size: 18px;
+    width: 100%;
+    text-align: left;
+  }
+
+  &__form-input-header-text::after {
+    content: '*';
+    color: red;
+    position: relative;
+    left: 5px;
+  }
+
+  &__form-input-validator-error-name,
+  &__form-input-validator-error-email,
+  &__form-input-validator-error-password {
+    color: red;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+
+  &__form-input-validator-error-name.active,
+  &__form-input-validator-error-email.active {
+    height: 20px;
+  }
+
+  &__form-input-validator-error-password.active {
+    height: 50px;
+  }
+}

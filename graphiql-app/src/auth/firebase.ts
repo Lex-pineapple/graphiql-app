@@ -1,0 +1,209 @@
+import { initializeApp } from 'firebase/app';
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  fetchSignInMethodsForEmail,
+  setPersistence,
+  browserLocalPersistence,
+  onAuthStateChanged,
+  User,
+  UserInfo,
+  updateProfile,
+} from 'firebase/auth';
+import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyDf8HM9qXgPB-snmATL-6D8VySuqFKWI38',
+  authDomain: 'graphiql-app-lp.firebaseapp.com',
+  projectId: 'graphiql-app-lp',
+  storageBucket: 'graphiql-app-lp.appspot.com',
+  messagingSenderId: '1046413540091',
+  appId: '1:1046413540091:web:30cfa9d407c1b915f70e5e',
+  measurementId: 'G-6W7EXZZ8PZ',
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const googleProvider = new GoogleAuthProvider();
+
+// EITHER REMOVE OR ADD ERROR HANDLING
+const signInWithGoogle = async () => {
+  try {
+    const res = await signInWithPopup(auth, googleProvider);
+    const user = res.user;
+    const q = query(collection(db, 'users'), where('uid', '==', user.uid));
+    const docs = await getDocs(q);
+    if (docs.docs.length === 0) {
+      await addDoc(collection(db, 'users'), {
+        uid: user.uid,
+        name: user.displayName,
+        authProvider: 'google',
+        email: user.email,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const logInWithEmailAndPassword = async (email: string, password: string) => {
+  let errorObj = {
+    type: '',
+    message: '',
+  };
+  try {
+    await setPersistence(auth, browserLocalPersistence);
+    await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    switch (error.code) {
+      case 'auth/invalid-email':
+        errorObj = {
+          type: 'email',
+          message: 'Invalid email',
+        };
+        break;
+      case 'auth/user-not-found':
+        errorObj = {
+          type: 'email',
+          message: `User ${email} does not exist`,
+        };
+        break;
+      case 'auth/wrong-password':
+        errorObj = {
+          type: 'password',
+          message: 'Wrong password',
+        };
+        break;
+      case 'auth/missing-password':
+        errorObj = {
+          type: 'password',
+          message: 'Please input password',
+        };
+        break;
+      default:
+        errorObj = {
+          type: 'other',
+          message: error.message,
+        };
+        break;
+    }
+  }
+  return errorObj;
+};
+
+const registerWithEmailAndPassword = async (name: string, email: string, password: string) => {
+  let errorObj = {
+    type: '',
+    message: '',
+  };
+  try {
+    const res = await createUserWithEmailAndPassword(auth, email, password);
+    const user = res.user;
+    await addDoc(collection(db, 'users'), {
+      uid: user.uid,
+      name: name,
+      authProvider: 'local',
+      email,
+    });
+    await updateProfile(user, {
+      displayName: name,
+    });
+  } catch (error) {
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+        errorObj = {
+          type: 'email',
+          message: `Email address ${email} already in use.`,
+        };
+        break;
+      case 'auth/invalid-email':
+        errorObj = {
+          type: 'email',
+          message: `Email address ${email} is invalid.`,
+        };
+        break;
+      case 'auth/operation-not-allowed':
+        errorObj = {
+          type: 'other',
+          message: `Error during sign up.`,
+        };
+        break;
+      case 'auth/wrong-password':
+        errorObj = {
+          type: 'password',
+          message: `Wrong password.`,
+        };
+        break;
+      default:
+        errorObj = {
+          type: 'other',
+          message: error.message,
+        };
+        break;
+    }
+  }
+  return errorObj;
+};
+
+const checkForAuthStatus = (
+  callback: (user: { status: boolean; data: UserInfo | object }) => void
+) => {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      callback({
+        status: true,
+        data: user.providerData[0],
+      });
+    } else {
+      callback({
+        status: false,
+        data: {},
+      });
+    }
+  });
+};
+
+const sendPasswordReset = async (email: string) => {
+  let ret = {
+    res: '',
+    success: false,
+  };
+  try {
+    await sendPasswordResetEmail(auth, email);
+    ret = {
+      res: 'Email with instructions has been sent',
+      success: true,
+    };
+  } catch (error) {
+    ret = {
+      res: error.message,
+      success: false,
+    };
+  }
+  return ret;
+};
+
+const logout = () => {
+  signOut(auth);
+};
+
+export {
+  auth,
+  db,
+  signInWithGoogle,
+  logInWithEmailAndPassword,
+  registerWithEmailAndPassword,
+  sendPasswordReset,
+  logout,
+  checkForAuthStatus,
+  // checkUserEmail,
+  // checkUserExists,
+  // checkUserPassword,
+};
