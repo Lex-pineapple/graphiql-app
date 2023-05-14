@@ -1,51 +1,34 @@
 function getIntrospectionQuery() {
   return `
-    query IntrospectionQuery {
-      __schema {
-        queryType { name }
-        mutationType { name }
-        subscriptionType { name }
-        types { ...FullType }
-        directives {
-          name
-          description
-          locations
-          args { ...InputValue }
-        }
-      }
+  query IntrospectionQuery {
+    __schema {
+      queryType { name }
+      types { ...FullType }
     }
+  }
 
-    fragment FullType on __Type {
-      kind
+  fragment FullType on __Type {
+    kind
+    name
+    description
+    fields(includeDeprecated: false) {
       name
       description
-      fields(includeDeprecated: true) {
-        name
-        description
-        args { ...InputValue }
-        type { ...TypeRef }
-        isDeprecated
-        deprecationReason
-      }
-      inputFields { ...InputValue }
-      interfaces { ...TypeRef }
-      enumValues(includeDeprecated: true) {
-        name
-        description
-        isDeprecated
-        deprecationReason
-      }
-      possibleTypes { ...TypeRef }
-    }
-
-    fragment InputValue on __InputValue {
-      name
-      description
+      args { ...InputValue }
       type { ...TypeRef }
-      defaultValue
     }
+  }
 
-    fragment TypeRef on __Type {
+  fragment InputValue on __InputValue {
+    name
+    description
+    type { ...TypeRef }
+  }
+
+  fragment TypeRef on __Type {
+    kind
+    name
+    ofType {
       kind
       name
       ofType {
@@ -66,10 +49,6 @@ function getIntrospectionQuery() {
                 ofType {
                   kind
                   name
-                  ofType {
-                    kind
-                    name
-                  }
                 }
               }
             }
@@ -77,6 +56,7 @@ function getIntrospectionQuery() {
         }
       }
     }
+  }
   `;
 }
 

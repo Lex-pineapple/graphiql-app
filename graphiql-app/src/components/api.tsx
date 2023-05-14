@@ -31,7 +31,7 @@ export async function getResources(
 export function getSchema(query: string) {
   let status = 'pending';
   let result: string | Error;
-  const fetching = fetch('https://rickandmortyapi.com/graphql', {
+  const fetching = fetch(BASE_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export function getSchema(query: string) {
     .then((res) => res.json())
     .then((data) => {
       status = 'fulfilled';
-      result = JSON.stringify(data);
+      result = data;
     })
     .catch((err) => {
       status = 'rejected';
