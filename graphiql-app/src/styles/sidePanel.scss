@@ -3,7 +3,7 @@
 .sidePanel {
   position: absolute;
   right: 0;
-  width: 290px;
+  width: 500px;
   height: calc(100vh - 132px);
   background: $backgroundGraphiQLPage;
   outline: none;
@@ -12,7 +12,7 @@
   border-radius: 10px 0px 0px 10px;
 
   z-index: 2;
-  transform: translateX(100%);
+  // transform: translateX(100%);
   transition: transform 0.5s $cubicBezier;
 
   &.open {

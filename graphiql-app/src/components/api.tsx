@@ -27,3 +27,34 @@ export async function getResources(
     return 'Error response';
   }
 }
+
+export function getSchema(query: string) {
+  let status = 'pending';
+  let result: string | Error;
+  const fetching = fetch('https://rickandmortyapi.com/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      status = 'fulfilled';
+      result = JSON.stringify(data);
+    })
+    .catch((err) => {
+      status = 'rejected';
+      result = err;
+    });
+  return () => {
+    if (status === 'rejected') {
+      return result; // Result is an error
+    } else if (status === 'fulfilled') {
+      return result; // Result is a fulfilled promise
+    }
+    throw fetching;
+  };
+}
