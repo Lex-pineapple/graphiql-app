@@ -19,6 +19,9 @@
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     font-weight: 700;
+    background: linear-gradient(90deg, $mintGreen 50%, $headerGreen 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
 
@@ -185,7 +188,7 @@
 }
 
 .headerLogo__wrapper:hover > .headerLogo__img {
-  animation: logoImg  infinite 2.2s cubic-bezier(0.5, 0.1, 0.6, 0.55);
+  animation: logoImg infinite 2.2s cubic-bezier(0.5, 0.1, 0.6, 0.55);
 }
 
 .headerLogo__wrapper:hover > .headerLogo__img > .circle-top {

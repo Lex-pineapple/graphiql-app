@@ -5,7 +5,9 @@
   width: 100%;
   flex-direction: row;
   flex: 1;
-  min-height: calc(100vh - 132px);
+  // min-height: calc(100vh - 132px);
+  height: 88vh;
+
 
   &__editor {
     display: flex;
@@ -29,6 +31,12 @@
     border-radius: 10px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    overflow: scroll;
+  }
+
+  &__response-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
   }
 }
 
@@ -36,12 +44,17 @@
   display: flex;
   flex: 1;
   padding: 16px;
-  padding-right: 0;
+  padding-right: 5px;
 
   &__text {
     position: relative;
     height: 100%;
     width: 100%;
+    outline: none;
+    resize: none;
+    border: none;
+    // border: 1px solid $headerGreen;
+    // border-radius: 5px;
   }
 
   &__toolbar {
@@ -68,9 +81,19 @@
 .button-icon {
   width: 40px;
   height: 40px;
+  transition: filter 0.3s;
 
   &:hover {
     animation: logoImg 0.5s linear;
     filter: brightness(0.7) sepia(1) hue-rotate(140deg) saturate(6);
+    transition: filter 0.3s;
   }
+}
+
+.tab-section {
+  outline: none;
+  resize: none;
+  border: none;
+  height: 100%;
+  width: 100%;
 }
