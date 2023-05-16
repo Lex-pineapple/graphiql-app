@@ -1,17 +1,19 @@
+import '../styles/editorToolbar.scss';
 import { useState } from 'react';
-
 import UpButton from '../assets/circle-up.svg';
 import DownButton from '../assets/circle-down.svg';
-import '../styles/editorToolbar.scss';
+import { defaultHeaders } from './GraphiQLEditor';
 
 interface EditorToolbarType {
   textAreaVariables: (value: string) => void;
+  textAreaHeaders: (value: string) => void;
 }
 
-function EditorToolbar({ textAreaVariables }: EditorToolbarType) {
+function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType) {
   const [isOpen, setIsOpen] = useState(false);
   const [chose, setChose] = useState('variables');
   const [heightSection, setheightSection] = useState(0);
+
   const togglePanel = () => {
     if (isOpen) {
       setheightSection(0);
@@ -32,6 +34,10 @@ function EditorToolbar({ textAreaVariables }: EditorToolbarType) {
 
   const handelVariablesAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     textAreaVariables(event.target.value);
+  };
+
+  const handelHeaderAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    textAreaHeaders(event.target.value);
   };
 
   return (
@@ -70,7 +76,12 @@ function EditorToolbar({ textAreaVariables }: EditorToolbarType) {
           ></textarea>
         )}
         {isOpen && chose === 'headers' && (
-          <textarea placeholder="Headers section" className="tab-section"></textarea>
+          <textarea
+            placeholder="Headers section"
+            className="tab-section"
+            onChange={handelHeaderAreaChanges}
+            defaultValue={defaultHeaders}
+          ></textarea>
         )}
       </div>
     </>

@@ -25,6 +25,11 @@ Variables
   "status": "Alive"
 }
 
+
+{
+  "Content-Type": "application/json"
+ }
+
 `;
 
 const characters = `

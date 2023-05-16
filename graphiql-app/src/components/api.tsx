@@ -2,9 +2,16 @@ const BASE_URL = 'https://rickandmortyapi.com/graphql';
 
 export async function getResources(
   sourcesQuery: string,
-  sourcesVariables: string
+  sourcesVariables: string,
+  sourcesHeaders: string
 ): Promise<string> {
   const parsSourcesVariables = () => sourcesVariables && JSON.parse(sourcesVariables);
+  const parsSourcesHeader = () => sourcesHeaders && JSON.parse(sourcesHeaders);
+  try {
+    parsSourcesHeader();
+  } catch (error) {
+    return 'Error parsing header data';
+  }
   try {
     parsSourcesVariables();
   } catch (error) {
@@ -13,9 +20,7 @@ export async function getResources(
   try {
     const results = await fetch(BASE_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: parsSourcesHeader(),
       body: JSON.stringify({
         query: sourcesQuery,
         variables: parsSourcesVariables(),
