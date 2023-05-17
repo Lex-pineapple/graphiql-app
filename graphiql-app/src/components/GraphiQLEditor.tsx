@@ -9,16 +9,10 @@ interface GraphiQLEditorType {
   sourcesHeaders: (value: string) => void;
 }
 
-export const defaultHeaders = `
-{
-  "Content-Type": "application/json"
-}
-`;
-
 function GraphiQLEditor({ sourcesQuery, sourcesVariables, sourcesHeaders }: GraphiQLEditorType) {
   const [queryAreaValue, setQueryAreaValue] = useState('');
   const [variablesAreaValue, setVariablesAreaValue] = useState('');
-  const [headersAreaValue, setHeadersAreaValue] = useState(defaultHeaders);
+  const [headersAreaValue, setHeadersAreaValue] = useState('');
 
   const handelExecuteBtn = () => {
     sourcesQuery(queryAreaValue);
@@ -61,4 +55,3 @@ function GraphiQLEditor({ sourcesQuery, sourcesVariables, sourcesHeaders }: Grap
 }
 
 export default GraphiQLEditor;
-// export default defaultHeaders;

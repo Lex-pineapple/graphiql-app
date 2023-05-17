@@ -2,7 +2,7 @@ import '../styles/editorToolbar.scss';
 import { useState } from 'react';
 import UpButton from '../assets/circle-up.svg';
 import DownButton from '../assets/circle-down.svg';
-import { defaultHeaders } from './GraphiQLEditor';
+import { HeaderList } from './HeadersList';
 
 interface EditorToolbarType {
   textAreaVariables: (value: string) => void;
@@ -36,10 +36,6 @@ function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType
     textAreaVariables(event.target.value);
   };
 
-  const handelHeaderAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    textAreaHeaders(event.target.value);
-  };
-
   return (
     <>
       <div className="editor-toolbar">
@@ -68,21 +64,15 @@ function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType
         </button>
       </div>
       <div style={{ height: `${heightSection}px` }} className="tab-sectisdfon">
-        {isOpen && chose === 'variables' && (
-          <textarea
-            placeholder="Variables section"
-            className="tab-section"
-            onChange={handelVariablesAreaChanges}
-          ></textarea>
-        )}
-        {isOpen && chose === 'headers' && (
-          <textarea
-            placeholder="Headers section"
-            className="tab-section"
-            onChange={handelHeaderAreaChanges}
-            defaultValue={defaultHeaders}
-          ></textarea>
-        )}
+        <textarea
+          style={{ display: isOpen && chose === 'variables' ? 'block' : 'none' }}
+          placeholder="Variables section"
+          className="tab-section"
+          onChange={handelVariablesAreaChanges}
+        ></textarea>
+        <div style={{ display: isOpen && chose === 'headers' ? 'block' : 'none' }}>
+          <HeaderList textAreaHeaders={textAreaHeaders} />
+        </div>
       </div>
     </>
   );

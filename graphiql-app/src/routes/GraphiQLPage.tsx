@@ -11,18 +11,12 @@ function GraphiQLPage() {
   const [sourcesVariables, setSourceVariables] = useState('');
   const [sourcesHeaders, setSourceHeaders] = useState('');
 
-  // "Content-Type": "application/json",
-  // "Accept-Language": "en-US"
-  // "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
-  // "Cache-Control": "no-cache"
-
-  const fetchData = async () => {
-    const data = await getResources(sourcesQuery, sourcesVariables, sourcesHeaders);
-    setIsResult(data);
-  };
-
   useEffect(() => {
-    sourcesQuery && fetchData();
+    const fetchData = async () => {
+      const data = await getResources(sourcesQuery, sourcesVariables, sourcesHeaders);
+      setIsResult(data);
+    };
+    sourcesQuery && fetchData;
   }, [sourcesQuery, sourcesVariables, sourcesHeaders]);
 
   const queryChange = (value: string) => {
