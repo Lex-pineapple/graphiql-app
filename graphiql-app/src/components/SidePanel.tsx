@@ -5,22 +5,19 @@ import '../styles/sidePanel.scss';
 function SidePanel() {
   const [togglePanel, setTogglePanel] = useState(false);
 
-  const handleToggleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (event.currentTarget === event.target) {
-      return;
-    }
+  const handleToggleClick = () => {
     setTogglePanel(!togglePanel);
   };
 
   return (
-    <div className={`sidePanel ${togglePanel ? 'open' : ''}`} onClick={handleToggleClick}>
+    <div className={`sidePanel ${togglePanel ? 'open' : ''}`}>
       <div className="sidePanel-menu">
-        <div id="docs" className="sidePanel-menu__button">
+        <div id="docs" className="sidePanel-menu__button" onClick={handleToggleClick}>
           Docs
         </div>
       </div>
       <div className="sidePanel-info">
-        <div>Queries</div>
+        <div className="sidePanel-info-header">Queries</div>
         <Suspense fallback={<div>Loading...</div>}>
           <Docs />
         </Suspense>

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import SignIn from '../components/LoginComponents/SignIn';
 import SignUp from '../components/LoginComponents/SignUp';
 import '../styles/loginPage.scss';

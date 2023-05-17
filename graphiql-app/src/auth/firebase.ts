@@ -7,11 +7,8 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
-  fetchSignInMethodsForEmail,
   setPersistence,
   browserLocalPersistence,
-  onAuthStateChanged,
-  User,
   UserInfo,
   updateProfile,
 } from 'firebase/auth';
@@ -182,10 +179,17 @@ const sendPasswordReset = async (email: string) => {
       success: true,
     };
   } catch (error) {
-    ret = {
-      res: error.message,
-      success: false,
-    };
+    if (error instanceof Error) {
+      ret = {
+        res: error.message,
+        success: false,
+      };
+    } else {
+      ret = {
+        res: 'An error occured during your request',
+        success: false,
+      };
+    }
   }
   return ret;
 };

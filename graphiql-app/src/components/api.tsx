@@ -1,3 +1,5 @@
+import { ISchema } from '../@types/graphql';
+
 const BASE_URL = 'https://rickandmortyapi.com/graphql';
 
 export async function getResources(
@@ -30,7 +32,7 @@ export async function getResources(
 
 export function getSchema(query: string) {
   let status = 'pending';
-  let result: string | Error;
+  let result: ISchema | Error;
   const fetching = fetch(BASE_URL, {
     method: 'POST',
     headers: {
