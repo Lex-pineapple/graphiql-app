@@ -16,7 +16,7 @@ function GraphiQLPage() {
       const data = await getResources(sourcesQuery, sourcesVariables, sourcesHeaders);
       setIsResult(data);
     };
-    sourcesQuery && fetchData;
+    sourcesQuery && fetchData();
   }, [sourcesQuery, sourcesVariables, sourcesHeaders]);
 
   const queryChange = (value: string) => {

@@ -7,6 +7,7 @@ export async function getResources(
 ): Promise<string> {
   const parsSourcesVariables = () => sourcesVariables && JSON.parse(sourcesVariables);
   const parsSourcesHeader = () => sourcesHeaders && JSON.parse(sourcesHeaders);
+  console.log(sourcesHeaders);
   try {
     parsSourcesHeader();
   } catch (error) {

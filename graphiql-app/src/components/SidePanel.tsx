@@ -26,12 +26,11 @@ Variables
 }
 `;
 const headers = `
-{
+For Headers
+
 "Content-Type": "application/json",
 "Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
-"Cache-Control": "no-cache"
 "Accept-Language": "en-US"
-}
 `;
 
 const characters = `

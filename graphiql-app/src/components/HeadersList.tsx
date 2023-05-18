@@ -1,3 +1,5 @@
+import '../styles/headerList.scss';
+
 import { useEffect, useState } from 'react';
 
 interface HeaderListType {
@@ -13,7 +15,6 @@ export function HeaderList({ textAreaHeaders }: HeaderListType) {
     handleAddHeader();
     setHeadersValue((prevHeaders) => ({ ...prevHeaders, [1]: 'application/json' }));
     setHeadersKey((prevHeaders) => ({ ...prevHeaders, [1]: 'Content-Type' }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -46,23 +47,25 @@ export function HeaderList({ textAreaHeaders }: HeaderListType) {
   return (
     <div className="headers-section">
       {Object.keys(headersKey).map((key) => (
-        <div key={key} className="header-inputs">
+        <div key={key} className="headers-section__inputs">
           <input
             placeholder="Header Key"
             defaultValue={key === '1' ? 'Content-Type' : headersKey[key]}
             onChange={(event) => handleHeaderKeyChange(event, key)}
-            className="header-input"
+            className="headers-section__input"
           />
           <input
             placeholder="Header Value"
             defaultValue={key === '1' ? 'application/json' : headersValue[key]}
-            className="header-input"
+            className="headers-section__input"
             onChange={(event) => handleHeaderValueChange(event, key)}
           />
-          <button onClick={() => handleHeaderDelete(key)}>Delete</button>
+          <div className="headers-section__delete" onClick={() => handleHeaderDelete(key)}></div>
         </div>
       ))}
-      <button onClick={handleAddHeader}>Add Header</button>
+      <button className="headers-section__btn-add" onClick={handleAddHeader}>
+        Add Header
+      </button>
     </div>
   );
 }

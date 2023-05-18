@@ -19,9 +19,10 @@
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     font-weight: 700;
-    background: linear-gradient(90deg, $mintGreen 50%, $headerGreen 100%);
+    background: linear-gradient(45deg, $mintGreen 10%, $headerGreen 50%, $mintGreen 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: background-gradient 2s infinite alternate;
   }
 }
 
