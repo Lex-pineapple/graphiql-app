@@ -4,7 +4,7 @@ function WelcomePage() {
   return (
     <>
       <section className="hero">
-        <div className="hero__container  container wrapper">
+        <div className="hero__container container wrapper">
           <div className="hero__info">
             <div className="auth__img-bigtext">
               <p className="auth__img-bigtext--highlight">GraphiQl</p>
@@ -17,36 +17,43 @@ function WelcomePage() {
           </div>
         </div>
       </section>
-      <section>
-        <div>
-          <h1>A query language for API</h1>
-          <p>
-            GraphQL is a query language for APIs and a runtime for fulfilling those queries. GraphQL
-            provides a complete and understandable description of the data in API, gives your the
-            power to ask for exactly what need and nothing more.
-          </p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <h2>Ask for what you need, get exactly that</h2>
-          <p>
-            Send a GraphQL query to our API and get exactly what you need, nothing more and nothing
-            less. GraphQL queries always return predictable results. Apps using GraphQL are fast and
-            stable because they control the data they get, not the server.
-          </p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <h2>Get many resources in a single request</h2>
-          <p>
-            GraphQL queries access not just the properties of one resource but also smoothly follow
-            references between them. While typical REST APIs require loading from multiple URLs,
-            GraphQL APIs get all the data our needs in a single request. App GraphQL quick even on
-            slow mobile network connections.
-          </p>
-        </div>
+      <section className="aboutProject">
+        <ul className="aboutProject__container container wrapper">
+          <li className="aboutProject__item">
+            <div className="aboutProject__img-query"></div>
+            <div className="aboutProject__info">
+              <h2 className="aboutProject__title">A query language for API</h2>
+              <p className="aboutProject__text">
+                GraphQL is a query language for APIs and a runtime for fulfilling those queries.
+                GraphQL provides a complete and understandable description of the data in API, gives
+                your the power to ask for exactly what need and nothing more.
+              </p>
+            </div>
+          </li>
+          <li className="aboutProject__item">
+            <div className="aboutProject__img-what-you-need"></div>
+            <div className="aboutProject__info">
+              <h2 className="aboutProject__title">Ask for what you need, get exactly that</h2>
+              <p className="aboutProject__text">
+                Send a GraphQL query to our API and get exactly what you need, nothing more and
+                nothing less. GraphQL queries always return predictable results. Apps using GraphQL
+                are fast and stable because they control the data they get, not the server.
+              </p>
+            </div>
+          </li>
+          <li className="aboutProject__item">
+            <div className="aboutProject__img-request"></div>
+            <div className="aboutProject__info">
+              <h2 className="aboutProject__title">Get many resources in a single request</h2>
+              <p className="aboutProject__text">
+                GraphQL queries access not just the properties of one resource but also smoothly
+                follow references between them. While typical REST APIs require loading from
+                multiple URLs, GraphQL APIs get all the data our needs in a single request. App
+                GraphQL quick even on slow mobile network connections.
+              </p>
+            </div>
+          </li>
+        </ul>
       </section>
       <section>
         <div>

@@ -4,11 +4,11 @@
     background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
     
     &__container {
-        height: 700px;
+        height: 600px;
     }
 
     &__info {
-        padding: 200px 0;
+        padding: 150px 0;
         width: 1000px;
         margin: 0 auto;
         text-align: center;
@@ -26,12 +26,56 @@
         font-weight: 600;
         line-height: 1;
         cursor: pointer;
-        transition: all 0.5s;
-        
+        transition: all 0.5s;        
     }
 
     &__button:hover {
         background: $headerGreenHoverButton;
-        transform: scale(1.1);
+        transform: scale(1.05);
+    }
+}
+
+.aboutProject {
+    display: flex;
+    padding-top: 20px;
+    background: $backgroundGraphiQLPage;
+
+    &__container {
+        display: flex;        
+        padding: 0;
+    }
+
+    &__item {
+        display: block;
+        width: 440px;
+        justify-content: center;
+        margin: 0 10px;
+    }
+
+    &__img-query {
+        background: url('../assets/query-language.png') center/cover no-repeat;
+        height: 300px;
+    }
+
+    &__img-what-you-need {
+        background: url('../assets/Ask-for-what-you-need.jpg') center/cover no-repeat;
+        height: 300px;
+    }
+
+    &__img-request {
+        background: url('../assets/rest-and-graph.jpg') center/cover no-repeat;
+        height: 300px;
+    }
+
+    &__info {
+        margin-top: 15px;
+    }
+
+    &__title {
+        font-size: 22px;
+    }
+
+    &__text {
+        margin-top: 15px;
     }
 }
