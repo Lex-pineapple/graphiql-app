@@ -1,6 +1,7 @@
 import React, { Suspense, useState } from 'react';
 const Docs = React.lazy(() => import('./Docs'));
 import '../styles/sidePanel.scss';
+import PreloaderSpinner from './PreloaderSpinner';
 
 function SidePanel() {
   const [togglePanel, setTogglePanel] = useState(false);
@@ -18,7 +19,7 @@ function SidePanel() {
       </div>
       <div className="sidePanel-info">
         <div className="sidePanel-info-header">Queries</div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<PreloaderSpinner />}>
           <Docs />
         </Suspense>
       </div>
