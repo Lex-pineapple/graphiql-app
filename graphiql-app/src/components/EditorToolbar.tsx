@@ -1,17 +1,19 @@
+import '../styles/editorToolbar.scss';
 import { useState } from 'react';
-
 import UpButton from '../assets/circle-up.svg';
 import DownButton from '../assets/circle-down.svg';
-import '../styles/editorToolbar.scss';
+import { HeaderList } from './HeadersList';
 
 interface EditorToolbarType {
   textAreaVariables: (value: string) => void;
+  textAreaHeaders: (value: string) => void;
 }
 
-function EditorToolbar({ textAreaVariables }: EditorToolbarType) {
+function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType) {
   const [isOpen, setIsOpen] = useState(false);
   const [chose, setChose] = useState('variables');
   const [heightSection, setheightSection] = useState(0);
+
   const togglePanel = () => {
     if (isOpen) {
       setheightSection(0);
@@ -62,16 +64,15 @@ function EditorToolbar({ textAreaVariables }: EditorToolbarType) {
         </button>
       </div>
       <div style={{ height: `${heightSection}px` }} className="tab-sectisdfon">
-        {isOpen && chose === 'variables' && (
-          <textarea
-            placeholder="Variables section"
-            className="tab-section"
-            onChange={handelVariablesAreaChanges}
-          ></textarea>
-        )}
-        {isOpen && chose === 'headers' && (
-          <textarea placeholder="Headers section" className="tab-section"></textarea>
-        )}
+        <textarea
+          style={{ display: isOpen && chose === 'variables' ? 'block' : 'none' }}
+          placeholder="Variables section"
+          className="tab-section"
+          onChange={handelVariablesAreaChanges}
+        ></textarea>
+        <div style={{ display: isOpen && chose === 'headers' ? 'block' : 'none' }}>
+          <HeaderList textAreaHeaders={textAreaHeaders} />
+        </div>
       </div>
     </>
   );
