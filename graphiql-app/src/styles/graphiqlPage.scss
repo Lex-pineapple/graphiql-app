@@ -5,8 +5,7 @@
   width: 100%;
   flex-direction: row;
   flex: 1;
-  // min-height: calc(100vh - 132px);
-  height: 88vh;
+  height: 86vh;
 
 
   &__editor {
@@ -53,8 +52,6 @@
     outline: none;
     resize: none;
     border: none;
-    // border: 1px solid $headerGreen;
-    // border-radius: 5px;
   }
 
   &__toolbar {

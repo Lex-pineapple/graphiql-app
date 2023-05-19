@@ -1,5 +1,5 @@
 import '../styles/header.scss';
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HeaderLogo } from './HeaderLogo';
 import { LangSwitcher } from './LangSwitcher';
@@ -20,6 +20,25 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const logInStatus = useSelector((store: IStore) => store.auth.login);
+  const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (headerRef.current === null) {
+      return;
+    }
+
+    const header = headerRef.current.getBoundingClientRect();
+    const handleScrollEvent = () => {
+      handleScroll(header.top, header.height);
+    };
+
+    window.addEventListener('scroll', handleScrollEvent);
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollEvent);
+    };
+  }, []);
 
   const handleUserIconClick = () => {
     setShowModal(!showModal);
@@ -35,8 +54,16 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
     }
   };
 
+  const handleScroll = (elTopOffset: number, elHeight: number) => {
+    if (window.pageYOffset > elTopOffset + elHeight) {
+      setSticky({ isSticky: true, offset: elHeight });
+    } else {
+      setSticky({ isSticky: false, offset: 0 });
+    }
+  };
+
   return (
-    <header className="header">
+    <header className={`header${sticky.isSticky ? ' sticky' : ''}`} ref={headerRef}>
       <div className="header__wrapper container wrapper">
         <HeaderLogo />
         <nav className="header-nav">

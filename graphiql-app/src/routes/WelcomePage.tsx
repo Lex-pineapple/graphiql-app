@@ -1,6 +1,11 @@
 import '../styles/welcomePage.scss';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { IStore } from '../@types/store';
 
 function WelcomePage() {
+  const logInStatus = useSelector((store: IStore) => store.auth.login);
+
   return (
     <>
       <section className="hero">
@@ -13,7 +18,9 @@ function WelcomePage() {
               A powerful tool that offers syntax highlighting, intellisense autocompletion,
               automatic documentation, and much more.
             </p>
-            <button className="hero__button">Get Started</button>
+            <Link to={logInStatus ? '/graphiql' : '/signin'}>
+              <button className="hero__button">Get Started</button>
+            </Link>
           </div>
         </div>
       </section>
