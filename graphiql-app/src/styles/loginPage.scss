@@ -1,4 +1,4 @@
-@import './variables.scss'; 
+@import './variables.scss';
 
 .auth {
   &-container {
@@ -29,7 +29,7 @@
     padding: 20px;
     backdrop-filter: blur(5px);
   }
-  
+
   &__img-bigtext {
     font-size: 72px;
     font-weight: 700;
@@ -81,7 +81,7 @@
     padding: 10px 0;
     border-radius: 20px;
   }
-  
+
   &__form-btn-google {
     border: 1px solid $mintGreen;
     cursor: pointer;
@@ -116,7 +116,7 @@
 
   &__form-btn-login:hover::after {
     opacity: 1;
-  } 
+  }
 
   &__form-hr {
     position: relative;
@@ -181,7 +181,7 @@
     transition: height 0.5s ease-in-out;
   }
 
-  &__form-input-validator-error-email.active, 
+  &__form-input-validator-error-email.active,
   &__form-input-validator-error-password.active {
     height: 20px;
   }
@@ -233,7 +233,7 @@
 
   &__form-btn-signup:hover::after {
     opacity: 1;
-  } 
+  }
 
   &__form-input {
     border: 1px solid $grey;

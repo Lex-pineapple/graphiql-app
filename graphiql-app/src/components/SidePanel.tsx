@@ -24,7 +24,13 @@ Variables
 {
   "status": "Alive"
 }
+`;
+const headers = `
+For Headers
 
+"Content-Type": "application/json",
+"Authorization": "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ=="
+"Accept-Language": "en-US"
 `;
 
 const characters = `
@@ -89,6 +95,8 @@ function SidePanel() {
       </div>
       <div className="sidePanel-info">
         <div>Docs info</div>
+        <hr></hr>
+        <pre>{headers}</pre>
         <hr></hr>
         <pre>{variables}</pre>
         <hr></hr>
