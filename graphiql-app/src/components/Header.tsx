@@ -8,7 +8,7 @@ import { LangSwitcher } from './LangSwitcher';
 import { UserIcon } from './UserIcon';
 import { UserModal } from './UserModal';
 import { FormattedMessage } from 'react-intl';
-import { Message } from './languages/messages';
+import { Message } from '../languages/messages';
 import { useSelector } from 'react-redux';
 import { IStore } from '../@types/store';
 import AuthComponent from './AuthComponent';

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { IStore } from '../@types/store';
 import { FormattedMessage } from 'react-intl';
-import { WelcomePageMsg } from '../components/languages/welcomePageMsg';
+import { WelcomePageMsg } from '../languages/welcomePageMsg';
 
 function WelcomePage() {
   const logInStatus = useSelector((store: IStore) => store.auth.login);
