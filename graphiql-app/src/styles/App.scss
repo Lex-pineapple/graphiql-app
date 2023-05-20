@@ -8,7 +8,7 @@
 html,
 body,
 #root,
-.app {
+.App {
   height: 100%;
 }
 
@@ -18,6 +18,8 @@ html {
 
 .container {
   max-width: 1440px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .wrapper {
@@ -26,9 +28,4 @@ html {
 
 a {
   text-decoration: none;
-}
-
-.appContent {
-  padding-top: 80px;
-  height: 100vh;
 }

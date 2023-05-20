@@ -1,0 +1,313 @@
+@import './variables.scss';
+
+.hero {
+    background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
+
+    &__info {
+        padding: 150px 0;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+
+        @media screen and (max-width: 700px) {
+            padding: 120px 0;
+            font-size: 14px;
+        }
+    }
+
+    &__graph {
+        font-size: 72px;
+        font-weight: 700;
+        color: #e3e56f;
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 700px) {
+            font-size: 56px;
+        }
+    }
+
+    &__text {
+        font-weight: 500;
+        color: #ffffff;
+        font-size: 28px;
+
+        @media screen and (max-width: 700px) {
+            font-size: 22px;
+        }
+    }
+
+    &__button {
+        width: 200px;
+        height: 50px;
+        margin-top: 50px;
+        background: $headerGreen;
+        color: $panelColor;
+        border: 1px solid hsla(0, 0%, 100%, .4);
+        border-radius: 6px;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1;
+        cursor: pointer;
+        transition: all 0.5s;  
+        
+        @media screen and (max-width: 700px) {
+            width: 150px;
+            height: 40px;
+        }
+    }
+
+    &__button:hover {
+        background: $headerGreenHoverButton;
+        transform: scale(1.05);
+    }
+}
+
+.aboutProject {
+    padding-top: 20px;
+    background: $backgroundGraphiQLPage;
+
+    &__container {
+        display: flex;        
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &__item {
+        display: block;
+        max-width: 440px;
+        margin: 0 10px;
+
+        @media screen and (max-width: 1380px) {
+            margin: 10px;
+        }
+    }
+
+    &__main-title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    &__img-query {
+        background: url('../assets/query-language.jpg') center/cover no-repeat;
+    }
+
+    &__img-what-you-need {
+        background: url('../assets/Ask-for-what-you-need.jpg') center/cover no-repeat;
+    }
+
+    &__img-request {
+        background: url('../assets/rest-and-graph.jpg') center/cover no-repeat;
+     }
+
+        &__img-query,
+        &__img-what-you-need,
+        &__img-request {
+            width: 440px;
+            height: 300px;
+            margin: 0 auto;
+
+            @media screen and (max-width: 470px) {
+                width: 300px;
+                height: 170px;
+            }
+        }
+
+    &__info {
+        margin-top: 15px;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 22px;
+
+        @media screen and (max-width: 470px) {
+            font-size: 18px;
+        }
+    }
+
+    &__text {
+        margin-top: 15px;
+        font-size: 18px;
+
+        @media screen and (max-width: 470px) {
+            font-size: 16px;
+        }
+    }
+}
+
+.aboutCourse {
+    display: flex;
+    padding-top: 20px;
+
+    &__title {
+        text-align: center;
+    }
+
+    &__img {
+        background: url('../assets/rs_school_js.svg') center no-repeat;
+        width: 250px;
+        height: 100%;
+        background-size: contain;
+        cursor: pointer;
+        transition: all 0.5s;
+        margin-right: 50px;
+
+        &:hover {            
+            transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 750px) {
+            display: none;
+        }
+    }
+
+    &__info {
+        display: flex;
+    }
+
+    &__block {
+        max-width: 900px;
+        align-items: center;
+        font-size: 18px;
+
+        @media screen and (max-width: 750px) {
+            font-size: 16px;
+        }
+    }
+
+    &__text {
+        margin-top: 15px;
+
+        
+    }
+
+    &__name {        
+        font-weight: 500;
+    }
+
+    &__RSlink {
+        color: #0080ff !important;
+        font-weight: 500;
+        text-decoration: none;
+        background-color: transparent;
+
+        &:hover {
+            color: #005ab3;
+            text-decoration: underline;
+        }
+    }        
+}
+
+.team {
+    padding: 20px 0;
+    background: $backgroundGraphiQLPage;
+
+    &__container {
+        display: block;
+        text-align: center;
+    }
+
+    &__img-Sasha {
+        background: url('../assets/girl.jpg') center/cover no-repeat;
+        height: 300px;
+    }
+
+    &__img-Alixei {
+        background: url('../assets/Alexei.jpg') center/cover no-repeat;
+        height: 300px;
+    }
+
+    &__img-Anatoliy {
+        background: url('../assets/Anatoliy.jpg') center/cover no-repeat;
+        height: 300px;
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+    }
+
+    &__item {
+        background: $panelColor;
+        width: 270px;
+        margin: 15px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 0px 0px 4px 4px;
+    }
+
+    &__info {
+        font-size: 18px;
+        padding: 20px 0;
+
+        @media screen and (max-width: 750px) {
+                font-size: 16px;
+            }
+    }
+
+    &__name {
+        margin-bottom: 10px;
+    }
+
+    &__contacts {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    &__contacts-icon {
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
+    }
+
+    &__chome {
+        background: url('../assets/icon-chrome.png') center/cover no-repeat;
+        width: 30px;
+        height: 30px;
+        transition: all 0.5s;
+        
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__telegram {
+        background: url('../assets/icons-telegram.png') center/cover no-repeat;
+        width: 30px;
+        height: 30px;  
+        transition: all 0.5s;
+        
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__discord {
+        background: url('../assets/icons-discord.png') center/cover no-repeat;
+        width: 30px;
+        height: 30px;  
+        transition: all 0.5s;
+        
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    &__github {
+        background: url('../assets/icons-github.png') center/cover no-repeat;
+        width: 30px;
+        height: 30px;
+        transition: all 0.5s;
+                
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}

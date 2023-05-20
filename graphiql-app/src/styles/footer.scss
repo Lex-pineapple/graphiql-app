@@ -1,7 +1,6 @@
 @import './variables.scss';
 
 .footer {
-  position: relative;
   width: 100%;
   background: #f1f1f1;
 
@@ -12,7 +11,6 @@
 
   &__wrapper {
     font-family: 'Roboto', sans-serif;
-    height: 50px;
     width: 100%;
     display: flex;
     align-items: center;
