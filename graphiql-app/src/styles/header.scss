@@ -52,14 +52,44 @@
   width: fit-content;
   margin: 0 auto;
   color: black;
+
+  @media screen and (max-width: 650px) {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    right: 0px;
+    width: 320px;
+    height: 823px;
+    background: $backgroundGraphiQLPage;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+    &.is-open {
+      transform: translateX(0%);
+      box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+    }
+  }
 }
 
 .header-nav-list {
   padding: 0;
   display: flex;
   gap: 20px;
-}
 
+  @media screen and (max-width: 650px) {
+    display: block;
+    width: 140px;
+    height: 160px;
+    margin-top: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    &__item {
+      margin-bottom: 15px;
+    }
+  }
+}
 
 .sticky {
   position: fixed;

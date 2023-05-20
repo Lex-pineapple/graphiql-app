@@ -1,4 +1,6 @@
 import '../styles/header.scss';
+import '../styles/hamburgerMenu.scss';
+
 import { useEffect, useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HeaderLogo } from './HeaderLogo';
@@ -22,6 +24,7 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
   const logInStatus = useSelector((store: IStore) => store.auth.login);
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
   const headerRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     if (headerRef.current === null) {
@@ -39,6 +42,10 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
       window.removeEventListener('scroll', handleScrollEvent);
     };
   }, []);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleUserIconClick = () => {
     setShowModal(!showModal);
@@ -63,10 +70,10 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
   };
 
   return (
-    <header className={`header${sticky.isSticky ? ' sticky' : ''}`} ref={headerRef}>
+    <header className={`header ${sticky.isSticky ? 'sticky' : ''}`} ref={headerRef}>
       <div className="header__wrapper container wrapper">
         <HeaderLogo />
-        <nav className="header-nav">
+        <nav className={`header-nav ${isOpen ? 'is-open' : ''}`}>
           <ul className="header-nav-list">
             <li className="header-nav-list__item">
               <Link to="/">
@@ -93,9 +100,14 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
         ) : (
           <></>
         )}
-        <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} />
+        <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} isOpen />
       </div>
       {showModal && <UserModal onClickOutside={handleModalClickOutside} />}
+      <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        <div className="hamburger-line line1"></div>
+        <div className="hamburger-line line2"></div>
+        <div className="hamburger-line line3"></div>
+      </div>
       <hr className="header__line"></hr>
     </header>
   );
