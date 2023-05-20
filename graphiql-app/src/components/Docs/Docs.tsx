@@ -1,14 +1,14 @@
-import { findTypeByObject, getQueries, getTypeKind } from '../graphql/parseDocsSchema';
-import getIntrospectionQuery from '../graphql/getIntrospectionQuery';
-import { getSchema } from './api';
-import { IArg, IType, ITypeField } from '../@types/graphql';
-import QueryListQuery from './DocsComponents/QueryListQuery';
+import '../../styles/sidePanelDocs.scss';
 import { useState } from 'react';
-import QueryDeclaration from './DocsComponents/QueryDeclaration';
-import QueryType from './DocsComponents/QueryType';
-import QueryArgs from './DocsComponents/QueryArgs';
-import '../styles/sidePanelDocs.scss';
-import QueryField from './DocsComponents/QueryField';
+import { getSchema } from '../../API/api';
+import { findTypeByObject, getQueries, getTypeKind } from '../../graphql/parseDocsSchema';
+import getIntrospectionQuery from '../../graphql/getIntrospectionQuery';
+import { IArg, IType, ITypeField } from '../../@types/graphql';
+import QueryListQuery from './QueryListQuery';
+import QueryDeclaration from './QueryDeclaration';
+import QueryType from './QueryType';
+import QueryArgs from './QueryArgs';
+import QueryField from './QueryField';
 
 const getDocsData = getSchema(getIntrospectionQuery());
 

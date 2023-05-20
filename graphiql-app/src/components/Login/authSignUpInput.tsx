@@ -1,16 +1,5 @@
 import { FormattedMessage } from 'react-intl';
-import { AuthMsg } from '../../languages/authMsg';
-
-interface IAuthSignUpInputProps {
-  label: AuthMsg.signUpNameLabel | AuthMsg.signUpEmailLabel | AuthMsg.signUpPwdLabel;
-  name: string;
-  type: string;
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorType: boolean;
-  errorMessage: string;
-}
+import { IAuthSignUpInputProps } from '../../@types/auth';
 
 function AuthSignUpInput(props: IAuthSignUpInputProps) {
   return (

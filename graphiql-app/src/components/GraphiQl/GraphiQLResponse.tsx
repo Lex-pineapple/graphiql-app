@@ -1,8 +1,6 @@
-interface GraphiQLResponseType {
-  result: string;
-}
+import { IGraphiQLResponseType } from '../../@types/graphql';
 
-function GraphiQLResponse({ result }: GraphiQLResponseType) {
+function GraphiQLResponse({ result }: IGraphiQLResponseType) {
   return (
     <section className="graphiQLPage__response">
       {result && <pre className="graphiQLPage__response-text">{result}</pre>}

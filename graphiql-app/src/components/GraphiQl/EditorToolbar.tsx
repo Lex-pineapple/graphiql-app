@@ -1,17 +1,13 @@
-import '../styles/editorToolbar.scss';
+import '../../styles/editorToolbar.scss';
+import UpButton from '../../assets/circle-up.svg';
+import DownButton from '../../assets/circle-down.svg';
 import { useState } from 'react';
-import UpButton from '../assets/circle-up.svg';
-import DownButton from '../assets/circle-down.svg';
-import { HeaderList } from './HeadersList';
 import { FormattedMessage } from 'react-intl';
-import { GraphiQlMsg } from '../languages/graphiQlMsg';
+import { HeaderList } from '../HeadersList';
+import { GraphiQlMsg } from '../../languages/graphiQlMsg';
+import { IEditorToolbarType } from '../../@types/graphql';
 
-interface EditorToolbarType {
-  textAreaVariables: (value: string) => void;
-  textAreaHeaders: (value: string) => void;
-}
-
-function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType) {
+function EditorToolbar({ textAreaVariables, textAreaHeaders }: IEditorToolbarType) {
   const [isOpen, setIsOpen] = useState(false);
   const [chose, setChose] = useState('variables');
   const [heightSection, setheightSection] = useState(0);

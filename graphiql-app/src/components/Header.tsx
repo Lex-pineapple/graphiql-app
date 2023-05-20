@@ -12,13 +12,9 @@ import { Message } from '../languages/messages';
 import { useSelector } from 'react-redux';
 import { IStore } from '../@types/store';
 import AuthComponent from './AuthComponent';
+import { IHeaderProps } from '../@types/header';
 
-interface HeaderProps {
-  currentLocale: string;
-  setLocale: (locale: string) => void;
-}
-
-function Header({ currentLocale, setLocale }: HeaderProps) {
+function Header({ currentLocale, setLocale }: IHeaderProps) {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const logInStatus = useSelector((store: IStore) => store.auth.login);

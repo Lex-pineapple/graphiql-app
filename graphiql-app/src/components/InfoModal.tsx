@@ -1,12 +1,6 @@
-import { AuthMsg } from 'languages/authMsg';
 import '../styles/infoModal.scss';
 import { FormattedMessage } from 'react-intl';
-
-interface IInfoModalProps {
-  formatId: AuthMsg.signUpSuccess | AuthMsg.signInSuccess;
-  text: string;
-  onClickOutside: (event: React.MouseEvent) => void;
-}
+import { IInfoModalProps } from '../@types/infoModal';
 
 function InfoModal({ formatId, text, onClickOutside }: IInfoModalProps) {
   return (

@@ -1,9 +1,9 @@
 import React, { Suspense, useState } from 'react';
-const Docs = React.lazy(() => import('./Docs'));
-import '../styles/sidePanel.scss';
-import PreloaderSpinner from './PreloaderSpinner';
+const Docs = React.lazy(() => import('../Docs/Docs'));
+import '../../styles/sidePanel.scss';
+import PreloaderSpinner from '../PreloaderSpinner';
 import { FormattedMessage } from 'react-intl';
-import { GraphiQlMsg } from '../languages/graphiQlMsg';
+import { GraphiQlMsg } from '../../languages/graphiQlMsg';
 
 function SidePanel() {
   const [togglePanel, setTogglePanel] = useState(false);

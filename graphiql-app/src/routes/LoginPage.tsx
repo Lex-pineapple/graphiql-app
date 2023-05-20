@@ -1,7 +1,7 @@
-import SignIn from '../components/LoginComponents/SignIn';
-import SignUp from '../components/LoginComponents/SignUp';
+import SignIn from '../components/Login/SignIn';
+import SignUp from '../components/Login/SignUp';
 import '../styles/loginPage.scss';
-import ResetPassword from '../components/LoginComponents/ResetPassword';
+import ResetPassword from '../components/Login/ResetPassword';
 import { FormattedMessage } from 'react-intl';
 import { AuthMsg } from '../languages/authMsg';
 import { WelcomePageMsg } from '../languages/welcomePageMsg';

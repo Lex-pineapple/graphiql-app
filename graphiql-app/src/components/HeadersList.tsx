@@ -1,14 +1,11 @@
+import { IHeaderListType } from '../@types/headersList';
 import { GraphiQlMsg } from '../languages/graphiQlMsg';
 import '../styles/headerList.scss';
 
 import { useEffect, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-interface HeaderListType {
-  textAreaHeaders: (value: string) => void;
-}
-
-export function HeaderList({ textAreaHeaders }: HeaderListType) {
+export function HeaderList({ textAreaHeaders }: IHeaderListType) {
   const [headerIndex, setHeaderIndex] = useState(1);
   const [headersKey, setHeadersKey] = useState<Record<string, string>>({});
   const [headersValue, setHeadersValue] = useState<Record<string, string>>({});

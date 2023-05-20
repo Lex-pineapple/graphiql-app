@@ -1,11 +1,4 @@
-interface IAuthSignInInputProps {
-  type: string;
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorType: string;
-  errorMessage: string;
-}
+import { IAuthSignInInputProps } from '../../@types/auth';
 
 function AuthSignInInput(props: IAuthSignInInputProps) {
   return (

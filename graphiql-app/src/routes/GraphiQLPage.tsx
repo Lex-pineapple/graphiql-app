@@ -1,9 +1,9 @@
 import '../styles/graphiqlPage.scss';
-import GraphiQLEditor from '../components/GraphiQLEditor';
-import GraphiQLResponse from '../components/GraphiQLResponse';
-import SidePanel from '../components/SidePanel';
+import GraphiQLEditor from '../components/GraphiQl/GraphiQLEditor';
+import GraphiQLResponse from '../components/GraphiQl/GraphiQLResponse';
+import SidePanel from '../components/GraphiQl/SidePanel';
 import { useEffect, useState } from 'react';
-import { getResources } from '../components/api';
+import { getResources } from '../API/api';
 
 function GraphiQLPage() {
   const [isResult, setIsResult] = useState('');

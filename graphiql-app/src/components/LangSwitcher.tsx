@@ -1,8 +1,8 @@
 import './../styles/langSwitcher.scss';
 import { LOCALES } from '../languages/locales';
-import { LangSwitcherProps } from './types/langSwitcherProps';
+import { ILangSwitcherProps } from '../@types/langSwitcherProps';
 
-export const LangSwitcher = ({ setLocale, currentLocale, isOpen }: LangSwitcherProps) => {
+export const LangSwitcher = ({ setLocale, currentLocale, isOpen }: ILangSwitcherProps) => {
   const handelLocaleClick = () => {
     setLocale(currentLocale === LOCALES.ENGLISH ? LOCALES.RUSSIAN : LOCALES.ENGLISH);
   };

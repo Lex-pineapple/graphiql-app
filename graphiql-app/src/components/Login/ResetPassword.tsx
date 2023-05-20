@@ -63,7 +63,9 @@ function ResetPassword() {
           <FormattedMessage id={AuthMsg.signUpMainHeader} />
         </Link>
       </p>
-      {showModal && <InfoModal text={modalText} onClickOutside={handleCloseModalClick} />}
+      {showModal && (
+        <InfoModal formatId={null} text={modalText} onClickOutside={handleCloseModalClick} />
+      )}
     </div>
   );
 }

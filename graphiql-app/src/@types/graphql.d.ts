@@ -43,3 +43,18 @@ export interface IParsedQuery {
   args: IArg[];
   type: IType;
 }
+
+export interface IGraphiQLResponseType {
+  result: string;
+}
+
+export interface IGraphiQLEditorType {
+  sourcesQuery: (value: string) => void;
+  sourcesVariables: (value: string) => void;
+  sourcesHeaders: (value: string) => void;
+}
+
+export interface IEditorToolbarType {
+  textAreaVariables: (value: string) => void;
+  textAreaHeaders: (value: string) => void;
+}
