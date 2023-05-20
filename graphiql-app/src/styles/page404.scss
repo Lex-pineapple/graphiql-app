@@ -34,4 +34,21 @@
     color: $mintGreen;
     font-weight: 500;
   }
+
+  @media only screen and (max-width: 900px) {
+    &__bigTxt,
+    &__mainTxt,
+    &__subTxt {
+      margin-bottom: 1vw;
+    }
+    &__bigTxt {
+      font-size: 10vw;
+    }
+    &__mainTxt {
+      font-size: 5vw;
+    }
+    &__subTxt{
+      font-size: 4vw;
+    }
+  }
 }
