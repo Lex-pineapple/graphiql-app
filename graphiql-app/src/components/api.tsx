@@ -1,3 +1,5 @@
+import { ISchema } from '../@types/graphql';
+
 const BASE_URL = 'https://rickandmortyapi.com/graphql';
 
 export async function getResources(
@@ -32,4 +34,35 @@ export async function getResources(
   } catch (error) {
     return 'Error response';
   }
+}
+
+export function getSchema(query: string) {
+  let status = 'pending';
+  let result: ISchema | Error;
+  const fetching = fetch(BASE_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      status = 'fulfilled';
+      result = data;
+    })
+    .catch((err) => {
+      status = 'rejected';
+      result = err;
+    });
+  return () => {
+    if (status === 'rejected') {
+      return result; // Result is an error
+    } else if (status === 'fulfilled') {
+      return result; // Result is a fulfilled promise
+    }
+    throw fetching;
+  };
 }

@@ -1,5 +1,4 @@
 import { UserInfo } from 'firebase/auth';
-import { IAuthInfoState } from '../../../@types/store';
 
 const initialState = {
   displayName: '',

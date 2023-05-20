@@ -1,0 +1,196 @@
+@import './variables.scss';
+
+.clickable {
+  cursor: pointer;
+  padding: 0 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $hoverGrey;
+  }
+}
+
+.docs {
+  margin: 10px 0;
+}
+
+.docs-queries-list {
+  margin: 10px;
+
+  &__query {
+    width: fit-content;
+    padding: 2px 10px;
+    font-size: 14px;
+  }
+
+  &__query-name,
+  &__query-args,
+  &__query-type {
+    display: inline-block;
+    margin: 2px 5px 2px 0
+  }
+
+  &__query-name {
+    color: #04768a;
+    font-weight: 500;
+  }
+
+  &__query-args {
+    font-weight: 700;
+  }
+
+  &__query-type {
+    color: #E01A4F;
+  }
+}
+
+.query-declaration {
+  padding: 15px;
+  font-size: 14px;
+  background-color: $dkLightGrey;
+
+  &-header {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $headerGreen;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  &-field {
+    padding: 5px 50px;
+    font-weight: 700;
+  }
+
+  &-field-name,
+  &-field-type {
+    display: inline-block;
+    margin: 2px 5px 2px 0
+  }
+
+  &-field-args {
+    margin-left: 20px;
+  }
+
+  &-field__item {
+    margin: 2px 0;
+    display: flex;
+    gap: 5px;
+  }
+
+  &-field-name {
+    color: #04768a;
+    font-weight: 500;
+  }
+
+  &-field-type,
+  &-field__item-type {
+    color: #E01A4F;
+  }
+
+  &-descr {
+    text-align: center;
+    margin: 10px;
+  }
+}
+
+.query-ret-type {
+  padding: 15px;
+  font-size: 14px;
+
+  &-header {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $headerGreen;
+    font-size: 14px;
+  }
+
+  &-details {
+    padding: 10px 30px;
+  }
+
+  &-text,
+  &-name {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  &-name,
+  &-kind {
+    color: #04768a;
+    font-weight: 500;
+  }
+
+  &-fields {
+    margin: 5px 20px;
+  }
+
+  &-fields__item {
+    margin: 3px 0;
+    display: flex;
+    gap: 5px;
+  }
+
+  &-fields__item-type,
+  &-type {
+    color: #E01A4F;
+    font-weight: 700;
+  }
+
+  &-kindType-container {
+    padding: 10px;
+    display: flex;
+    gap: 5px;
+  }
+}
+
+.query-args {
+  padding: 15px;
+    font-weight: 500;
+    font-size: 14px;
+
+  &-header {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $headerGreen;
+    font-size: 14px;
+  }
+
+  &-fields {
+    margin: 5px 20px;
+  }
+
+  &-fields__item {
+    margin: 3px 0;
+    display: flex;
+    gap: 5px;
+  }
+
+  &-fields__item-type {
+    color: #E01A4F;
+    font-weight: 700;
+  }
+}
+
+.query-field {
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  background-color: $dkLightGrey;
+
+  &-name,
+  &-type {
+    display: inline;
+    margin: 2px 0;
+  }
+
+  &-name {
+    color: #04768a;
+    font-weight: 500;
+  }
+
+  &-type {
+    color: #E01A4F;
+  }
+}
