@@ -43,6 +43,14 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isOpen]);
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -70,10 +78,10 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
   };
 
   return (
-    <header className={`header ${sticky.isSticky ? 'sticky' : ''}`} ref={headerRef}>
+    <header className={`header${sticky.isSticky ? ' sticky' : ''}`} ref={headerRef}>
       <div className="header__wrapper container wrapper">
         <HeaderLogo />
-        <nav className={`header-nav ${isOpen ? 'is-open' : ''}`}>
+        <nav className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
           <ul className="header-nav-list">
             <li className="header-nav-list__item">
               <Link to="/">
@@ -90,20 +98,30 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
             </li>
           </ul>
         </nav>
-        {logInStatus ? (
-          <>
-            <AuthComponent type="graphiql" message={Message.GoToMainPage} />
-            <UserIcon onClick={handleUserIconClick} />
-          </>
-        ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
-          <AuthComponent type="signin" message={Message.SignIn} />
-        ) : (
-          <></>
-        )}
-        <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} isOpen />
+        <div className={`status${isOpen ? ' is-open' : ''}`}>
+          {logInStatus ? (
+            <>
+              <AuthComponent type="graphiql" message={Message.GoToMainPage} />
+              <UserIcon onClick={handleUserIconClick} />
+            </>
+          ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
+            <AuthComponent type="signin" message={Message.SignIn} />
+          ) : (
+            <></>
+          )}
+          {logInStatus ? (
+            <></>
+          ) : location.pathname !== '/signup' ? (
+            <AuthComponent type="signup" message={Message.SignUp} />
+          ) : (
+            <></>
+          )}
+
+          <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} isOpen={isOpen} />
+        </div>
       </div>
       {showModal && <UserModal onClickOutside={handleModalClickOutside} />}
-      <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
+      <div className={`hamburger${isOpen ? ' open' : ''}`} onClick={toggleMenu}>
         <div className="hamburger-line line1"></div>
         <div className="hamburger-line line2"></div>
         <div className="hamburger-line line3"></div>
