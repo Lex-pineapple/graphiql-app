@@ -11,10 +11,8 @@ function WelcomePage() {
       <section className="hero">
         <div className="hero__container container wrapper">
           <div className="hero__info">
-            <div className="auth__img-bigtext">
-              <p className="auth__img-bigtext--highlight">GraphiQl</p>
-            </div>
-            <p className="auth__img-smalltext">
+            <h1 className="hero__graph">GraphiQl</h1>
+            <p className="hero__text">
               A powerful tool that offers syntax highlighting, intellisense autocompletion,
               automatic documentation, and much more.
             </p>

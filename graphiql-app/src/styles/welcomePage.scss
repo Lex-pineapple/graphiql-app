@@ -2,21 +2,43 @@
 
 .hero {
     background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
-    
-    &__container {
-        height: 600px;
-    }
 
     &__info {
         padding: 150px 0;
-        width: 1000px;
+        max-width: 1000px;
         margin: 0 auto;
         text-align: center;
+
+        @media screen and (max-width: 700px) {
+            padding: 120px 0;
+            font-size: 14px;
+        }
+    }
+
+    &__graph {
+        font-size: 72px;
+        font-weight: 700;
+        color: #e3e56f;
+        margin-bottom: 20px;
+
+        @media screen and (max-width: 700px) {
+            font-size: 56px;
+        }
+    }
+
+    &__text {
+        font-weight: 500;
+        color: #ffffff;
+        font-size: 28px;
+
+        @media screen and (max-width: 700px) {
+            font-size: 22px;
+        }
     }
 
     &__button {
-        width: 200px !important;
-        height: 50px !important;
+        width: 200px;
+        height: 50px;
         margin-top: 50px;
         background: $headerGreen;
         color: $panelColor;
@@ -26,7 +48,12 @@
         font-weight: 600;
         line-height: 1;
         cursor: pointer;
-        transition: all 0.5s;        
+        transition: all 0.5s;  
+        
+        @media screen and (max-width: 700px) {
+            width: 150px;
+            height: 40px;
+        }
     }
 
     &__button:hover {
@@ -41,14 +68,18 @@
 
     &__container {
         display: flex;        
-        padding: 0;    
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     &__item {
         display: block;
-        width: 440px;
+        max-width: 440px;
         margin: 0 10px;
+
+        @media screen and (max-width: 1380px) {
+            margin: 10px;
+        }
     }
 
     &__main-title {
@@ -57,30 +88,50 @@
     }
 
     &__img-query {
-        background: url('../assets/query-language.png') center/cover no-repeat;
-        height: 300px;
+        background: url('../assets/query-language.jpg') center/cover no-repeat;
     }
 
     &__img-what-you-need {
         background: url('../assets/Ask-for-what-you-need.jpg') center/cover no-repeat;
-        height: 300px;
     }
 
     &__img-request {
         background: url('../assets/rest-and-graph.jpg') center/cover no-repeat;
-        height: 300px;
-    }
+     }
+
+        &__img-query,
+        &__img-what-you-need,
+        &__img-request {
+            width: 440px;
+            height: 300px;
+            margin: 0 auto;
+
+            @media screen and (max-width: 470px) {
+                width: 300px;
+                height: 170px;
+            }
+        }
 
     &__info {
         margin-top: 15px;
     }
 
     &__title {
+        text-align: center;
         font-size: 22px;
+
+        @media screen and (max-width: 470px) {
+            font-size: 18px;
+        }
     }
 
     &__text {
         margin-top: 15px;
+        font-size: 18px;
+
+        @media screen and (max-width: 470px) {
+            font-size: 16px;
+        }
     }
 }
 
@@ -94,16 +145,19 @@
 
     &__img {
         background: url('../assets/rs_school_js.svg') center no-repeat;
-        width: 200px;
-        height: 145px;
+        width: 250px;
+        height: 100%;
         background-size: contain;
         cursor: pointer;
         transition: all 0.5s;
-        margin: 15px;
         margin-right: 50px;
 
         &:hover {            
             transform: scale(1.05);
+        }
+
+        @media screen and (max-width: 750px) {
+            display: none;
         }
     }
 
@@ -112,12 +166,19 @@
     }
 
     &__block {
-        width: 600px;
+        max-width: 900px;
         align-items: center;
+        font-size: 18px;
+
+        @media screen and (max-width: 750px) {
+            font-size: 16px;
+        }
     }
 
     &__text {
         margin-top: 15px;
+
+        
     }
 
     &__name {        
@@ -178,7 +239,12 @@
     }
 
     &__info {
+        font-size: 18px;
         padding: 20px 0;
+
+        @media screen and (max-width: 750px) {
+                font-size: 16px;
+            }
     }
 
     &__name {
