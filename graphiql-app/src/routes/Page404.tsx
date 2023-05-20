@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/page404.scss';
 import { FormattedMessage } from 'react-intl';
-import { NotFoundMsg } from '../languages/NotFoundMsg';
+import { NotFoundMsg } from '../languages/notFoundMsg';
 
 function Page404() {
   return (

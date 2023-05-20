@@ -64,6 +64,9 @@ export const translations = {
     [AuthMsg.signUpEmailError]: 'Please input the correct email',
     [AuthMsg.signUpPwdError]:
       'The password must be at least 8 characters long, contain at least 1 uppercase letter and at least 1 number',
+    [AuthMsg.resetPwdHeader]: 'Reset password',
+    [AuthMsg.resetPwdSubHeader]: 'Input your email below and we will send you an email with instructions.',
+    [AuthMsg.resetPwdMainBtn]: 'Send password reset email',
     [GraphiQlMsg.variablesHeader]: 'Variables',
     [GraphiQlMsg.headersHeader]: 'Headers',
     [GraphiQlMsg.docsHeader]: 'Docs',
@@ -149,5 +152,8 @@ export const translations = {
     [NotFoundMsg.subtextP1]: 'Вернуться на',
     [NotFoundMsg.linkText]: 'главную',
     [NotFoundMsg.subtextP2]: 'страницу?',
+    [AuthMsg.resetPwdHeader]: 'Сброс пароля',
+    [AuthMsg.resetPwdSubHeader]: 'Введите свой адрес электронной почты, и мы отправим вам электронное письмо с инструкциями по смене пароля.',
+    [AuthMsg.resetPwdMainBtn]: 'Отправить',
   },
 };

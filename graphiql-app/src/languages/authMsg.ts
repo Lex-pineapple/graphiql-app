@@ -23,4 +23,8 @@ export enum AuthMsg {
   signUpNameError = 'sign up name error',
   signUpEmailError = 'sign up email error',
   signUpPwdError = 'sign up password error',
+
+  resetPwdHeader = 'reset password header',
+  resetPwdSubHeader = 'reset password subheader',
+  resetPwdMainBtn = 'reset password main button',
 }

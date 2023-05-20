@@ -3,6 +3,8 @@ import { useState } from 'react';
 import UpButton from '../assets/circle-up.svg';
 import DownButton from '../assets/circle-down.svg';
 import { HeaderList } from './HeadersList';
+import { FormattedMessage } from 'react-intl';
+import { GraphiQlMsg } from '../languages/graphiQlMsg';
 
 interface EditorToolbarType {
   textAreaVariables: (value: string) => void;
@@ -44,14 +46,14 @@ function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType
             className={`editor-toolbar__options-item ${chose === 'variables' ? 'activChoise' : ''}`}
           >
             <div onClick={handleClick} id="variables">
-              Variables
+              <FormattedMessage id={GraphiQlMsg.variablesHeader} />
             </div>
           </li>
           <li
             className={`editor-toolbar__options-item ${chose === 'headers' ? 'activChoise' : ''}`}
           >
             <div onClick={handleClick} id="headers">
-              Headers
+              <FormattedMessage id={GraphiQlMsg.headersHeader} />
             </div>
           </li>
         </ul>

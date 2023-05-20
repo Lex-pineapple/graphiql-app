@@ -1,6 +1,8 @@
+import { GraphiQlMsg } from '../languages/graphiQlMsg';
 import '../styles/headerList.scss';
 
 import { useEffect, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 interface HeaderListType {
   textAreaHeaders: (value: string) => void;
@@ -65,7 +67,7 @@ export function HeaderList({ textAreaHeaders }: HeaderListType) {
         </div>
       ))}
       <button className="headers-section__btn-add" onClick={handleAddHeader}>
-        Add Header
+        <FormattedMessage id={GraphiQlMsg.addHeaderBtn} />
       </button>
     </div>
   );
