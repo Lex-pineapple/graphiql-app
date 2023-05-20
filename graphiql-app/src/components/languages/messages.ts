@@ -6,5 +6,4 @@ export enum Message {
   SignUp = 'Sign up',
   SignOut = 'Sign Out',
   GoToMainPage = 'Go to Main Page',
-  PAGE404TEST = 'PAGE 404 TEST',
 }

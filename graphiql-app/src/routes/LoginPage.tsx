@@ -12,8 +12,8 @@ function LoginPage({ authType }: { authType: string }) {
             Welcome to <p className="auth__img-bigtext--highlight">GraphiQl</p>
           </div>
           <p className="auth__img-smalltext">
-            A powerful tool that offers syntax highlighting, intellisense autocompletion, automatic
-            documentation, and much more.
+            A graphical interactive in-browser GraphQL IDE - powerful tool that offers syntax
+            highlighting, automatic documentation, and much more.
           </p>
           <a href="https://github.com/graphql/graphiql" className="auth__img-github-logo"></a>
         </div>
