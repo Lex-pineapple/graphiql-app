@@ -1,10 +1,20 @@
+import { ISchema } from '../@types/graphql';
+
 const BASE_URL = 'https://rickandmortyapi.com/graphql';
 
 export async function getResources(
   sourcesQuery: string,
-  sourcesVariables: string
+  sourcesVariables: string,
+  sourcesHeaders: string
 ): Promise<string> {
   const parsSourcesVariables = () => sourcesVariables && JSON.parse(sourcesVariables);
+  const parsSourcesHeader = () => sourcesHeaders && JSON.parse(sourcesHeaders);
+  console.log(sourcesHeaders);
+  try {
+    parsSourcesHeader();
+  } catch (error) {
+    return 'Error parsing header data';
+  }
   try {
     parsSourcesVariables();
   } catch (error) {
@@ -13,9 +23,7 @@ export async function getResources(
   try {
     const results = await fetch(BASE_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: parsSourcesHeader(),
       body: JSON.stringify({
         query: sourcesQuery,
         variables: parsSourcesVariables(),
@@ -26,4 +34,35 @@ export async function getResources(
   } catch (error) {
     return 'Error response';
   }
+}
+
+export function getSchema(query: string) {
+  let status = 'pending';
+  let result: ISchema | Error;
+  const fetching = fetch(BASE_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      status = 'fulfilled';
+      result = data;
+    })
+    .catch((err) => {
+      status = 'rejected';
+      result = err;
+    });
+  return () => {
+    if (status === 'rejected') {
+      return result; // Result is an error
+    } else if (status === 'fulfilled') {
+      return result; // Result is a fulfilled promise
+    }
+    throw fetching;
+  };
 }

@@ -3,7 +3,7 @@
 .sidePanel {
   position: absolute;
   right: 0;
-  width: 290px;
+  width: 400px;
   height: calc(100vh - 132px);
   background: $backgroundGraphiQLPage;
   outline: none;
@@ -50,6 +50,13 @@
 }
 
 .sidePanel-info {
-  margin: 20px;
   font-size: 9px;
+
+  &-header {
+    margin: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    color: $headerGreen;
+  }
 }

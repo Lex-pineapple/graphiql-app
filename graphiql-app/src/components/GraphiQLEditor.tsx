@@ -6,15 +6,18 @@ import { useState } from 'react';
 interface GraphiQLEditorType {
   sourcesQuery: (value: string) => void;
   sourcesVariables: (value: string) => void;
+  sourcesHeaders: (value: string) => void;
 }
 
-function GraphiQLEditor({ sourcesQuery, sourcesVariables }: GraphiQLEditorType) {
+function GraphiQLEditor({ sourcesQuery, sourcesVariables, sourcesHeaders }: GraphiQLEditorType) {
   const [queryAreaValue, setQueryAreaValue] = useState('');
   const [variablesAreaValue, setVariablesAreaValue] = useState('');
+  const [headersAreaValue, setHeadersAreaValue] = useState('');
 
   const handelExecuteBtn = () => {
     sourcesQuery(queryAreaValue);
     sourcesVariables(variablesAreaValue);
+    sourcesHeaders(headersAreaValue);
   };
 
   const handelQueryAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -23,6 +26,10 @@ function GraphiQLEditor({ sourcesQuery, sourcesVariables }: GraphiQLEditorType) 
 
   const textAreaVariables = (data: string) => {
     setVariablesAreaValue(data);
+  };
+
+  const textAreaHeaders = (data: string) => {
+    setHeadersAreaValue(data);
   };
 
   return (
@@ -42,7 +49,7 @@ function GraphiQLEditor({ sourcesQuery, sourcesVariables }: GraphiQLEditorType) 
           </button>
         </div>
       </div>
-      <EditorToolbar textAreaVariables={textAreaVariables} />
+      <EditorToolbar textAreaVariables={textAreaVariables} textAreaHeaders={textAreaHeaders} />
     </section>
   );
 }

@@ -7,7 +7,6 @@
   flex: 1;
   height: 86vh;
 
-
   &__editor {
     display: flex;
     flex-direction: column;
@@ -93,4 +92,8 @@
   border: none;
   height: 100%;
   width: 100%;
+}
+
+.tab-sectisdfon {
+  overflow: scroll;
 }
