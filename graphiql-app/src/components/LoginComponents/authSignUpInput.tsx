@@ -1,4 +1,8 @@
+import { FormattedMessage } from 'react-intl';
+import { AuthMsg } from '../../languages/authMsg';
+
 interface IAuthSignUpInputProps {
+  label: AuthMsg.signUpNameLabel | AuthMsg.signUpEmailLabel | AuthMsg.signUpPwdLabel;
   name: string;
   type: string;
   placeholder: string;
@@ -12,7 +16,7 @@ function AuthSignUpInput(props: IAuthSignUpInputProps) {
   return (
     <>
       <p className="signup__form-input-header-text">
-        {props.name[0].toUpperCase() + props.name.slice(1)}
+        <FormattedMessage id={props.label} />
       </p>
       <input
         type={props.type}

@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import InfoModal from '../InfoModal';
 import { IStore } from '../../@types/store';
 import AuthSignInInput from './authSignInInput';
+import { FormattedMessage } from 'react-intl';
+import { AuthMsg } from '../../languages/authMsg';
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -49,12 +51,18 @@ function SignIn() {
 
   return (
     <div className="signin__form">
-      <div className="signin__form-bigtext">Hello!</div>
-      <p className="signin__form-subtext">Welcome to GraphQl client.</p>
+      <div className="signin__form-bigtext">
+        <FormattedMessage id={AuthMsg.signInMainHeader} />
+      </div>
+      <p className="signin__form-subtext">
+        <FormattedMessage id={AuthMsg.signInSubHeader} />
+      </p>
       <button className="signin__form-btn-google btn-google btn" onClick={signInWithGoogle}>
-        Log in with Google
+        <FormattedMessage id={AuthMsg.signInGoogleBtn} />
       </button>
-      <p className="signin__form-hr">or</p>
+      <p className="signin__form-hr">
+        <FormattedMessage id={AuthMsg.signInOrHr} />
+      </p>
       <AuthSignInInput
         type="email"
         placeholder="Your email"
@@ -74,22 +82,23 @@ function SignIn() {
         errorMessage={APIError.message}
       />
       <Link to="/reset" className="signin__form-text--highlight signin__form-text--right">
-        Forgot password?
+        <FormattedMessage id={AuthMsg.signInForgotPwd} />
       </Link>
       <button
         className="signin__form-btn-login btn-login btn"
         onClick={() => logIn(email, password)}
       >
-        Log In
+        <FormattedMessage id={AuthMsg.signInLogInBtn} />
       </button>
       <div className="signin__form-text--under-container">
-        Don&apos;t have an account?{' '}
+        <FormattedMessage id={AuthMsg.signInNoAccount} />{' '}
         <Link to="/signup" className="signin__form-text--highlight">
-          Sign up
+          <FormattedMessage id={AuthMsg.signInSignUp} />
         </Link>
       </div>
       {showModal && (
         <InfoModal
+          formatId={AuthMsg.signInSuccess}
           text={APIError.message || 'Successfully logged in'}
           onClickOutside={handleCloseModalClick}
         />

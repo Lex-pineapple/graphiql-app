@@ -4,6 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, sendPasswordReset } from '../../auth/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import InfoModal from '../InfoModal';
+import { FormattedMessage } from 'react-intl';
+import { AuthMsg } from '../../languages/authMsg';
 
 function ResetPassword() {
   const [email, setEmail] = useState('');
@@ -39,9 +41,11 @@ function ResetPassword() {
 
   return (
     <div className="resetpwd__form">
-      <p className="resetpwd__form-bigtext">Reset password</p>
+      <p className="resetpwd__form-bigtext">
+        <FormattedMessage id={AuthMsg.resetPwdHeader} />
+      </p>
       <p className="resetpwd__form-subtext">
-        Input your email below and we will send you an email with instructions.
+        <FormattedMessage id={AuthMsg.resetPwdSubHeader} />
       </p>
       <input
         type="email"
@@ -51,12 +55,12 @@ function ResetPassword() {
         onChange={(e) => setEmail(e.target.value)}
       />
       <button className="resetpwd__form-btn" onClick={() => managePassowrdReset(email)}>
-        Send password reset email
+        <FormattedMessage id={AuthMsg.resetPwdMainBtn} />
       </button>
       <p className="resetpwd__form-text">
-        Don&apos;t have an accout?{' '}
+        <FormattedMessage id={AuthMsg.signInNoAccount} />{' '}
         <Link to="/signup" className="resetpwd__form-link">
-          Register
+          <FormattedMessage id={AuthMsg.signUpMainHeader} />
         </Link>
       </p>
       {showModal && <InfoModal text={modalText} onClickOutside={handleCloseModalClick} />}

@@ -3,7 +3,7 @@ import { AuthMsg } from './authMsg';
 import { LOCALES } from './locales';
 import { Message } from './messages';
 import { WelcomePageMsg } from './welcomePageMsg';
-import { NotFoundMsg } from './NotFoundMsg';
+import { NotFoundMsg } from './notFoundMsg';
 
 export const translations = {
   [LOCALES.ENGLISH]: {
@@ -51,9 +51,11 @@ export const translations = {
     [AuthMsg.signInLogInBtn]: 'Log In',
     [AuthMsg.signInSignUp]: 'Sign up',
     [AuthMsg.signInNoAccount]: "Don't have an account?",
+    [AuthMsg.signInSuccess]: 'Successfully logged in',
     [AuthMsg.signUpMainHeader]: 'Sign up',
     [AuthMsg.signUpSubheader]: 'Join the GraphGl community.',
     [AuthMsg.signUpNameLabel]: 'Name',
+    [AuthMsg.signUpEmailLabel]: 'Email',
     [AuthMsg.signUpPwdLabel]: 'Password',
     [AuthMsg.signUpNamePlh]: 'Your name',
     [AuthMsg.signUpPwdPlh]: 'Enter your password',
@@ -64,6 +66,7 @@ export const translations = {
     [AuthMsg.signUpEmailError]: 'Please input the correct email',
     [AuthMsg.signUpPwdError]:
       'The password must be at least 8 characters long, contain at least 1 uppercase letter and at least 1 number',
+    [AuthMsg.signUpSuccess]: 'Sign up successful',
     [AuthMsg.resetPwdHeader]: 'Reset password',
     [AuthMsg.resetPwdSubHeader]: 'Input your email below and we will send you an email with instructions.',
     [AuthMsg.resetPwdMainBtn]: 'Send password reset email',
@@ -126,9 +129,11 @@ export const translations = {
     [AuthMsg.signInLogInBtn]: 'Вход',
     [AuthMsg.signInSignUp]: 'Зарегистрироваться',
     [AuthMsg.signInNoAccount]: 'Нет аккаунта?',
+    [AuthMsg.signInSuccess]: 'Вход произвежен успешно',
     [AuthMsg.signUpMainHeader]: 'Регистрация',
     [AuthMsg.signUpSubheader]: 'Присоединяйтесь к сообществу GraphQl.',
     [AuthMsg.signUpNameLabel]: 'Имя',
+    [AuthMsg.signUpEmailLabel]: 'Электронная почта',
     [AuthMsg.signUpPwdLabel]: 'Пароль',
     [AuthMsg.signUpNamePlh]: 'Ваше имя',
     [AuthMsg.signUpPwdPlh]: 'Введите ваш пароль',
@@ -139,6 +144,7 @@ export const translations = {
     [AuthMsg.signUpEmailError]: 'Пожалуйста, введите правильный адрес электронной почты',
     [AuthMsg.signUpPwdError]:
       'Пароль должен состоять не менее чем из 8 символов, содержать как минимум 1 прописную букву и как минимум 1 цифру',
+    [AuthMsg.signUpSuccess]: 'Регистрация прошла успешно',
     [GraphiQlMsg.variablesHeader]: 'Переменные',
     [GraphiQlMsg.headersHeader]: 'Заголовки',
     [GraphiQlMsg.docsHeader]: 'Документация',

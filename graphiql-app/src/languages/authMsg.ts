@@ -10,10 +10,12 @@ export enum AuthMsg {
   signInLogInBtn = 'sign in log in button',
   signInSignUp = 'sign in sign up',
   signInNoAccount = 'sign in no account',
+  signInSuccess = 'sign in success',
 
   signUpMainHeader = 'sign up main header',
   signUpSubheader = 'sign up subheader',
   signUpNameLabel = 'sign up name label',
+  signUpEmailLabel = 'sign up email label',
   signUpPwdLabel = 'sign up password label',
   signUpNamePlh = 'sign up name placeholder',
   signUpPwdPlh = 'sign up password placeholder',
@@ -23,6 +25,7 @@ export enum AuthMsg {
   signUpNameError = 'sign up name error',
   signUpEmailError = 'sign up email error',
   signUpPwdError = 'sign up password error',
+  signUpSuccess = 'sign up success',
 
   resetPwdHeader = 'reset password header',
   resetPwdSubHeader = 'reset password subheader',
