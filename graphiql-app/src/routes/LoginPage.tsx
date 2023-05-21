@@ -21,7 +21,9 @@ function LoginPage({ authType }: { authType: string }) {
           <a href="https://github.com/graphql/graphiql" className="auth__img-github-logo"></a>
         </div>
       </div>
-      {authType === 'signin' ? <SignIn /> : authType === 'signup' ? <SignUp /> : <ResetPassword />}
+      <div className="auth-form-container">
+        {authType === 'signin' ? <SignIn /> : authType === 'signup' ? <SignUp /> : <ResetPassword />}
+      </div>
     </div>
   );
 }

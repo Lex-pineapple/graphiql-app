@@ -159,7 +159,7 @@ export const translations = {
     [NotFoundMsg.header]: 'Упс!',
     [NotFoundMsg.mainText]: 'Кажется вы потерялись.',
     [NotFoundMsg.subtextP1]: 'Вернуться на',
-    [NotFoundMsg.linkText]: 'главную',
+    [NotFoundMsg.linkText]: 'домашнюю',
     [NotFoundMsg.subtextP2]: 'страницу?',
     [AuthMsg.resetPwdHeader]: 'Сброс пароля',
     [AuthMsg.resetPwdSubHeader]:
