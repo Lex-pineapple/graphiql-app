@@ -2,13 +2,10 @@ import '../styles/header.scss';
 import '../styles/hamburgerMenu.scss';
 
 import { useEffect, useState, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { HeaderLogo } from './HeaderLogo';
 import { LangSwitcher } from './LangSwitcher';
-import { UserIcon } from './UserIcon';
 import { UserModal } from './UserModal';
-import { FormattedMessage } from 'react-intl';
-import { Message } from '../languages/messages';
 import { useSelector } from 'react-redux';
 import { IStore } from '../@types/store';
 import AuthComponent from './AuthComponent';
@@ -20,33 +17,21 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
   const location = useLocation();
   const logInStatus = useSelector((store: IStore) => store.auth.login);
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
+  const [scroll, setScroll] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  // useEffect(() => {
-  //   if (headerRef.current === null) {
-  //     return;
-  //   }
-
-  //   const header = headerRef.current.getBoundingClientRect();
-  //   const handleScrollEvent = () => {
-  //     handleScroll(header.top, header.height);
-  //   };
-
-  //   window.addEventListener('scroll', handleScrollEvent);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScrollEvent);
-  //   };
-  // }, []);
-
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', () => {
+        console.log('Scrolling');
+        if (headerRef.current) {
+          const header = headerRef.current.getBoundingClientRect();
+          handleScroll(header.top, header.height);
+        }
+      });
     }
-  }, [isOpen]);
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -68,15 +53,15 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
 
   const handleScroll = (elTopOffset: number, elHeight: number) => {
     if (window.pageYOffset > elTopOffset + elHeight) {
-      setSticky({ isSticky: true, offset: elHeight });
+      setScroll(true);
     } else {
-      setSticky({ isSticky: false, offset: 0 });
+      setScroll(false);
     }
   };
 
   return (
-    <header className={`header${sticky.isSticky ? ' sticky' : ''}`} ref={headerRef}>
-      <div className="header__wrapper container wrapper">
+    <header className="header" ref={headerRef}>
+      <div className={`header__wrapper ${scroll ? 'scroll' : ''} container wrapper`}>
         <HeaderLogo />
         <div className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
           <div className="header-nav-contents">
