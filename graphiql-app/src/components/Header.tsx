@@ -24,7 +24,6 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
-        console.log('Scrolling');
         if (headerRef.current) {
           const header = headerRef.current.getBoundingClientRect();
           handleScroll(header.top, header.height);
