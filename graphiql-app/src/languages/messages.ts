@@ -5,5 +5,6 @@ export enum Message {
   SignIn = 'Sign In',
   SignUp = 'Sign up',
   SignOut = 'Sign Out',
+  NotMember = 'not a member',
   GoToMainPage = 'Go to Main Page',
 }

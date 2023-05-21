@@ -17,3 +17,7 @@ export interface IProfileLinks {
   discord: string;
   github: string;
 }
+
+export interface IWelcomeComponentProps {
+  handleClick: () => void;
+}

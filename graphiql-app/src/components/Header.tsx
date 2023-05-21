@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux';
 import { IStore } from '../@types/store';
 import AuthComponent from './AuthComponent';
 import { IHeaderProps } from '../@types/header';
+import WelcomeComponent from './WelcomeComponent';
 
 function Header({ currentLocale, setLocale }: IHeaderProps) {
   const [showModal, setShowModal] = useState(false);
@@ -77,38 +78,17 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
     <header className={`header${sticky.isSticky ? ' sticky' : ''}`} ref={headerRef}>
       <div className="header__wrapper container wrapper">
         <HeaderLogo />
-        <nav className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
-          <ul className="header-nav-list">
-            <li className="header-nav-list__item">
-              <Link to="/">
-                <FormattedMessage id={Message.Home} />
-              </Link>
-            </li>
-            <li className="header-nav-list__item">
-              <Link to="/graphiql">GraphiQL</Link>
-            </li>
-          </ul>
-        </nav>
-        <div className={`status${isOpen ? ' is-open' : ''}`}>
-          {logInStatus ? (
-            <>
-              <AuthComponent type="graphiql" message={Message.GoToMainPage} />
-              <UserIcon onClick={handleUserIconClick} />
-            </>
-          ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
-            <AuthComponent type="signin" message={Message.SignIn} />
-          ) : (
-            <></>
-          )}
-          {logInStatus ? (
-            <></>
-          ) : location.pathname !== '/signup' ? (
-            <AuthComponent type="signup" message={Message.SignUp} />
-          ) : (
-            <></>
-          )}
-
-          <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} isOpen={isOpen} />
+        <div className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
+          <div className="header-nav-contents">
+            {logInStatus ? (
+              <WelcomeComponent handleClick={handleUserIconClick} />
+            ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
+              <AuthComponent />
+            ) : (
+              <></>
+            )}
+            <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} isOpen={isOpen} />
+          </div>
         </div>
       </div>
       {showModal && <UserModal onClickOutside={handleModalClickOutside} />}

@@ -1,8 +1,3 @@
-export interface IAuthComponentProps {
-  type: string;
-  message: Message.GoToMainPage | Message.SignIn | Message.SignUp;
-}
-
 export interface IAuthSignUpInputProps {
   label: AuthMsg.signUpNameLabel | AuthMsg.signUpEmailLabel | AuthMsg.signUpPwdLabel;
   name: string;

@@ -13,6 +13,7 @@ export const translations = {
     [Message.SignIn]: 'Sign In',
     [Message.SignUp]: 'Sign up',
     [Message.SignOut]: 'Sign Out',
+    [Message.NotMember]: 'Not a member?',
     [Message.GoToMainPage]: 'Go to Main Page',
     [WelcomePageMsg.mainDescr]:
       'A graphical interactive in-browser IDE - a powerful tool that offers syntax highlighting, automatic documentation, and much more.',
@@ -92,6 +93,7 @@ export const translations = {
     [Message.SignIn]: 'Войти',
     [Message.SignUp]: 'Регистрация',
     [Message.SignOut]: 'Выйти',
+    [Message.NotMember]: 'Еще не в команде?',
     [Message.GoToMainPage]: 'На главную',
     [WelcomePageMsg.mainDescr]:
       'Графическая интерактивная среда разработки в браузере — мощный инструмент, предлагающий подсветку синтаксиса, автоматическую документацию и многое другое.',
