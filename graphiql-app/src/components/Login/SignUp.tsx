@@ -19,6 +19,7 @@ function SignUp() {
   const [APIError, setAPIError] = useState({
     type: '',
     message: '',
+    format: false,
   });
   const [validState, setValidState] = useState({
     valid: false,
@@ -58,7 +59,6 @@ function SignUp() {
 
   useEffect(() => {
     if (loading) {
-      console.log('loading...');
       return;
     }
     if (user) {
@@ -91,6 +91,7 @@ function SignUp() {
         onChange={(e) => setName(e.target.value)}
         errorType={!validState.details.nameValid.res}
         errorMessage={validState.details.nameValid.message}
+        format={true}
       />
       <AuthSignUpInput
         label={AuthMsg.signUpEmailLabel}
@@ -101,6 +102,7 @@ function SignUp() {
         onChange={(e) => setEmail(e.target.value)}
         errorType={!validState.details.emailValid.res || APIError.type === 'email'}
         errorMessage={validState.details.emailValid.message || APIError.message}
+        format={APIError.format || true}
       />
       <AuthSignUpInput
         label={AuthMsg.signUpPwdLabel}
@@ -111,6 +113,7 @@ function SignUp() {
         onChange={(e) => setPassword(e.target.value)}
         errorType={!validState.details.passwordValid.res || APIError.type === 'password'}
         errorMessage={validState.details.passwordValid.message || APIError.message}
+        format={APIError.format || true}
       />
       <button className="signup__form-btn-signup btn-signup btn" onClick={register}>
         <FormattedMessage id={AuthMsg.signUpMainBtn} />

@@ -7,6 +7,7 @@ export interface IAuthSignUpInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorType: boolean;
   errorMessage: string;
+  format?: boolean;
 }
 
 export interface IAuthSignInInputProps {
@@ -16,4 +17,5 @@ export interface IAuthSignInInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errorType: string;
   errorMessage: string;
+  format?: boolean;
 }

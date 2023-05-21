@@ -21,7 +21,11 @@ function AuthSignUpInput(props: IAuthSignUpInputProps) {
             : `signup__form-input-validator-error-${props.name}`
         }
       >
-        {props.errorMessage}
+        {props.format && props.errorMessage ? (
+          <FormattedMessage id={props.errorMessage} />
+        ) : (
+          props.errorMessage
+        )}
       </p>
     </>
   );

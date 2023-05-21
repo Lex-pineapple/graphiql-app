@@ -17,6 +17,7 @@ function SignIn() {
   const [APIError, setAPIError] = useState({
     type: '',
     message: '',
+    format: false,
   });
   const userName = useSelector((store: IStore) => store.auth.authInfo.displayName);
   const dispatch = useDispatch();
@@ -26,6 +27,14 @@ function SignIn() {
     setShowModal(!showModal);
   };
 
+  async function googleSignIn() {
+    const msg = await signInWithGoogle();
+    if (msg) {
+      setAPIError(msg);
+      if (msg.type === 'other') setShowModal(true);
+    }
+  }
+
   async function logIn(email: string, password: string) {
     const msg = await logInWithEmailAndPassword(email, password);
     setAPIError(msg);
@@ -34,7 +43,6 @@ function SignIn() {
 
   useEffect(() => {
     if (loading) {
-      console.log('loading...');
     }
     if (user) {
       if (!userName) {
@@ -57,7 +65,7 @@ function SignIn() {
       <p className="signin__form-subtext">
         <FormattedMessage id={AuthMsg.signInSubHeader} />
       </p>
-      <button className="signin__form-btn-google btn-google btn" onClick={signInWithGoogle}>
+      <button className="signin__form-btn-google btn-google btn" onClick={() => googleSignIn()}>
         <FormattedMessage id={AuthMsg.signInGoogleBtn} />
       </button>
       <p className="signin__form-hr">
@@ -72,6 +80,7 @@ function SignIn() {
         }}
         errorType={APIError.type}
         errorMessage={APIError.message}
+        format={APIError.format}
       />
       <AuthSignInInput
         type="password"
@@ -80,6 +89,7 @@ function SignIn() {
         onChange={(e) => setPassword(e.target.value)}
         errorType={APIError.type}
         errorMessage={APIError.message}
+        format={APIError.format}
       />
       <Link to="/reset" className="signin__form-text--highlight signin__form-text--right">
         <FormattedMessage id={AuthMsg.signInForgotPwd} />

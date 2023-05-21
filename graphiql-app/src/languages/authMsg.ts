@@ -22,6 +22,7 @@ export enum AuthMsg {
   signUpMainBtn = 'sign up main btn',
   singUpLogIn = 'sign up log in',
   signUpAlreadyUser = 'sign up already a user',
+
   signUpNameError = 'sign up name error',
   signUpEmailError = 'sign up email error',
   signUpPwdError = 'sign up password error',
@@ -30,4 +31,16 @@ export enum AuthMsg {
   resetPwdHeader = 'reset password header',
   resetPwdSubHeader = 'reset password subheader',
   resetPwdMainBtn = 'reset password main button',
+  resetPwdResOk = 'reset password response OK',
+  resetPwdResError = 'reset password response error',
+
+  APIErrorUnknown = 'API error unknown',
+  APIErrorInvalidEmail = 'API error invalid email',
+  APIErrorUserNotFound = 'API error user not found',
+  APIErrorWrongPwd = 'API error wrong password',
+  APIErrorNoPwd = 'API error missing password',
+
+  APIErrorEmailInUse = 'API error email already in use',
+  APIErrorNotAllowed = 'API error not allowed',
+
 }

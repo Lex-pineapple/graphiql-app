@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app';
+import { FirebaseError, initializeApp } from 'firebase/app';
 import {
   GoogleAuthProvider,
   getAuth,
@@ -13,6 +13,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebase/firestore';
+import { AuthMsg } from '../languages/authMsg';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDf8HM9qXgPB-snmATL-6D8VySuqFKWI38',
@@ -32,6 +33,11 @@ const googleProvider = new GoogleAuthProvider();
 
 // EITHER REMOVE OR ADD ERROR HANDLING
 const signInWithGoogle = async () => {
+  let errorObj = {
+    type: '',
+    message: '',
+    format: false,
+  };
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
@@ -46,7 +52,20 @@ const signInWithGoogle = async () => {
       });
     }
   } catch (error) {
-    console.error(error);
+    if (error instanceof FirebaseError) {
+      errorObj = {
+        type: 'other',
+        message: error.message,
+        format: false,
+      };
+    } else {
+      errorObj = {
+        type: 'other',
+        message: AuthMsg.APIErrorUnknown,
+        format: true,
+      };
+    }
+    return errorObj;
   }
 };
 
@@ -54,42 +73,56 @@ const logInWithEmailAndPassword = async (email: string, password: string) => {
   let errorObj = {
     type: '',
     message: '',
+    format: false,
   };
   try {
     await setPersistence(auth, browserLocalPersistence);
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
-    switch (error.code) {
-      case 'auth/invalid-email':
-        errorObj = {
-          type: 'email',
-          message: 'Invalid email',
-        };
-        break;
-      case 'auth/user-not-found':
-        errorObj = {
-          type: 'email',
-          message: `User ${email} does not exist`,
-        };
-        break;
-      case 'auth/wrong-password':
-        errorObj = {
-          type: 'password',
-          message: 'Wrong password',
-        };
-        break;
-      case 'auth/missing-password':
-        errorObj = {
-          type: 'password',
-          message: 'Please input password',
-        };
-        break;
-      default:
-        errorObj = {
-          type: 'other',
-          message: error.message,
-        };
-        break;
+    if (error instanceof FirebaseError) {
+      switch (error.code) {
+        case 'auth/invalid-email':
+          errorObj = {
+            type: 'email',
+            message: AuthMsg.APIErrorInvalidEmail,
+            format: true,
+          };
+          break;
+        case 'auth/user-not-found':
+          errorObj = {
+            type: 'email',
+            message: AuthMsg.APIErrorUserNotFound,
+            format: true,
+          };
+          break;
+        case 'auth/wrong-password':
+          errorObj = {
+            type: 'password',
+            message: AuthMsg.APIErrorWrongPwd,
+            format: true,
+          };
+          break;
+        case 'auth/missing-password':
+          errorObj = {
+            type: 'password',
+            message: AuthMsg.APIErrorNoPwd,
+            format: true,
+          };
+          break;
+        default:
+          errorObj = {
+            type: 'other',
+            message: error.message,
+            format: false,
+          };
+          break;
+      }
+    } else {
+      errorObj = {
+        type: 'other',
+        message: AuthMsg.APIErrorUnknown,
+        format: true,
+      };
     }
   }
   return errorObj;
@@ -99,6 +132,7 @@ const registerWithEmailAndPassword = async (name: string, email: string, passwor
   let errorObj = {
     type: '',
     message: '',
+    format: false,
   };
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -113,37 +147,50 @@ const registerWithEmailAndPassword = async (name: string, email: string, passwor
       displayName: name,
     });
   } catch (error) {
-    switch (error.code) {
-      case 'auth/email-already-in-use':
-        errorObj = {
-          type: 'email',
-          message: `Email address ${email} already in use.`,
-        };
-        break;
-      case 'auth/invalid-email':
-        errorObj = {
-          type: 'email',
-          message: `Email address ${email} is invalid.`,
-        };
-        break;
-      case 'auth/operation-not-allowed':
-        errorObj = {
-          type: 'other',
-          message: `Error during sign up.`,
-        };
-        break;
-      case 'auth/wrong-password':
-        errorObj = {
-          type: 'password',
-          message: `Wrong password.`,
-        };
-        break;
-      default:
-        errorObj = {
-          type: 'other',
-          message: error.message,
-        };
-        break;
+    if (error instanceof FirebaseError) {
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          errorObj = {
+            type: 'email',
+            message: AuthMsg.APIErrorEmailInUse,
+            format: true,
+          };
+          break;
+        case 'auth/invalid-email':
+          errorObj = {
+            type: 'email',
+            message: AuthMsg.APIErrorInvalidEmail,
+            format: true,
+          };
+          break;
+        case 'auth/operation-not-allowed':
+          errorObj = {
+            type: 'other',
+            message: AuthMsg.APIErrorNotAllowed,
+            format: true,
+          };
+          break;
+        case 'auth/wrong-password':
+          errorObj = {
+            type: 'password',
+            message: AuthMsg.APIErrorWrongPwd,
+            format: true,
+          };
+          break;
+        default:
+          errorObj = {
+            type: 'other',
+            message: error.message,
+            format: false,
+          };
+          break;
+      }
+    } else {
+      errorObj = {
+        type: 'other',
+        message: AuthMsg.APIErrorUnknown,
+        format: true,
+      };
     }
   }
   return errorObj;
@@ -175,7 +222,7 @@ const sendPasswordReset = async (email: string) => {
   try {
     await sendPasswordResetEmail(auth, email);
     ret = {
-      res: 'Email with instructions has been sent',
+      res: AuthMsg.resetPwdResOk,
       success: true,
     };
   } catch (error) {
@@ -186,7 +233,7 @@ const sendPasswordReset = async (email: string) => {
       };
     } else {
       ret = {
-        res: 'An error occured during your request',
+        res: AuthMsg.resetPwdResError,
         success: false,
       };
     }
@@ -207,7 +254,4 @@ export {
   sendPasswordReset,
   logout,
   checkForAuthStatus,
-  // checkUserEmail,
-  // checkUserExists,
-  // checkUserPassword,
 };

@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import { IAuthSignInInputProps } from '../../@types/auth';
 
 function AuthSignInInput(props: IAuthSignInInputProps) {
@@ -17,7 +18,11 @@ function AuthSignInInput(props: IAuthSignInInputProps) {
             : 'signup__form-input-validator-error-email'
         }
       >
-        {props.errorType === props.type && props.errorMessage}
+        {props.format && props.errorType === props.type ? (
+          <FormattedMessage id={props.errorMessage} />
+        ) : (
+          props.errorMessage
+        )}
       </p>
     </>
   );
