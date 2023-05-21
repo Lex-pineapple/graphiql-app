@@ -42,5 +42,4 @@ export enum AuthMsg {
 
   APIErrorEmailInUse = 'API error email already in use',
   APIErrorNotAllowed = 'API error not allowed',
-
 }

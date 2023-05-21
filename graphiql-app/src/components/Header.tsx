@@ -11,12 +11,13 @@ import { IStore } from '../@types/store';
 import AuthComponent from './AuthComponent';
 import { IHeaderProps } from '../@types/header';
 import WelcomeComponent from './WelcomeComponent';
+import SignOutModal from './SignOutModal';
 
 function Header({ currentLocale, setLocale }: IHeaderProps) {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const logInStatus = useSelector((store: IStore) => store.auth.login);
-  const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
+  const [showLogOut, setShowLogOut] = useState(false);
   const [scroll, setScroll] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,11 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
       });
     }
   }, []);
+
+  const handleLogOutClick = () => {
+    setShowLogOut(true);
+    setShowModal(false);
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -75,13 +81,16 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
           </div>
         </div>
       </div>
-      {showModal && <UserModal onClickOutside={handleModalClickOutside} />}
+      {showModal && (
+        <UserModal onClickOutside={handleModalClickOutside} onClickLogOut={handleLogOutClick} />
+      )}
       <div className={`hamburger${isOpen ? ' open' : ''}`} onClick={toggleMenu}>
         <div className="hamburger-line line1"></div>
         <div className="hamburger-line line2"></div>
         <div className="hamburger-line line3"></div>
       </div>
       <hr className="header__line"></hr>
+      <SignOutModal onClickOutside={() => setShowLogOut(false)} hidden={showLogOut} />
     </header>
   );
 }

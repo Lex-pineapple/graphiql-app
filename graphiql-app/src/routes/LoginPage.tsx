@@ -22,7 +22,13 @@ function LoginPage({ authType }: { authType: string }) {
         </div>
       </div>
       <div className="auth-form-container">
-        {authType === 'signin' ? <SignIn /> : authType === 'signup' ? <SignUp /> : <ResetPassword />}
+        {authType === 'signin' ? (
+          <SignIn />
+        ) : authType === 'signup' ? (
+          <SignUp />
+        ) : (
+          <ResetPassword />
+        )}
       </div>
     </div>
   );

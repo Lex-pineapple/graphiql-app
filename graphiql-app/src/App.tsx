@@ -10,7 +10,6 @@ import { LOCALES } from './languages/locales';
 import Footer from './components/Footer';
 import LoginPage from './routes/LoginPage';
 import WelcomePage from './routes/WelcomePage';
-import SignOutPage from './routes/SignOutPage';
 import { checkForAuthStatus } from './auth/firebase';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -42,7 +41,6 @@ function App() {
             <Route path="/signin" element={<LoginPage authType="signin" />}></Route>
             <Route path="/signup" element={<LoginPage authType="signup" />}></Route>
             <Route path="/reset" element={<LoginPage authType="reset" />}></Route>
-            <Route path="/signout" element={<SignOutPage />}></Route>
             <Route path="/graphiql" element={<GraphiQLPage />}></Route>
             <Route path="*" element={<Page404 />}></Route>
           </Routes>
