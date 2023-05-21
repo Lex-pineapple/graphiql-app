@@ -1,7 +1,8 @@
 @import './variables';
 
 .sidePanel {
-  position: absolute;
+  position: fixed;
+  top: 90px;
   right: 0;
   width: 400px;
   height: calc(100vh - 132px);
@@ -19,6 +20,15 @@
     position: fixed;
     transform: translateX(0);
   }
+
+  @media screen and (max-width: 800px) {
+    top: 9vw;
+    height: calc(100vh - 20vw);
+  }
+
+  @media screen and (max-width: 450px) {
+    width: 90%;
+  }
 }
 
 .sidePanel-menu {
@@ -28,6 +38,11 @@
   top: 129px;
   outline: none;
 
+  @media screen and (orientation: landscape) {
+    top: 5vw;
+  }
+
+  
   &__button {
     z-index: 2;
     padding: 8px;
@@ -46,11 +61,27 @@
     transform-origin: left bottom;
     margin-top: 65px;
     min-width: 65px;
+    
+    @media screen and (max-width: 450px) {
+      font-size: 3vw;
+      padding: 1.5vw;
+    }
   }
 }
 
 .sidePanel-info {
   font-size: 9px;
+  overflow-y: auto;
+  margin-right: 20px;
+  height: calc(100vh - 140px);
+
+  @media screen and (max-width: 800px) {
+    height: calc(100vh - 25vw);
+  }
+
+  @media screen and (max-width: 450px) {
+    height: calc(100vh - 28vw);
+  }
 
   &-header {
     margin: 10px;
@@ -58,5 +89,26 @@
     font-weight: 700;
     font-size: 18px;
     color: $headerGreen;
+
+    @media screen and (max-width: 450px) {
+      font-size: 5vw;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    padding: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $hoverGrey;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($color: $headerGreen, $alpha: 0.5); 
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba($color: $headerGreen, $alpha: 1.0); 
   }
 }

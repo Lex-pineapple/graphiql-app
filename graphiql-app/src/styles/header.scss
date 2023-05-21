@@ -4,6 +4,7 @@
   background: #f1f1f1;
   width: 100%;
   z-index: 5;
+  position: fixed;
 
   &__wrapper {
     width: 100%;
@@ -41,6 +42,10 @@
     background: linear-gradient(90deg, $mintGreen 50%, $headerGreen 100%);
     cursor: pointer;
 
+    &:visited {
+      color: #f1f1f1;
+    }
+
     @media screen and (max-width: 800px) {
       font-size: 18px;
       margin-right: 1vw;
@@ -75,31 +80,13 @@
     color: $dkerGrey;
   }
 
-  &-auth__link, &-auth__link:hover {
-    color: $headerGreen;
+  &-auth__link {
     font-weight: 500;
+    transition: color 0.2s ease-in-out;
   }
-}
 
-.status {
-  
-
-  @media screen and (max-width: 800px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2vw;
-    position: fixed;
-    top: 9vw;
-    right: -1vw;
-    z-index: 1;
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &.is-open {
-      right: 0;
-      transform: translateX(0%);
-    }
+  &-auth__link:hover {
+    color: $headerGreen;
   }
 }
 
@@ -116,7 +103,7 @@
     top: 0;
     right: 0px;
     width: 323px;
-    height: 823px;
+    height: 100%;
     background: $backgroundGraphiQLPage;
     transform: translateX(100%);
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);

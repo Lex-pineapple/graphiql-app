@@ -7,6 +7,10 @@
         height: 100vh;
     }
 
+    @media screen and (orientation: landscape) {
+        height: 86vh;
+    }
+
     &__info {
         padding: 150px 0;
         max-width: 1000px;
@@ -38,6 +42,10 @@
 
         @media screen and (max-width: 800px) {
             font-size: 3vh;
+        }
+        
+        @media screen and (orientation: landscape) {
+            font-size: 2vw;
         }
     }
 

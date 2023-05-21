@@ -23,22 +23,22 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
   const headerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    if (headerRef.current === null) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (headerRef.current === null) {
+  //     return;
+  //   }
 
-    const header = headerRef.current.getBoundingClientRect();
-    const handleScrollEvent = () => {
-      handleScroll(header.top, header.height);
-    };
+  //   const header = headerRef.current.getBoundingClientRect();
+  //   const handleScrollEvent = () => {
+  //     handleScroll(header.top, header.height);
+  //   };
 
-    window.addEventListener('scroll', handleScrollEvent);
+  //   window.addEventListener('scroll', handleScrollEvent);
 
-    return () => {
-      window.removeEventListener('scroll', handleScrollEvent);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScrollEvent);
+  //   };
+  // }, []);
 
   useEffect(() => {
     if (isOpen) {
