@@ -1,3 +1,5 @@
+import { AuthMsg } from '../languages/authMsg';
+
 class SignUpValidator {
   ValidateSignUp(name: string, email: string, password: string) {
     const nameValid = this.ValidateName(name);
@@ -21,7 +23,7 @@ class SignUpValidator {
       };
     return {
       res: false,
-      message: 'The name must be longer that 3 characters',
+      message: AuthMsg.signUpNameError,
     };
   }
 
@@ -37,7 +39,7 @@ class SignUpValidator {
     }
     return {
       res: false,
-      message: 'Please input the correct email',
+      message: AuthMsg.signUpEmailError,
     };
   }
 
@@ -49,8 +51,7 @@ class SignUpValidator {
       };
     return {
       res: false,
-      message:
-        'The password must be at least 8 characters long, contain at least 1 uppercase letter and at least 1 number',
+      message: AuthMsg.signUpPwdError,
     };
   }
 }

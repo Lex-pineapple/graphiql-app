@@ -1,15 +1,13 @@
-import '../styles/editorToolbar.scss';
+import '../../styles/editorToolbar.scss';
+import UpButton from '../../assets/circle-up.svg';
+import DownButton from '../../assets/circle-down.svg';
 import { useState } from 'react';
-import UpButton from '../assets/circle-up.svg';
-import DownButton from '../assets/circle-down.svg';
-import { HeaderList } from './HeadersList';
+import { FormattedMessage } from 'react-intl';
+import { HeaderList } from '../HeadersList';
+import { GraphiQlMsg } from '../../languages/graphiQlMsg';
+import { IEditorToolbarType } from '../../@types/graphql';
 
-interface EditorToolbarType {
-  textAreaVariables: (value: string) => void;
-  textAreaHeaders: (value: string) => void;
-}
-
-function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType) {
+function EditorToolbar({ textAreaVariables, textAreaHeaders }: IEditorToolbarType) {
   const [isOpen, setIsOpen] = useState(false);
   const [chose, setChose] = useState('variables');
   const [heightSection, setheightSection] = useState(0);
@@ -44,14 +42,14 @@ function EditorToolbar({ textAreaVariables, textAreaHeaders }: EditorToolbarType
             className={`editor-toolbar__options-item ${chose === 'variables' ? 'activChoise' : ''}`}
           >
             <div onClick={handleClick} id="variables">
-              Variables
+              <FormattedMessage id={GraphiQlMsg.variablesHeader} />
             </div>
           </li>
           <li
             className={`editor-toolbar__options-item ${chose === 'headers' ? 'activChoise' : ''}`}
           >
             <div onClick={handleClick} id="headers">
-              Headers
+              <FormattedMessage id={GraphiQlMsg.headersHeader} />
             </div>
           </li>
         </ul>

@@ -1,15 +1,10 @@
-import ExecuteButton from '../assets/execute-button.svg';
-import CleanButton from '../assets/broom-clean.svg';
+import ExecuteButton from '../../assets/execute-button.svg';
+import CleanButton from '../../assets/broom-clean.svg';
 import EditorToolbar from './EditorToolbar';
 import { useState } from 'react';
+import { IGraphiQLEditorType } from '../../@types/graphql';
 
-interface GraphiQLEditorType {
-  sourcesQuery: (value: string) => void;
-  sourcesVariables: (value: string) => void;
-  sourcesHeaders: (value: string) => void;
-}
-
-function GraphiQLEditor({ sourcesQuery, sourcesVariables, sourcesHeaders }: GraphiQLEditorType) {
+function GraphiQLEditor({ sourcesQuery, sourcesVariables, sourcesHeaders }: IGraphiQLEditorType) {
   const [queryAreaValue, setQueryAreaValue] = useState('');
   const [variablesAreaValue, setVariablesAreaValue] = useState('');
   const [headersAreaValue, setHeadersAreaValue] = useState('');

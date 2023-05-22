@@ -1,18 +1,11 @@
-interface IAuthSignUpInputProps {
-  name: string;
-  type: string;
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorType: boolean;
-  errorMessage: string;
-}
+import { FormattedMessage } from 'react-intl';
+import { IAuthSignUpInputProps } from '../../@types/auth';
 
 function AuthSignUpInput(props: IAuthSignUpInputProps) {
   return (
     <>
       <p className="signup__form-input-header-text">
-        {props.name[0].toUpperCase() + props.name.slice(1)}
+        <FormattedMessage id={props.label} />
       </p>
       <input
         type={props.type}
@@ -28,7 +21,11 @@ function AuthSignUpInput(props: IAuthSignUpInputProps) {
             : `signup__form-input-validator-error-${props.name}`
         }
       >
-        {props.errorMessage}
+        {props.format && props.errorMessage ? (
+          <FormattedMessage id={props.errorMessage} />
+        ) : (
+          props.errorMessage
+        )}
       </p>
     </>
   );

@@ -1,7 +1,10 @@
-import SignIn from '../components/LoginComponents/SignIn';
-import SignUp from '../components/LoginComponents/SignUp';
+import SignIn from '../components/Login/SignIn';
+import SignUp from '../components/Login/SignUp';
 import '../styles/loginPage.scss';
-import ResetPassword from '../components/LoginComponents/ResetPassword';
+import ResetPassword from '../components/Login/ResetPassword';
+import { FormattedMessage } from 'react-intl';
+import { AuthMsg } from '../languages/authMsg';
+import { WelcomePageMsg } from '../languages/welcomePageMsg';
 
 function LoginPage({ authType }: { authType: string }) {
   return (
@@ -9,16 +12,24 @@ function LoginPage({ authType }: { authType: string }) {
       <div className="auth__img img">
         <div className="auth__img-text-container">
           <div className="auth__img-bigtext">
-            Welcome to <p className="auth__img-bigtext--highlight">GraphiQl</p>
+            <FormattedMessage id={AuthMsg.sideHeader} />{' '}
+            <p className="auth__img-bigtext--highlight">GraphiQl</p>
           </div>
           <p className="auth__img-smalltext">
-            A powerful tool that offers syntax highlighting, intellisense autocompletion, automatic
-            documentation, and much more.
+            <FormattedMessage id={WelcomePageMsg.mainDescr} />
           </p>
           <a href="https://github.com/graphql/graphiql" className="auth__img-github-logo"></a>
         </div>
       </div>
-      {authType === 'signin' ? <SignIn /> : authType === 'signup' ? <SignUp /> : <ResetPassword />}
+      <div className="auth-form-container">
+        {authType === 'signin' ? (
+          <SignIn />
+        ) : authType === 'signup' ? (
+          <SignUp />
+        ) : (
+          <ResetPassword />
+        )}
+      </div>
     </div>
   );
 }

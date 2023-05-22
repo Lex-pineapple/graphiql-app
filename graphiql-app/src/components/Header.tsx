@@ -2,54 +2,41 @@ import '../styles/header.scss';
 import '../styles/hamburgerMenu.scss';
 
 import { useEffect, useState, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { HeaderLogo } from './HeaderLogo';
 import { LangSwitcher } from './LangSwitcher';
-import { UserIcon } from './UserIcon';
 import { UserModal } from './UserModal';
-import { FormattedMessage } from 'react-intl';
-import { Message } from './languages/messages';
 import { useSelector } from 'react-redux';
 import { IStore } from '../@types/store';
 import AuthComponent from './AuthComponent';
+import { IHeaderProps } from '../@types/header';
+import WelcomeComponent from './WelcomeComponent';
+import SignOutModal from './SignOutModal';
 
-interface HeaderProps {
-  currentLocale: string;
-  setLocale: (locale: string) => void;
-}
-
-function Header({ currentLocale, setLocale }: HeaderProps) {
+function Header({ currentLocale, setLocale }: IHeaderProps) {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const logInStatus = useSelector((store: IStore) => store.auth.login);
-  const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
+  const [showLogOut, setShowLogOut] = useState(false);
+  const [scroll, setScroll] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (headerRef.current === null) {
-      return;
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', () => {
+        if (headerRef.current) {
+          const header = headerRef.current.getBoundingClientRect();
+          handleScroll(header.top, header.height);
+        }
+      });
     }
-
-    const header = headerRef.current.getBoundingClientRect();
-    const handleScrollEvent = () => {
-      handleScroll(header.top, header.height);
-    };
-
-    window.addEventListener('scroll', handleScrollEvent);
-
-    return () => {
-      window.removeEventListener('scroll', handleScrollEvent);
-    };
   }, []);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-  }, [isOpen]);
+  const handleLogOutClick = () => {
+    setShowLogOut(true);
+    setShowModal(false);
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -71,62 +58,39 @@ function Header({ currentLocale, setLocale }: HeaderProps) {
 
   const handleScroll = (elTopOffset: number, elHeight: number) => {
     if (window.pageYOffset > elTopOffset + elHeight) {
-      setSticky({ isSticky: true, offset: elHeight });
+      setScroll(true);
     } else {
-      setSticky({ isSticky: false, offset: 0 });
+      setScroll(false);
     }
   };
 
   return (
-    <header className={`header${sticky.isSticky ? ' sticky' : ''}`} ref={headerRef}>
-      <div className="header__wrapper container wrapper">
+    <header className="header" ref={headerRef}>
+      <div className={`header__wrapper ${scroll ? 'scroll' : ''} container wrapper`}>
         <HeaderLogo />
-        <nav className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
-          <ul className="header-nav-list">
-            <li className="header-nav-list__item">
-              <Link to="/">
-                <FormattedMessage id={Message.Home} />
-              </Link>
-            </li>
-            <li className="header-nav-list__item">
-              <Link to="/graphiql">GraphiQL</Link>
-            </li>
-            <li className="header-nav-list__item">
-              <Link to="/unknown">
-                <FormattedMessage id={Message.PAGE404TEST} />
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <div className={`status${isOpen ? ' is-open' : ''}`}>
-          {logInStatus ? (
-            <>
-              <AuthComponent type="graphiql" message={Message.GoToMainPage} />
-              <UserIcon onClick={handleUserIconClick} />
-            </>
-          ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
-            <AuthComponent type="signin" message={Message.SignIn} />
-          ) : (
-            <></>
-          )}
-          {logInStatus ? (
-            <></>
-          ) : location.pathname !== '/signup' ? (
-            <AuthComponent type="signup" message={Message.SignUp} />
-          ) : (
-            <></>
-          )}
-
-          <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} isOpen={isOpen} />
+        <div className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
+          <div className="header-nav-contents">
+            {logInStatus ? (
+              <WelcomeComponent handleClick={handleUserIconClick} />
+            ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
+              <AuthComponent />
+            ) : (
+              <></>
+            )}
+            <LangSwitcher currentLocale={currentLocale} setLocale={setLocale} isOpen={isOpen} />
+          </div>
         </div>
       </div>
-      {showModal && <UserModal onClickOutside={handleModalClickOutside} />}
+      {showModal && (
+        <UserModal onClickOutside={handleModalClickOutside} onClickLogOut={handleLogOutClick} />
+      )}
       <div className={`hamburger${isOpen ? ' open' : ''}`} onClick={toggleMenu}>
         <div className="hamburger-line line1"></div>
         <div className="hamburger-line line2"></div>
         <div className="hamburger-line line3"></div>
       </div>
       <hr className="header__line"></hr>
+      <SignOutModal onClickOutside={() => setShowLogOut(false)} hidden={showLogOut} />
     </header>
   );
 }

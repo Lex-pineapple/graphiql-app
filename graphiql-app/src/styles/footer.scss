@@ -3,6 +3,14 @@
 .footer {
   width: 100%;
   background: #f1f1f1;
+  position: fixed;
+  bottom: 0;
+
+  &__container {
+    @media screen and (max-width: 1100px) {
+      padding: 0 1vw;
+    }
+  }
 
   &__line {
     border: 0.5px solid rgba($headerGreen, 0.3);
@@ -19,14 +27,10 @@
 
     @media screen and (max-width: 1100px) {
       flex-wrap: wrap;
-      gap: 10px;
-      padding: 10px 35px;
+      font-size: 2.5vw;
+      gap: 1vw;
+      padding: 1vw 3vw;
       justify-content: space-between;
-    }
-
-    @media screen and (max-width: 400px) {
-      flex-wrap: nowrap;
-      flex-direction: column;
     }
   }
 
@@ -35,6 +39,11 @@
     width: 100px;
     height: 45px;
     background-size: contain;
+
+    @media screen and (max-width: 1100px) {
+      width: 10vw;
+      height: 4vw;
+    }
 
     &:hover {
       animation: shake 0.4s ease;
@@ -52,5 +61,10 @@
     background-color: $headerGreen;
     color: white;
     transition: color 0.3s, background 0.3s;
+  }
+
+  @media screen and (max-width: 1100px) {
+    font-size: 2.5vw;
+    padding: 1vw;
   }
 }

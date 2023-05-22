@@ -1,11 +1,5 @@
-interface IAuthSignInInputProps {
-  type: string;
-  placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  errorType: string;
-  errorMessage: string;
-}
+import { FormattedMessage } from 'react-intl';
+import { IAuthSignInInputProps } from '../../@types/auth';
 
 function AuthSignInInput(props: IAuthSignInInputProps) {
   return (
@@ -24,7 +18,11 @@ function AuthSignInInput(props: IAuthSignInInputProps) {
             : 'signup__form-input-validator-error-email'
         }
       >
-        {props.errorType === props.type && props.errorMessage}
+        {props.format && props.errorType === props.type ? (
+          <FormattedMessage id={props.errorMessage} />
+        ) : (
+          props.errorMessage
+        )}
       </p>
     </>
   );

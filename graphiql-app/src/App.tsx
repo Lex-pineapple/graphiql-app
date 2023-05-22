@@ -4,13 +4,12 @@ import Page404 from './routes/Page404';
 import Header from './components/Header';
 import GraphiQLPage from './routes/GraphiQLPage';
 import { IntlProvider } from 'react-intl';
-import { LanguagesManager } from './components/languages/languagesManager';
-import { translations } from './components/languages/translations';
-import { LOCALES } from './components/languages/locales';
+import { LanguagesManager } from './languages/languagesManager';
+import { translations } from './languages/translations';
+import { LOCALES } from './languages/locales';
 import Footer from './components/Footer';
 import LoginPage from './routes/LoginPage';
 import WelcomePage from './routes/WelcomePage';
-import SignOutPage from './routes/SignOutPage';
 import { checkForAuthStatus } from './auth/firebase';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -42,7 +41,6 @@ function App() {
             <Route path="/signin" element={<LoginPage authType="signin" />}></Route>
             <Route path="/signup" element={<LoginPage authType="signup" />}></Route>
             <Route path="/reset" element={<LoginPage authType="reset" />}></Route>
-            <Route path="/signout" element={<SignOutPage />}></Route>
             <Route path="/graphiql" element={<GraphiQLPage />}></Route>
             <Route path="*" element={<Page404 />}></Route>
           </Routes>

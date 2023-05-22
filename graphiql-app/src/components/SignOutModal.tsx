@@ -1,21 +1,16 @@
-import '../styles/signOutPage.scss';
+import '../styles/signOutModal.scss';
 import { logout } from '../auth/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-function SignOutPage() {
+function SignOutModal({ onClickOutside, hidden }: { onClickOutside: () => void; hidden: boolean }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
-    <div className="signout-container">
-      <div className="signout__modal">
+    <div className="signout__modal-overlay" onClick={onClickOutside}>
+      <div className={`signout__modal ${!hidden ? 'hidden' : ''}`}>
         <div className="signout__modal-bigtext">Are you sure you want to sign out?</div>
-        <button
-          className="signout__modal-btn-stay"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
+        <button className="signout__modal-btn-stay" onClick={onClickOutside}>
           No, get me back
         </button>
         <button
@@ -33,4 +28,4 @@ function SignOutPage() {
   );
 }
 
-export default SignOutPage;
+export default SignOutModal;

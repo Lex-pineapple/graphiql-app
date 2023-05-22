@@ -12,7 +12,7 @@
     width: 500px;
     height: 300px;
     position: absolute;
-    top: 50%;
+    top: 200px;
     left: 50%;
     margin-top: -150px;
     margin-left: -250px;
@@ -22,11 +22,30 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: top 0.8s ease-in-out;
+    box-shadow: 0 0px 11px 5px rgba($mintGreen, 0.5);
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      left: 0;
+      margin-left: 0;
+      top: 140px;
+      height: 80vw;
+    }
+  }
+
+  &__modal.hidden {
+    top: -1000px;
   }
 
   &__modal-bigtext {
     font-size: 32px;
     font-weight: 500;
+
+    @media screen and (max-width: 600px) {
+      font-size: 6vw;
+      margin-top: 10vw;
+    }
   }
 
   &__modal-btn-leave,
@@ -38,6 +57,11 @@
     padding: 10px 0;
     border-radius: 20px;
     cursor: pointer;
+
+    @media screen and (max-width: 600px) {
+      font-size: 4vw;
+      padding: 2vw;
+    }
   }
 
   &__modal-btn-stay {
@@ -45,6 +69,10 @@
     background: $mintGreen;
     margin-top: 30px;
     transition: background-color 0.3s ease-in-out;
+    
+    @media screen and (max-width: 600px) {
+      margin-top: 3vw;
+    }
   }
 
   &__modal-btn-stay::after,

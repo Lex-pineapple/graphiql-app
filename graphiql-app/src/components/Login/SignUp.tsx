@@ -7,6 +7,8 @@ import InfoModal from '../InfoModal';
 import SignUpValidator from '../../helpers/signUpValidator';
 import { IStore } from '../../@types/store';
 import AuthSignUpInput from './authSignUpInput';
+import { AuthMsg } from '../../languages/authMsg';
+import { FormattedMessage } from 'react-intl';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -17,6 +19,7 @@ function SignUp() {
   const [APIError, setAPIError] = useState({
     type: '',
     message: '',
+    format: false,
   });
   const [validState, setValidState] = useState({
     valid: false,
@@ -56,7 +59,6 @@ function SignUp() {
 
   useEffect(() => {
     if (loading) {
-      console.log('loading...');
       return;
     }
     if (user) {
@@ -74,9 +76,14 @@ function SignUp() {
 
   return (
     <div className="signup__form">
-      <div className="signup__form-bigtext">Sign up</div>
-      <p className="signup__form-subtext">Join the GraphGl community.</p>
+      <div className="signup__form-bigtext">
+        <FormattedMessage id={AuthMsg.signUpMainHeader} />
+      </div>
+      <p className="signup__form-subtext">
+        <FormattedMessage id={AuthMsg.signUpSubheader} />
+      </p>
       <AuthSignUpInput
+        label={AuthMsg.signUpNameLabel}
         name="name"
         type="text"
         placeholder="Your name"
@@ -84,8 +91,10 @@ function SignUp() {
         onChange={(e) => setName(e.target.value)}
         errorType={!validState.details.nameValid.res}
         errorMessage={validState.details.nameValid.message}
+        format={true}
       />
       <AuthSignUpInput
+        label={AuthMsg.signUpEmailLabel}
         name="email"
         type="email"
         placeholder="Email"
@@ -93,8 +102,10 @@ function SignUp() {
         onChange={(e) => setEmail(e.target.value)}
         errorType={!validState.details.emailValid.res || APIError.type === 'email'}
         errorMessage={validState.details.emailValid.message || APIError.message}
+        format={APIError.format || true}
       />
       <AuthSignUpInput
+        label={AuthMsg.signUpPwdLabel}
         name="password"
         type="password"
         placeholder="Enter your password"
@@ -102,18 +113,20 @@ function SignUp() {
         onChange={(e) => setPassword(e.target.value)}
         errorType={!validState.details.passwordValid.res || APIError.type === 'password'}
         errorMessage={validState.details.passwordValid.message || APIError.message}
+        format={APIError.format || true}
       />
       <button className="signup__form-btn-signup btn-signup btn" onClick={register}>
-        Get started now
+        <FormattedMessage id={AuthMsg.signUpMainBtn} />
       </button>
       <div className="signin__form-text--under-container">
-        Already a user?{' '}
+        <FormattedMessage id={AuthMsg.signUpAlreadyUser} />{' '}
         <Link to="/signin" className="signin__form-text--highlight">
-          Log in
+          <FormattedMessage id={AuthMsg.singUpLogIn} />
         </Link>
       </div>
       {showModal && (
         <InfoModal
+          formatId={AuthMsg.signUpSuccess}
           text={APIError.type === 'other' ? APIError.message : 'Sign up successful'}
           onClickOutside={handleCloseModalClick}
         />

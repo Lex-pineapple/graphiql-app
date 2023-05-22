@@ -7,15 +7,20 @@
   justify-content: space-between;
   border-top: 3px solid $backgroundGraphiQLPage;
 
+  @media screen and (max-width: 700px) {
+    height: 6vh;
+  }
+
   &__options {
     display: flex;
+    gap: 20px;
     align-items: center;
     cursor: pointer;
     padding: 0;
+    margin: 0 10px;
   }
 
   &__options-item {
-    width: 100px;
     text-align: center;
     transition: font 0.2s;
 
@@ -27,6 +32,14 @@
     &.activChoise {
       font-weight: bold;
     }
+
+    @media screen and (max-width: 700px) {
+      font-size: 2vh;
+    }
+
+    @media screen and (orientation: landscape) and (max-width: 800px) {
+      font-size: 2.5vw;
+    }
   }
 
   &__button {
@@ -36,6 +49,16 @@
     outline: none;
     border: none;
     cursor: pointer;
+
+    @media screen and (max-width: 700px) {
+      width: 6vh;
+      height: 4vh;
+    }
+
+    @media screen and (orientation: landscape) and (max-width: 800px) {
+      width: 6vw;
+      height: 4vw;
+    }
   }
 }
 
@@ -48,6 +71,16 @@
     animation: logoImg 0.5s linear;
     filter: brightness(0.5) sepia(1) hue-rotate(140deg) saturate(6);
     transition: filter 0.3s;
+  }
+  
+  @media screen and (max-width: 800px) {
+    width: 3vh;
+    height: 3vh;
+  }
+
+  @media screen and (orientation: landscape) and (max-width: 800px) {
+    width: 6vw;
+    height: 4vw;
   }
 }
 

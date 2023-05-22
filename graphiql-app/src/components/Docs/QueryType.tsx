@@ -1,11 +1,15 @@
+import { GraphiQlMsg } from '../../languages/graphiQlMsg';
 import { IQueryTypeProps } from '../../@types/docsComponents';
 import QueryTypeNonObj from './QueryTypeNonObj';
 import QueryTypeObj from './QueryTypeObj';
+import { FormattedMessage } from 'react-intl';
 
 function QueryType({ returnType, onClick, mode }: IQueryTypeProps) {
   return (
     <div className="query-ret-type">
-      <div className="query-ret-type-header">Type details</div>
+      <div className="query-ret-type-header">
+        <FormattedMessage id={GraphiQlMsg.typeDetailsHeader} />
+      </div>
       <div className="query-ret-type-details">
         {mode == 'OBJECT' ? (
           <QueryTypeObj returnType={returnType} onClick={onClick} />

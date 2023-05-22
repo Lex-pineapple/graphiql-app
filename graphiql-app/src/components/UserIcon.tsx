@@ -1,13 +1,9 @@
-import React from 'react';
 import '../styles/userIcon.scss';
 import { useSelector } from 'react-redux';
 import { IStore } from '../@types/store';
+import { IUserIconProps } from '../@types/userIcon';
 
-interface UserIconProps {
-  onClick?: React.MouseEventHandler;
-}
-
-export const UserIcon = ({ onClick }: UserIconProps) => {
+export const UserIcon = ({ onClick }: IUserIconProps) => {
   const userName = useSelector((store: IStore) => store.auth.authInfo.displayName);
 
   return (

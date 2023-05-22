@@ -1,15 +1,22 @@
 import { FormattedMessage } from 'react-intl';
-import { Message } from './languages/messages';
 import { Link } from 'react-router-dom';
+import { Message } from '../languages/messages';
 
-function AuthComponent(props: {
-  type: string;
-  message: Message.GoToMainPage | Message.SignIn | Message.SignUp;
-}) {
+function AuthComponent() {
   return (
-    <Link to={`/${props.type}`} className="header-auth__btn btn-signIn btn">
-      <FormattedMessage id={props.message} />
-    </Link>
+    <>
+      <Link to="/signin" className="header-auth__btn btn-signIn btn">
+        <FormattedMessage id={Message.SignIn} />
+      </Link>
+      <div className="header-auth-signup">
+        <div className="header-auth__text">
+          <FormattedMessage id={Message.NotMember} />
+        </div>
+        <Link to="/signup" className="header-auth__link">
+          <FormattedMessage id={Message.SignUp} />
+        </Link>
+      </div>
+    </>
   );
 }
 
