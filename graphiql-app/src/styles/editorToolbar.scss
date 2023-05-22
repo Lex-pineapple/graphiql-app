@@ -1,5 +1,10 @@
 @import './variables';
 
+.CodeMirror-vars {
+  width: 100%;
+  font-size: 18px;
+}
+
 .editor-toolbar {
   display: flex;
   height: 50px;

@@ -7,7 +7,7 @@ function InfoModal({ formatId, text, onClickOutside }: IInfoModalProps) {
     <div className="info-modal-overlay" onClick={onClickOutside}>
       <div className="info-modal-window">
         <div className="info-modal-text">
-          {formatId ? <FormattedMessage id={formatId} /> : text}
+          {formatId ? <FormattedMessage id={formatId} /> : text ? text : ''}
         </div>
         <div className="info-modal-close-btn" onClick={onClickOutside}>
           ✕

@@ -52,6 +52,7 @@ export interface IGraphiQLEditorType {
   sourcesQuery: (value: string) => void;
   sourcesVariables: (value: string) => void;
   sourcesHeaders: (value: string) => void;
+  execute: () => void;
 }
 
 export interface IEditorToolbarType {

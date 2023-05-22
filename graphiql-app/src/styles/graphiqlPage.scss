@@ -59,13 +59,20 @@
   }
 }
 
+.CodeMirror {
+  width: 100%;
+  font-size: 18px;
+}
+
 .query-editor {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(100px, 3fr) 0.5fr;
   flex: 1;
   padding: 16px;
   padding-right: 5px;
 
   &__text {
+    flex: 0 0 300px;
     position: relative;
     height: 100%;
     width: 100%;
@@ -120,5 +127,5 @@
 }
 
 .tab-sectisdfon {
-  overflow: scroll;
+  overflow: auto;
 }

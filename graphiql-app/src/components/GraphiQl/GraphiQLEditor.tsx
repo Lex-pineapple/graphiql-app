@@ -3,20 +3,30 @@ import CleanButton from '../../assets/broom-clean.svg';
 import EditorToolbar from './EditorToolbar';
 import { useState } from 'react';
 import { IGraphiQLEditorType } from '../../@types/graphql';
+import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
+import { initQuery, initVariable } from './initialValues';
+import redactorTheme from './redactorTheme';
 
-function GraphiQLEditor({ sourcesQuery, sourcesVariables, sourcesHeaders }: IGraphiQLEditorType) {
-  const [queryAreaValue, setQueryAreaValue] = useState('');
-  const [variablesAreaValue, setVariablesAreaValue] = useState('');
+function GraphiQLEditor({
+  sourcesQuery,
+  sourcesVariables,
+  sourcesHeaders,
+  execute,
+}: IGraphiQLEditorType) {
+  const [queryAreaValue, setQueryAreaValue] = useState(initQuery);
+  const [variablesAreaValue, setVariablesAreaValue] = useState(initVariable);
   const [headersAreaValue, setHeadersAreaValue] = useState('');
 
   const handelExecuteBtn = () => {
     sourcesQuery(queryAreaValue);
     sourcesVariables(variablesAreaValue);
     sourcesHeaders(headersAreaValue);
+    execute();
   };
 
-  const handelQueryAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setQueryAreaValue(event.target.value);
+  const handelQueryAreaChanges = (value: string) => {
+    setQueryAreaValue(value);
   };
 
   const textAreaVariables = (data: string) => {
@@ -27,19 +37,34 @@ function GraphiQLEditor({ sourcesQuery, sourcesVariables, sourcesHeaders }: IGra
     setHeadersAreaValue(data);
   };
 
+  const cleanQueryField = () => {
+    setQueryAreaValue('');
+  };
+
   return (
     <section className="graphiQLPage__editor">
       <div className="query-editor">
-        <textarea
-          placeholder="Write your query or mutation here"
-          className="query-editor__text"
+        <CodeMirror
+          className="CodeMirror"
+          value={queryAreaValue}
+          theme={redactorTheme}
+          height="100%"
+          maxWidth="540px"
+          basicSetup={{
+            indentOnInput: true,
+            defaultKeymap: true,
+            autocompletion: false,
+            lineNumbers: false,
+            foldGutter: true,
+          }}
+          extensions={[javascript()]}
           onChange={handelQueryAreaChanges}
-        ></textarea>
+        />
         <div className="query-editor__toolbar">
           <button className="executeButton" onClick={handelExecuteBtn}>
             <img className="button-icon" src={ExecuteButton} alt="Execute Button" />
           </button>
-          <button className="cleanButton">
+          <button className="cleanButton" onClick={cleanQueryField}>
             <img className="button-icon" src={CleanButton} alt="Clean Button" />
           </button>
         </div>
