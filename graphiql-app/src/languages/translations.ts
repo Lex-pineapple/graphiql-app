@@ -4,6 +4,7 @@ import { LOCALES } from './locales';
 import { Message } from './messages';
 import { WelcomePageMsg } from './welcomePageMsg';
 import { NotFoundMsg } from './notFoundMsg';
+import { ApiMsg } from './apiMsg';
 
 export const translations = {
   [LOCALES.ENGLISH]: {
@@ -94,6 +95,10 @@ export const translations = {
     [AuthMsg.APIErrorNotAllowed]: 'Error during sign up',
     [AuthMsg.resetPwdResOk]: 'Email with instructions has been sent',
     [AuthMsg.resetPwdResError]: 'An error occured during your request',
+    [ApiMsg.apiGenError]: 'An error occured.\n The server response:',
+    [ApiMsg.apiErrorHeaders]: 'Error parsing header data',
+    [ApiMsg.apiErrorVars]: 'Error parsing variables data',
+    [ApiMsg.apiErrorUnknown]: 'Unknown error',
   },
   [LOCALES.RUSSIAN]: {
     [Message.Logout]: 'Выйти',
@@ -183,5 +188,9 @@ export const translations = {
     [AuthMsg.APIErrorNotAllowed]: 'Ошибка при регистрации',
     [AuthMsg.resetPwdResOk]: 'Письмо с инструкциями отправлено',
     [AuthMsg.resetPwdResError]: 'Во время вашего запроса произошла ошибка',
+    [ApiMsg.apiGenError]: 'Произошла ошибка.\n Сервер ответил:',
+    [ApiMsg.apiErrorHeaders]: 'Ошибка при анализе заголовков',
+    [ApiMsg.apiErrorVars]: 'Ошибка при анализе переменных',
+    [ApiMsg.apiErrorUnknown]: 'Неизвестная ошибка',
   },
 };

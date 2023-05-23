@@ -13,6 +13,7 @@
   color: white;
   background: rgba($headerGreen, 0.85);
   transition: 0.3s background, 0.3s transform;
+  margin: 0 10px;
 
   &:hover {
     cursor: pointer;

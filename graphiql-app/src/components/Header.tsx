@@ -65,8 +65,8 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
   };
 
   return (
-    <header className="header" ref={headerRef}>
-      <div className={`header__wrapper ${scroll ? 'scroll' : ''} container wrapper`}>
+    <header className={`header ${scroll ? 'scroll' : ''}`} ref={headerRef}>
+      <div className="header__wrapper container wrapper">
         <HeaderLogo />
         <div className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
           <div className="header-nav-contents">

@@ -1,4 +1,6 @@
+import { ApiMsg } from '../languages/apiMsg';
 import { ISchema } from '../@types/graphql';
+import { IGetRescourcesRet } from '../@types/api';
 
 const BASE_URL = 'https://rickandmortyapi.com/graphql';
 
@@ -6,19 +8,41 @@ export async function getResources(
   sourcesQuery: string,
   sourcesVariables: string,
   sourcesHeaders: string
-): Promise<string> {
+): Promise<IGetRescourcesRet> {
   const parsSourcesVariables = () => sourcesVariables && JSON.parse(sourcesVariables);
   const parsSourcesHeader = () => sourcesHeaders && JSON.parse(sourcesHeaders);
   console.log(sourcesHeaders);
   try {
     parsSourcesHeader();
   } catch (error) {
-    return 'Error parsing header data';
+    if (error instanceof Error) {
+      return {
+        type: 'error',
+        contents: error.message,
+        formatId: ApiMsg.apiGenError,
+      };
+    }
+    return {
+      type: 'error',
+      contents: '',
+      formatId: ApiMsg.apiErrorHeaders,
+    };
   }
   try {
     parsSourcesVariables();
   } catch (error) {
-    return 'Error parsing variables data';
+    if (error instanceof Error) {
+      return {
+        type: 'error',
+        contents: error.message,
+        formatId: ApiMsg.apiGenError,
+      };
+    }
+    return {
+      type: 'error',
+      contents: '',
+      formatId: ApiMsg.apiErrorVars,
+    };
   }
   try {
     const results = await fetch(BASE_URL, {
@@ -30,9 +54,23 @@ export async function getResources(
       }),
     });
     const data = await results.json();
-    return JSON.stringify(data, null, 2);
+    return {
+      type: 'ok',
+      contents: JSON.stringify(data, null, 2),
+    };
   } catch (error) {
-    return 'Error response';
+    if (error instanceof Error) {
+      return {
+        type: 'error',
+        contents: error.message,
+        formatId: ApiMsg.apiGenError,
+      };
+    }
+    return {
+      type: 'error',
+      contents: 'Unknown error',
+      formatId: ApiMsg.apiErrorUnknown,
+    };
   }
 }
 

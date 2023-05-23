@@ -6,6 +6,10 @@ import { FormattedMessage } from 'react-intl';
 import { HeaderList } from '../HeadersList';
 import { GraphiQlMsg } from '../../languages/graphiQlMsg';
 import { IEditorToolbarType } from '../../@types/graphql';
+import CodeMirror from '@uiw/react-codemirror';
+import { json } from '@codemirror/lang-json';
+import { initVariable } from './initialValues';
+import redactorTheme from './redactorTheme';
 
 function EditorToolbar({ textAreaVariables, textAreaHeaders }: IEditorToolbarType) {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,8 +34,8 @@ function EditorToolbar({ textAreaVariables, textAreaHeaders }: IEditorToolbarTyp
     setheightSection(150);
   };
 
-  const handelVariablesAreaChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    textAreaVariables(event.target.value);
+  const handelVariablesAreaChanges = (value: string) => {
+    textAreaVariables(value);
   };
 
   return (
@@ -62,12 +66,24 @@ function EditorToolbar({ textAreaVariables, textAreaHeaders }: IEditorToolbarTyp
         </button>
       </div>
       <div style={{ height: `${heightSection}px` }} className="tab-sectisdfon">
-        <textarea
+        <CodeMirror
+          className="CodeMirror-vars"
           style={{ display: isOpen && chose === 'variables' ? 'block' : 'none' }}
-          placeholder="Variables section"
-          className="tab-section"
+          value={initVariable}
+          height="100%"
+          maxWidth="570px"
+          theme={redactorTheme}
+          basicSetup={{
+            indentOnInput: true,
+            defaultKeymap: true,
+            autocompletion: true,
+            syntaxHighlighting: true,
+            lineNumbers: false,
+            foldGutter: true,
+          }}
+          extensions={[json()]}
           onChange={handelVariablesAreaChanges}
-        ></textarea>
+        />
         <div style={{ display: isOpen && chose === 'headers' ? 'block' : 'none' }}>
           <HeaderList textAreaHeaders={textAreaHeaders} />
         </div>
