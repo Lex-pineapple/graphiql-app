@@ -2,6 +2,7 @@
 
 .hero {
   background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
+  background-attachment: fixed;
 
   @media screen and (max-width: 800px) {
     height: 100vh;
