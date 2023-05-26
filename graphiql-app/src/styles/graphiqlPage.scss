@@ -1,61 +1,61 @@
 @import './variables';
 
 .graphiQLPage {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  flex: 1;
-  height: 86vh;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 86vh;
+  width: 100%;
   padding-bottom: 80px;
-
-  @media screen and (max-width: 800px) {
-    flex-direction: column;
-    min-height: 500px;
-    height: fit-content;
-  }
+  flex: 1;
 
   &__editor {
     display: flex;
     flex-direction: column;
-    flex: 1 1 0%;
     border: 10px solid $backgroundGraphiQLPage;
-    margin: 10px 0 10px 10px;
     border-radius: 10px;
+    margin: 10px 0 10px 10px;
+    flex: 1 1 0%;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
+      border-radius: 3vw;
       margin: 1vw 0;
       min-height: 300px;
-      border-radius: 3vw;
     }
   }
 
   &__response {
     display: flex;
     flex-direction: row;
-    flex: 1 1 0%;
-    padding: 16px;
-    margin: 10px 32px 10px 0;
-    background: $backgroundGraphiQLPage;
     border-left: 0;
     border-radius: 10px;
+    margin: 10px 32px 10px 0;
+    background: $backgroundGraphiQLPage;
+    overflow: scroll;
+    padding: 16px;
+    flex: 1 1 0%;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    overflow: scroll;
 
-    @media screen and (max-width: 800px) {
-      margin: 0;
-      padding: 2vw 4vw;
-      min-height: 500px;
+    @media screen and (width <= 800px) {
       border-radius: 3vw;
+      margin: 0;
+      min-height: 500px;
+      padding: 2vw 4vw;
     }
   }
 
   &__response-text {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     font-size: 14px;
+  }
+
+  @media screen and (width <= 800px) {
+    flex-direction: column;
+    min-height: 500px;
+    height: fit-content;
   }
 }
 
@@ -67,29 +67,29 @@
 .query-editor {
   display: grid;
   grid-template-columns: minmax(100px, 3fr) 0.5fr;
-  flex: 1;
   padding: 16px;
   padding-right: 5px;
+  flex: 1;
 
   &__text {
-    flex: 0 0 300px;
     position: relative;
+    outline: none;
+    border: none;
     height: 100%;
     width: 100%;
-    outline: none;
     resize: none;
-    border: none;
+    flex: 0 0 300px;
   }
 
   &__toolbar {
     position: relative;
-    width: 60px;
-    margin-left: 40px;
     justify-content: center;
     align-items: center;
+    margin-left: 40px;
+    width: 60px;
     text-align: center;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
       margin-left: 4vw;
     }
   }
@@ -97,33 +97,33 @@
 
 .executeButton,
 .cleanButton {
-  width: 40px;
-  height: 40px;
-  padding: 0;
   outline: none;
   border: none;
-  cursor: pointer;
   margin-bottom: 20px;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  cursor: pointer;
 }
 
 .button-icon {
-  width: 40px;
   height: 40px;
+  width: 40px;
   transition: filter 0.3s;
 
   &:hover {
-    animation: logoImg 0.5s linear;
     filter: brightness(0.7) sepia(1) hue-rotate(140deg) saturate(6);
     transition: filter 0.3s;
+    animation: logoImg 0.5s linear;
   }
 }
 
 .tab-section {
   outline: none;
-  resize: none;
   border: none;
   height: 100%;
   width: 100%;
+  resize: none;
 }
 
 .tab-sectisdfon {

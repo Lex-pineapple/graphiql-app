@@ -1,87 +1,87 @@
-@import './variables.scss';
-@import './animation.scss';
+@import './variables';
+@import './animation';
 
 .headerLogo {
   &__wrapper {
+    z-index: 5;
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 5;
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (width <= 1100px) {
       gap: 1.5vw;
     }
   }
 
   &__img {
-    width: 60px;
-    height: 60px;
     position: relative;
+    height: 60px;
+    width: 60px;
 
-    @media screen and (max-width: 1100px) {
-      width: 6vw;
+    @media screen and (width <= 1100px) {
       height: 6vw;
+      width: 6vw;
     }
   }
 
   &__text {
-    color: $headerGreen;
-    font-family: 'Roboto', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
     background: linear-gradient(45deg, $mintGreen 10%, $headerGreen 50%, $mintGreen 80%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: Roboto, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: $headerGreen;
     animation: background-gradient 2s infinite alternate;
+    -webkit-text-fill-color: transparent;
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (width <= 1100px) {
       font-size: 2.5vw;
     }
   }
 }
 
 .circle-big {
-  background-color: white;
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-  border: 2px solid $mintGreen;
-  position: absolute;
   z-index: 2;
+  position: absolute;
+  display: inline-block;
+  border: 2px solid $mintGreen;
+  border-radius: 50%;
+  background-color: white;
+  height: 10px;
+  width: 10px;
+  vertical-align: middle;
 
-  @media screen and (max-width: 1100px) {
-    width: 1vw;
+  @media screen and (width <= 1100px) {
     height: 1vw;
+    width: 1vw;
     border-width: 0.2vw;
   }
 }
 
 .circle-small {
-  background-color: white;
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 50%;
-  width: 8px;
-  height: 8px;
-  border: 2px solid $mintGreen;
-  position: absolute;
   z-index: 2;
+  position: absolute;
+  display: inline-block;
+  border: 2px solid $mintGreen;
+  border-radius: 50%;
+  background-color: white;
+  height: 8px;
+  width: 8px;
+  vertical-align: middle;
 
-  @media screen and (max-width: 1100px) {
-    width: 0.8vw;
+  @media screen and (width <= 1100px) {
     height: 0.8vw;
+    width: 0.8vw;
     border-width: 0.2vw;
   }
 }
 
 .line {
   position: absolute;
-  border-radius: 0.5px;
   border: 1px solid $mintGreen;
+  border-radius: 0.5px;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     border-width: 0.1vh;
   }
 }
@@ -91,7 +91,7 @@
   border-image: linear-gradient(to bottom left, $headerGreen, $mintGreen);
   border-image-slice: 1;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     border-width: 0.1vh;
   }
 }
@@ -101,7 +101,7 @@
   border-image: linear-gradient(to bottom left, $mintGreen, $headerGreen);
   border-image-slice: 1;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     border-width: 0.1vh;
   }
 }
@@ -109,7 +109,7 @@
 .circle-gradient {
   border: 2px solid $headerGreen;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     border-width: 0.2vw;
   }
 }
@@ -118,7 +118,7 @@
   top: 2px;
   left: 28px;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     top: 0.2vw;
     left: 2.8vw;
   }
@@ -128,7 +128,7 @@
   top: 10px;
   left: 8px;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     top: 1vw;
     left: 0.8vw;
   }
@@ -136,9 +136,9 @@
 
 .circle-left-bottom {
   top: 40px;
-  left: 0px;
+  left: 0;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     top: 4vw;
     left: 0;
   }
@@ -148,7 +148,7 @@
   top: 50px;
   left: 50px;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     top: 5vw;
     left: 5vw;
   }
@@ -158,7 +158,7 @@
   top: 20px;
   left: 43px;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     top: 2vw;
     left: 4.3vw;
   }
@@ -168,161 +168,161 @@
   top: 30px;
   left: 25px;
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (width <= 1100px) {
     top: 3vw;
     left: 2.5vw;
   }
 }
 
 .line-right-top {
-  transform-origin: bottom right;
-  width: 15px;
   top: 20px;
   left: 29.5px;
   transform: rotate(53deg);
+  width: 15px;
+  transform-origin: bottom right;
 
-  @media screen and (max-width: 1100px) {
-    width: 1.5vw;
+  @media screen and (width <= 1100px) {
     top: 2vw;
     left: 2.95vw;
+    width: 1.5vw;
   }
 }
 
 .line-right-bottom {
-  transform-origin: bottom left;
-  width: 27px;
   top: 24.5px;
   left: 47px;
   transform: rotate(76deg);
+  width: 27px;
+  transform-origin: bottom left;
 
-  @media screen and (max-width: 1100px) {
-    width: 2.7vw;
+  @media screen and (width <= 1100px) {
     top: 2.45vw;
     left: 4.7vw;
+    width: 2.7vw;
   }
 }
 
 .line-bottom {
-  transform-origin: bottom left;
-  width: 43px;
   top: 45px;
   left: 8px;
   transform: rotate(12deg);
+  width: 43px;
+  transform-origin: bottom left;
 
-  @media screen and (max-width: 1100px) {
-    width: 4.3vw;
+  @media screen and (width <= 1100px) {
     top: 4.5vw;
     left: 0.8vw;
+    width: 4.3vw;
   }
 }
 
 .line-right {
-  transform-origin: bottom right;
-  width: 25px;
   top: 39px;
   left: -21px;
   transform: rotate(102deg);
+  width: 25px;
+  transform-origin: bottom right;
 
-  @media screen and (max-width: 1100px) {
-    width: 2.5vw;
+  @media screen and (width <= 1100px) {
     top: 3.9vw;
     left: -2.1vw;
+    width: 2.5vw;
   }
 }
 
 .line-left-top {
-  transform-origin: bottom right;
-  width: 40px;
   top: 39.5px;
   left: -35px;
   transform: rotate(127deg);
+  width: 40px;
+  transform-origin: bottom right;
 
-  @media screen and (max-width: 1100px) {
-    width: 4vw;
+  @media screen and (width <= 1100px) {
     top: 3.95vw;
     left: -3.5vw;
+    width: 4vw;
   }
 }
 
 .line-center-bottom-left {
-  width: 20px;
   top: 38px;
   left: 7px;
   transform: rotate(153deg);
+  width: 20px;
 
-  @media screen and (max-width: 1100px) {
-    width: 2vw;
+  @media screen and (width <= 1100px) {
     top: 3.8vw;
     left: 0.7vw;
+    width: 2vw;
   }
 }
 
 .line-center-bottom-right {
-  transform-origin: bottom left;
-  width: 26px;
   top: 35px;
   left: 30px;
   transform: rotate(39deg);
+  width: 26px;
+  transform-origin: bottom left;
 
-  @media screen and (max-width: 1100px) {
-    width: 2.6vw;
+  @media screen and (width <= 1100px) {
     top: 3.5vw;
     left: 3vw;
+    width: 2.6vw;
   }
 }
 
 .line-center-top-right {
-  width: 15px;
   top: 27.5px;
   left: 30px;
   transform: rotate(152deg);
+  width: 15px;
 
-  @media screen and (max-width: 1100px) {
-    width: 1.5vw;
+  @media screen and (width <= 1100px) {
     top: 2.75vw;
     left: 3vw;
+    width: 1.5vw;
   }
 }
 
 .line-center-top-left {
-  transform-origin: bottom right;
-  width: 20px;
   top: 30px;
   left: 6px;
   transform: rotate(49deg);
+  width: 20px;
+  transform-origin: bottom right;
 
-  @media screen and (max-width: 1100px) {
-    width: 2vw;
+  @media screen and (width <= 1100px) {
     top: 3vw;
     left: 0.6vw;
+    width: 2vw;
   }
 }
 
 .line-center-top {
-  transform-origin: bottom right;
-  width: 20px;
   top: 29px;
   left: 8px;
   transform: rotate(101deg);
+  width: 20px;
+  transform-origin: bottom right;
 
-  @media screen and (max-width: 1100px) {
-    width: 2vw;
+  @media screen and (width <= 1100px) {
     top: 2.9vw;
     left: 0.8vw;
+    width: 2vw;
   }
 }
 
 .line-top {
-  transform-origin: bottom left;
-  width: 30px;
   top: 20px;
   left: 45px;
   transform: rotate(196deg);
+  width: 30px;
+  transform-origin: bottom left;
 
-  @media screen and (max-width: 1100px) {
-    width: 3vw;
+  @media screen and (width <= 1100px) {
     top: 2vw;
     left: 4.5vw;
+    width: 3vw;
   }
 }
 

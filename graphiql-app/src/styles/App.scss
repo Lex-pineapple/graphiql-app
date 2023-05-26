@@ -1,4 +1,5 @@
-@import './variables.scss';
+@import './variables';
+
 *,
 *::before,
 *::after {
@@ -18,8 +19,8 @@ html {
 
 .container {
   max-width: 1440px;
-  padding-left: 15px;
   padding-right: 15px;
+  padding-left: 15px;
 }
 
 .wrapper {
@@ -33,7 +34,7 @@ a {
 .appContent {
   padding-top: 80px;
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (width <= 1000px) {
     padding-top: 8vw;
   }
 }

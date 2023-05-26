@@ -7,30 +7,26 @@
 
 .editor-toolbar {
   display: flex;
-  height: 50px;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   border-top: 3px solid $backgroundGraphiQLPage;
-
-  @media screen and (max-width: 700px) {
-    height: 6vh;
-  }
+  height: 50px;
 
   &__options {
     display: flex;
-    gap: 20px;
     align-items: center;
-    cursor: pointer;
-    padding: 0;
     margin: 0 10px;
+    padding: 0;
+    cursor: pointer;
+    gap: 20px;
   }
 
   &__options-item {
-    text-align: center;
+    border-radius: 4px;
     box-sizing: border-box;
     padding: 2px;
-    border-radius: 4px;
     transition: background-color 0.3s;
+    text-align: center;
 
     &:hover {
       background-color: rgba($headerGreen, 0.1);
@@ -41,54 +37,58 @@
       transition: background-color 0.3s;
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (width <= 700px) {
       font-size: 2vh;
     }
 
-    @media screen and (orientation: landscape) and (max-width: 800px) {
+    @media screen and (orientation: landscape) and (width <= 800px) {
       font-size: 2.5vw;
     }
   }
 
   &__button {
-    width: 50px;
-    height: 30px;
-    padding: 0;
     outline: none;
     border: none;
+    height: 30px;
+    width: 50px;
+    padding: 0;
     cursor: pointer;
 
-    @media screen and (max-width: 700px) {
-      width: 6vh;
+    @media screen and (width <= 700px) {
       height: 4vh;
+      width: 6vh;
     }
 
-    @media screen and (orientation: landscape) and (max-width: 800px) {
-      width: 6vw;
+    @media screen and (orientation: landscape) and (width <= 800px) {
       height: 4vw;
+      width: 6vw;
     }
+  }
+
+  @media screen and (width <= 700px) {
+    height: 6vh;
   }
 }
 
 .toolbar-button-icon {
-  width: 30px;
   height: 30px;
+  width: 30px;
   transition: filter 0.3s;
 
   &:hover {
-    animation: logoImg 0.5s linear;
     filter: brightness(0.5) sepia(1) hue-rotate(140deg) saturate(6);
     transition: filter 0.3s;
+    animation: logoImg 0.5s linear;
   }
 
-  @media screen and (max-width: 800px) {
-    width: 3vh;
+  @media screen and (width <= 800px) {
     height: 3vh;
+    width: 3vh;
   }
 
-  @media screen and (orientation: landscape) and (max-width: 800px) {
-    width: 6vw;
+  @media screen and (orientation: landscape) and (width <= 800px) {
     height: 4vw;
+    width: 6vw;
   }
 }
 

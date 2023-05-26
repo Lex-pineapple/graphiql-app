@@ -1,23 +1,21 @@
-@import './variables.scss';
+@import './variables';
 
 .preloader-spinner-container {
-  overflow: hidden;
   height: inherit;
   width: inherit;
+  overflow: hidden;
 
   .circle {
-    width: 20px;
-    height: 20px;
     position: absolute;
-    background: $mintGreen;
     border-radius: 50%;
     margin: -10px;
-    -webkit-animation: mesh 3s ease-in-out infinite -1.5s;
+    background: $mintGreen;
+    height: 20px;
+    width: 20px;
     animation: mesh 3s ease-in-out infinite -1.5s;
   }
 
   .circle:last-child {
-    -webkit-animation-delay: 0s;
     animation-delay: 0s;
   }
 
@@ -28,62 +26,50 @@
   }
 
   > div:last-child {
-    -webkit-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-  }
-}
-
-@-webkit-keyframes mesh {
-  0% {
-    -webkit-transform-origin: 50% -100%;
-    transform-origin: 50% -100%;
-    -webkit-transform: rotate(0);
-    transform: rotate(0);
-  }
-  50% {
-    -webkit-transform-origin: 50% -100%;
-    transform-origin: 50% -100%;
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-  50.1% {
-    -webkit-transform-origin: 50% 200%;
-    transform-origin: 50% 200%;
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform-origin: 50% 200%;
-    transform-origin: 50% 200%;
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
   }
 }
 
 @keyframes mesh {
   0% {
-    -webkit-transform-origin: 50% -100%;
-    transform-origin: 50% -100%;
-    -webkit-transform: rotate(0);
     transform: rotate(0);
-  }
-  50% {
-    -webkit-transform-origin: 50% -100%;
     transform-origin: 50% -100%;
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
   }
+
+  50% {
+    transform: rotate(360deg);
+    transform-origin: 50% -100%;
+  }
+
   50.1% {
-    -webkit-transform-origin: 50% 200%;
-    transform-origin: 50% 200%;
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform-origin: 50% 200%;
     transform-origin: 50% 200%;
-    -webkit-transform: rotate(360deg);
+  }
+
+  100% {
     transform: rotate(360deg);
+    transform-origin: 50% 200%;
+  }
+}
+
+@keyframes mesh {
+  0% {
+    transform: rotate(0);
+    transform-origin: 50% -100%;
+  }
+
+  50% {
+    transform: rotate(360deg);
+    transform-origin: 50% -100%;
+  }
+
+  50.1% {
+    transform: rotate(0deg);
+    transform-origin: 50% 200%;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    transform-origin: 50% 200%;
   }
 }
