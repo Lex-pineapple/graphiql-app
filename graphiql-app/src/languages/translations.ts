@@ -60,6 +60,7 @@ export const translations = {
     [AuthMsg.signUpEmailLabel]: 'Email',
     [AuthMsg.signUpPwdLabel]: 'Password',
     [AuthMsg.signUpNamePlh]: 'Your name',
+    [AuthMsg.signUpEmailPlh]: 'Email',
     [AuthMsg.signUpPwdPlh]: 'Enter your password',
     [AuthMsg.signUpMainBtn]: 'Get started now',
     [AuthMsg.singUpLogIn]: 'Log in',
@@ -73,6 +74,7 @@ export const translations = {
     [AuthMsg.resetPwdSubHeader]:
       'Input your email below and we will send you an email with instructions.',
     [AuthMsg.resetPwdMainBtn]: 'Send password reset email',
+    [AuthMsg.resetPwdEmailPlh]: 'Email',
     [GraphiQlMsg.variablesHeader]: 'Variables',
     [GraphiQlMsg.headersHeader]: 'Headers',
     [GraphiQlMsg.docsHeader]: 'Docs',
@@ -153,6 +155,7 @@ export const translations = {
     [AuthMsg.signUpEmailLabel]: 'Электронная почта',
     [AuthMsg.signUpPwdLabel]: 'Пароль',
     [AuthMsg.signUpNamePlh]: 'Ваше имя',
+    [AuthMsg.signUpEmailPlh]: 'Электронная почта',
     [AuthMsg.signUpPwdPlh]: 'Введите ваш пароль',
     [AuthMsg.signUpMainBtn]: 'Присоединиться',
     [AuthMsg.singUpLogIn]: 'Вход',
@@ -162,6 +165,7 @@ export const translations = {
     [AuthMsg.signUpPwdError]:
       'Пароль должен состоять не менее чем из 8 символов, содержать как минимум 1 прописную букву и как минимум 1 цифру',
     [AuthMsg.signUpSuccess]: 'Регистрация прошла успешно',
+    [AuthMsg.resetPwdEmailPlh]: 'Электронная почта',
     [GraphiQlMsg.variablesHeader]: 'Переменные',
     [GraphiQlMsg.headersHeader]: 'Заголовки',
     [GraphiQlMsg.docsHeader]: 'Документация',

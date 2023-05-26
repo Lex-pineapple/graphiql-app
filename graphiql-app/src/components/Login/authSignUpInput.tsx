@@ -1,7 +1,8 @@
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { IAuthSignUpInputProps } from '../../@types/auth';
 
 function AuthSignUpInput(props: IAuthSignUpInputProps) {
+  const intl = useIntl();
   return (
     <>
       <p className="signup__form-input-header-text">
@@ -10,7 +11,7 @@ function AuthSignUpInput(props: IAuthSignUpInputProps) {
       <input
         type={props.type}
         className={`signup__form-input input-${props.type} input`}
-        placeholder={props.placeholder}
+        placeholder={intl.formatMessage({ id: props.placeholder })}
         value={props.value}
         onChange={props.onChange}
       />

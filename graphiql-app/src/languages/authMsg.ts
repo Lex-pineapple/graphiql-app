@@ -18,6 +18,7 @@ export enum AuthMsg {
   signUpEmailLabel = 'sign up email label',
   signUpPwdLabel = 'sign up password label',
   signUpNamePlh = 'sign up name placeholder',
+  signUpEmailPlh = 'sign up email placeholder',
   signUpPwdPlh = 'sign up password placeholder',
   signUpMainBtn = 'sign up main btn',
   singUpLogIn = 'sign up log in',
@@ -31,6 +32,7 @@ export enum AuthMsg {
   resetPwdHeader = 'reset password header',
   resetPwdSubHeader = 'reset password subheader',
   resetPwdMainBtn = 'reset password main button',
+  resetPwdEmailPlh = 'reset password email placeholder',
   resetPwdResOk = 'reset password response OK',
   resetPwdResError = 'reset password response error',
 

@@ -86,7 +86,7 @@ function SignUp() {
         label={AuthMsg.signUpNameLabel}
         name="name"
         type="text"
-        placeholder="Your name"
+        placeholder={AuthMsg.signUpNamePlh}
         value={name}
         onChange={(e) => setName(e.target.value)}
         errorType={!validState.details.nameValid.res}
@@ -97,7 +97,7 @@ function SignUp() {
         label={AuthMsg.signUpEmailLabel}
         name="email"
         type="email"
-        placeholder="Email"
+        placeholder={AuthMsg.signUpEmailPlh}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         errorType={!validState.details.emailValid.res || APIError.type === 'email'}
@@ -108,7 +108,7 @@ function SignUp() {
         label={AuthMsg.signUpPwdLabel}
         name="password"
         type="password"
-        placeholder="Enter your password"
+        placeholder={AuthMsg.signUpPwdPlh}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         errorType={!validState.details.passwordValid.res || APIError.type === 'password'}
