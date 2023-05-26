@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, sendPasswordReset } from '../../auth/firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import InfoModal from '../InfoModal';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { AuthMsg } from '../../languages/authMsg';
 
 function ResetPassword() {
@@ -12,6 +12,8 @@ function ResetPassword() {
   const [showModal, setShowModal] = useState(false);
   const [modalText, setModalText] = useState('');
   const [user, loading] = useAuthState(auth);
+  const intl = useIntl();
+
   const navigate = useNavigate();
 
   const handleCloseModalClick = () => {
@@ -49,7 +51,7 @@ function ResetPassword() {
       </p>
       <input
         type="email"
-        placeholder="Email"
+        placeholder={intl.formatMessage({ id: AuthMsg.resetPwdEmailPlh })}
         className="resetpwd__form-input"
         value={email}
         onChange={(e) => setEmail(e.target.value)}

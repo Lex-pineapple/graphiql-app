@@ -73,7 +73,7 @@ function SignIn() {
       </p>
       <AuthSignInInput
         type="email"
-        placeholder="Your email"
+        placeholder={AuthMsg.signInEmailPlh}
         value={email}
         onChange={(e) => {
           setEmail(e.target.value);
@@ -84,7 +84,7 @@ function SignIn() {
       />
       <AuthSignInInput
         type="password"
-        placeholder="Password"
+        placeholder={AuthMsg.signInPwdPlaceholder}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         errorType={APIError.type}
