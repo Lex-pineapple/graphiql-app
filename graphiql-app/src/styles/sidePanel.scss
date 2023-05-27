@@ -1,0 +1,116 @@
+@import './variables';
+
+.sidePanel {
+  z-index: 2;
+  position: fixed;
+  top: 90px;
+  right: 0;
+  transform: translateX(100%);
+  outline: none;
+  border: 3px solid $headerGreen;
+  border-radius: 10px 0 0 10px;
+  background: $backgroundGraphiQLPage;
+  height: calc(100vh - 132px);
+  width: 400px;
+  transition: transform 0.5s $cubicBezier;
+  box-shadow: $panelColor;
+
+  &.open {
+    position: fixed;
+    transform: translateX(0);
+  }
+
+  @media screen and (width <= 800px) {
+    top: 9vw;
+    height: calc(100vh - 20vw);
+  }
+
+  @media screen and (width <= 450px) {
+    width: 90%;
+  }
+}
+
+.sidePanel-menu {
+  z-index: 2;
+  position: absolute;
+  top: 129px;
+  outline: none;
+  height: 0;
+
+  &__button {
+    z-index: 2;
+    transform: rotate(-90deg);
+    border-radius: 2px 2px 0 0;
+    margin-top: 65px;
+    background: $panelButtonBackgroundColor;
+    min-width: 65px;
+    padding: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 600;
+    color: $panelColor;
+    cursor: pointer;
+    box-shadow: contentshadow;
+    text-align: center;
+    transform-origin: left bottom;
+
+    @media screen and (width <= 450px) {
+      padding: 1.5vw;
+      font-size: 3vw;
+    }
+  }
+
+  @media screen and (orientation: landscape) {
+    top: 5vw;
+  }
+}
+
+.sidePanel-info {
+  position: relative;
+  margin-right: 20px;
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+  font-size: 9px;
+
+  &-header {
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    color: $headerGreen;
+
+    @media screen and (width <= 450px) {
+      font-size: 5vw;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    padding: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    margin: 10px 0;
+    background-color: $hoverGrey;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba($color: $headerGreen, $alpha: 50%);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba($color: $headerGreen, $alpha: 100%);
+  }
+
+  @media screen and (width <= 800px) {
+    height: calc(100vh - 25vw);
+  }
+
+  @media screen and (width <= 450px) {
+    height: calc(100vh - 28vw);
+  }
+}

@@ -1,0 +1,26 @@
+@import './variables';
+
+.lang-switcher__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 50px;
+  background: rgba($headerGreen, 0.2);
+  height: 40px;
+  width: 40px;
+  font-weight: 500;
+  color: $headerGreen;
+  cursor: pointer;
+  transition: 0.3s background, 0.3s transform;
+
+  &:hover {
+    background: rgba($headerGreen, 0.3);
+    transition: 0.3s background;
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition: 0.2s transform;
+  }
+}

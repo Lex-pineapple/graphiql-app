@@ -1,0 +1,397 @@
+@import './variables';
+
+.auth {
+  &-container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
+    height: 100%;
+    width: 100%;
+    justify-items: center;
+    text-align: center;
+
+    @media screen and (width <= 1000px) {
+      position: relative;
+      display: block;
+      height: 90vh;
+    }
+
+    @media screen and (height <= 600px) {
+      background: #fff;
+    }
+  }
+
+  &__img {
+    height: 90vh;
+    width: 100%;
+
+    @media screen and (width <= 1000px) {
+      display: none;
+    }
+  }
+
+  &__img-text-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    backdrop-filter: blur(5px);
+
+    @media screen and (width <= 1000px) {
+      display: none;
+    }
+  }
+
+  &__img-bigtext {
+    margin-bottom: 20px;
+    font-size: 72px;
+    font-weight: 700;
+    color: #fff;
+
+    @media screen and (width <= 1100px) {
+      font-size: 6vw;
+    }
+  }
+
+  &__img-bigtext--highlight {
+    color: #e3e56f;
+
+    @media screen and (width <= 1100px) {
+      font-size: 6vw;
+    }
+  }
+
+  &__img-smalltext {
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+
+    @media screen and (width <= 1100px) {
+      font-size: 3vw;
+    }
+
+    @media screen and (height <= 800px) {
+      font-size: 3vh;
+    }
+  }
+
+  &__img-github-logo {
+    position: absolute;
+    bottom: 80px;
+    left: 30px;
+    background: url('../assets/github-mark-white.svg') center/cover no-repeat;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+  }
+
+  &-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 0 40px;
+
+    @media screen and (width <= 1000px) {
+      display: block;
+      margin: 0 auto;
+      height: 100%;
+      width: fit-content;
+      padding: 5vw 4vw;
+    }
+  }
+}
+
+.signin {
+  &__form {
+    margin: 0 auto;
+    max-width: 500px;
+    padding-bottom: 80px;
+  }
+
+  &__form-bigtext {
+    font-size: 108px;
+    font-weight: 900;
+
+    @media screen and (width <= 1000px) {
+      font-size: 10vw;
+    }
+  }
+
+  &__form-subtext {
+    margin: 10px 0;
+  }
+
+  &__form-btn-google,
+  &__form-btn-login,
+  &__form-input {
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+
+    @media screen and (width <= 1000px) {
+      font-size: 3vw;
+    }
+
+    @media screen and (height <= 700px) {
+      font-size: 3vh;
+    }
+  }
+
+  &__form-btn-google {
+    border: 1px solid $mintGreen;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+
+    @media screen and (height <= 700px) {
+      margin-top: 2vh;
+      font-size: 3vh;
+    }
+  }
+
+  &__form-btn-google:hover {
+    background-color: $mintGreen;
+  }
+
+  &__form-btn-login {
+    position: relative;
+    margin: 30px 0;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+
+    @media screen and (height <= 700px) {
+      margin: 2vh 0;
+    }
+  }
+
+  &__form-btn-login::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: 0 4px 2px 3px rgba($mintGreen, 0.5);
+  }
+
+  &__form-btn-login:hover::after {
+    opacity: 1;
+  }
+
+  &__form-hr {
+    position: relative;
+    margin: 30px 0;
+    font-weight: 500;
+
+    @media screen and (height <= 700px) {
+      margin: 2vh 0;
+    }
+  }
+
+  &__form-hr::before,
+  &__form-hr::after {
+    position: absolute;
+    top: 55%;
+    content: '';
+    background-color: $grey;
+    height: 1px;
+    width: 30%;
+    overflow: hidden;
+  }
+
+  &__form-hr::after {
+    margin-left: 3%;
+  }
+
+  &__form-hr::before {
+    margin-left: -33%;
+    text-align: right;
+  }
+
+  &__form-input {
+    border: 1px solid $grey;
+    margin: 10px 0;
+    padding: 10px 20px;
+
+    @media screen and (height <= 700px) {
+      margin: 1vh;
+      padding: 1.5vh 3vh;
+    }
+  }
+
+  &__form-input:focus {
+    outline-color: $dkGrey;
+  }
+
+  &__form-text--highlight {
+    font-weight: 700;
+    color: $mintGreen;
+    cursor: pointer;
+  }
+
+  &__form-text--right {
+    width: 100%;
+    text-align: right;
+  }
+
+  &__form-text--under-container,
+  &__form-text--highlight {
+    display: inline-block;
+  }
+
+  &__form-input-validator-error-email,
+  &__form-input-validator-error-password {
+    height: 0;
+    overflow: hidden;
+    color: red;
+    transition: height 0.5s ease-in-out;
+  }
+
+  &__form-input-validator-error-email.active,
+  &__form-input-validator-error-password.active {
+    height: 20px;
+  }
+}
+
+.signup {
+  &__form {
+    max-width: 700px;
+    width: 100%;
+    padding: 0 20px 80px;
+  }
+
+  &__form-bigtext {
+    font-size: 108px;
+    font-weight: 900;
+
+    @media screen and (width <= 1500px) {
+      font-size: 5vw;
+    }
+
+    @media screen and (width <= 1000px) {
+      font-size: 9vw;
+    }
+  }
+
+  &__form-subtext {
+    margin: 15px 0;
+  }
+
+  &__form-btn-signup,
+  &__form-input {
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+
+    @media screen and (width <= 1000px) {
+      font-size: 3vw;
+    }
+
+    @media screen and (height <= 700px) {
+      font-size: 3vh;
+    }
+  }
+
+  &__form-btn-signup {
+    position: relative;
+    margin: 30px 0;
+    background-color: black;
+    color: #fff;
+    cursor: pointer;
+
+    @media screen and (height <= 700px) {
+      margin: 2vh 0;
+    }
+  }
+
+  &__form-btn-signup::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: 0 4px 2px 3px rgba($mintGreen, 0.5);
+  }
+
+  &__form-btn-signup:hover::after {
+    opacity: 1;
+  }
+
+  &__form-input {
+    border: 1px solid $grey;
+    margin: 10px 0;
+    padding: 10px 20px;
+
+    @media screen and (height <= 700px) {
+      margin: 1vh;
+      padding: 1.5vh 3vh;
+    }
+  }
+
+  &__form-input:focus {
+    outline-color: $dkGrey;
+  }
+
+  &__form-text--highlight {
+    font-weight: 700;
+    color: $mintGreen;
+  }
+
+  &__form-input-header-text {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  &__form-input-header-text::after {
+    position: relative;
+    left: 5px;
+    content: '*';
+    color: red;
+  }
+
+  &__form-input-validator-error-name,
+  &__form-input-validator-error-email,
+  &__form-input-validator-error-password {
+    height: 0;
+    overflow: hidden;
+    color: red;
+    transition: height 0.5s ease-in-out;
+
+    @media screen and (width <= 1000px) {
+      font-size: 2vw;
+    }
+  }
+
+  &__form-input-validator-error-name.active,
+  &__form-input-validator-error-email.active {
+    height: 20px;
+  }
+
+  &__form-input-validator-error-password.active {
+    height: 50px;
+  }
+}

@@ -1,0 +1,40 @@
+@import './variables';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1440px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.appContent {
+  padding-top: 80px;
+
+  @media screen and (width <= 1000px) {
+    padding-top: 8vw;
+  }
+}
