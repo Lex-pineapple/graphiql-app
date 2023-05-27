@@ -33,7 +33,6 @@ function ResetPassword() {
 
   useEffect(() => {
     if (loading) {
-      console.log('loading...');
       return;
     }
     if (user) {

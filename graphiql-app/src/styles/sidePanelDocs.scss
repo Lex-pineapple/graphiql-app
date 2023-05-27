@@ -1,9 +1,9 @@
-@import './variables.scss';
+@import './variables';
 
 .clickable {
-  cursor: pointer;
-  padding: 0 10px;
   border-radius: 5px;
+  padding: 0 10px;
+  cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 
   &:hover {
@@ -28,12 +28,12 @@
   &__query-args,
   &__query-type {
     display: inline-block;
-    margin: 2px 5px 2px 0
+    margin: 2px 5px 2px 0;
   }
 
   &__query-name {
-    color: #04768a;
     font-weight: 500;
+    color: #04768a;
   }
 
   &__query-args {
@@ -41,21 +41,21 @@
   }
 
   &__query-type {
-    color: #E01A4F;
+    color: #e01a4f;
   }
 }
 
 .query-declaration {
+  background-color: $dkLightGrey;
   padding: 15px;
   font-size: 14px;
-  background-color: $dkLightGrey;
 
   &-header {
+    margin-bottom: 5px;
     text-transform: uppercase;
+    font-size: 14px;
     font-weight: 500;
     color: $headerGreen;
-    font-size: 14px;
-    margin-bottom: 5px;
   }
 
   &-field {
@@ -66,7 +66,7 @@
   &-field-name,
   &-field-type {
     display: inline-block;
-    margin: 2px 5px 2px 0
+    margin: 2px 5px 2px 0;
   }
 
   &-field-args {
@@ -74,24 +74,24 @@
   }
 
   &-field__item {
-    margin: 2px 0;
     display: flex;
+    margin: 2px 0;
     gap: 5px;
   }
 
   &-field-name {
-    color: #04768a;
     font-weight: 500;
+    color: #04768a;
   }
 
   &-field-type,
   &-field__item-type {
-    color: #E01A4F;
+    color: #e01a4f;
   }
 
   &-descr {
-    text-align: center;
     margin: 10px;
+    text-align: center;
   }
 }
 
@@ -101,9 +101,9 @@
 
   &-header {
     text-transform: uppercase;
+    font-size: 14px;
     font-weight: 500;
     color: $headerGreen;
-    font-size: 14px;
   }
 
   &-details {
@@ -118,8 +118,8 @@
 
   &-name,
   &-kind {
-    color: #04768a;
     font-weight: 500;
+    color: #04768a;
   }
 
   &-fields {
@@ -127,34 +127,34 @@
   }
 
   &-fields__item {
-    margin: 3px 0;
     display: flex;
+    margin: 3px 0;
     gap: 5px;
   }
 
   &-fields__item-type,
   &-type {
-    color: #E01A4F;
     font-weight: 700;
+    color: #e01a4f;
   }
 
   &-kindType-container {
-    padding: 10px;
     display: flex;
+    padding: 10px;
     gap: 5px;
   }
 }
 
 .query-args {
   padding: 15px;
-    font-weight: 500;
-    font-size: 14px;
+  font-size: 14px;
+  font-weight: 500;
 
   &-header {
     text-transform: uppercase;
+    font-size: 14px;
     font-weight: 500;
     color: $headerGreen;
-    font-size: 14px;
   }
 
   &-fields {
@@ -162,22 +162,22 @@
   }
 
   &-fields__item {
-    margin: 3px 0;
     display: flex;
+    margin: 3px 0;
     gap: 5px;
   }
 
   &-fields__item-type {
-    color: #E01A4F;
     font-weight: 700;
+    color: #e01a4f;
   }
 }
 
 .query-field {
-  text-align: center;
+  background-color: $dkLightGrey;
   padding: 15px;
   font-size: 16px;
-  background-color: $dkLightGrey;
+  text-align: center;
 
   &-name,
   &-type {
@@ -186,11 +186,11 @@
   }
 
   &-name {
-    color: #04768a;
     font-weight: 500;
+    color: #04768a;
   }
 
   &-type {
-    color: #E01A4F;
+    color: #e01a4f;
   }
 }

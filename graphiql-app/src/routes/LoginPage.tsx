@@ -5,8 +5,25 @@ import ResetPassword from '../components/Login/ResetPassword';
 import { FormattedMessage } from 'react-intl';
 import { AuthMsg } from '../languages/authMsg';
 import { WelcomePageMsg } from '../languages/welcomePageMsg';
+import { useEffect, useState } from 'react';
+import { checkForAuthStatus } from '../auth/firebase';
+import PreloaderSpinner from '../components/PreloaderSpinner';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage({ authType }: { authType: string }) {
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  useEffect(() => {
+    checkForAuthStatus((user) => {
+      if (user.status) {
+        navigate('/graphiql');
+      }
+      setLoading(false);
+    });
+  }, []);
+  if (loading) {
+    return <PreloaderSpinner />;
+  }
   return (
     <div className="auth-container">
       <div className="auth__img img">

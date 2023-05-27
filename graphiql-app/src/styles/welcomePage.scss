@@ -1,47 +1,39 @@
-@import './variables.scss';
+@import './variables';
 
 .hero {
   background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
   background-attachment: fixed;
 
-  @media screen and (max-width: 800px) {
-    height: 100vh;
-  }
-
-  @media screen and (orientation: landscape) {
-    height: 86vh;
-  }
-
   &__info {
-    padding: 150px 0;
-    max-width: 1000px;
     margin: 0 auto;
+    max-width: 1000px;
+    padding: 150px 0;
     text-align: center;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
       padding: 20vh 0;
       font-size: 1vw;
     }
   }
 
   &__graph {
+    margin-bottom: 20px;
     font-size: 72px;
     font-weight: 700;
     color: #e3e56f;
-    margin-bottom: 20px;
 
-    @media screen and (max-width: 800px) {
-      font-size: 10vh;
+    @media screen and (width <= 800px) {
       margin-bottom: 2vw;
+      font-size: 10vh;
     }
   }
 
   &__text {
-    font-weight: 500;
-    color: #ffffff;
     font-size: 28px;
+    font-weight: 500;
+    color: #fff;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
       font-size: 3vh;
     }
 
@@ -51,57 +43,66 @@
   }
 
   &__button {
-    width: 200px;
-    height: 50px;
-    margin-top: 50px;
-    background: $mintGreen;
-    color: $panelColor;
     border: none;
     border-radius: 6px;
+    margin-top: 50px;
+    background: $mintGreen;
+    height: 50px;
+    width: 200px;
     font-size: 17px;
-    font-weight: 600;
     line-height: 1;
+    font-weight: 600;
+    color: $panelColor;
     cursor: pointer;
     transition: all 0.5s;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
       margin-top: 5vh;
-      font-size: 3vh;
-      width: 25vh;
       height: 6vh;
+      width: 25vh;
+      font-size: 3vh;
     }
   }
 
   &__button:hover {
-    background: $headerGreenHoverButton;
     transform: scale(1.05);
+    background: $headerGreenHoverButton;
+  }
+
+  @media screen and (width <= 800px) {
+    height: 100vh;
+  }
+
+  @media screen and (orientation: landscape) {
+    height: 86vh;
   }
 }
 
 .aboutProject {
-  padding: 40px;
   background: $backgroundGraphiQLPage;
+  padding: 40px;
 
   &__container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   &__item {
     display: block;
-    max-width: 440px;
     margin: 0 10px;
+    max-width: 440px;
+    padding-bottom: 20px;
 
-    @media screen and (max-width: 1380px) {
+    @media screen and (width <= 1380px) {
       margin: 10px;
     }
   }
 
   &__main-title {
+    margin-bottom: 20px;
     font-size: 32px;
     text-align: center;
-    margin-bottom: 20px;
   }
 
   &__img-query {
@@ -119,13 +120,13 @@
   &__img-query,
   &__img-what-you-need,
   &__img-request {
-    width: 440px;
-    height: 300px;
     margin: 0 auto;
+    height: 300px;
+    width: 440px;
 
-    @media screen and (max-width: 470px) {
-      width: 300px;
+    @media screen and (width <= 470px) {
       height: 170px;
+      width: 300px;
     }
   }
 
@@ -134,10 +135,10 @@
   }
 
   &__title {
-    text-align: center;
     font-size: 22px;
+    text-align: center;
 
-    @media screen and (max-width: 470px) {
+    @media screen and (width <= 470px) {
       font-size: 18px;
     }
   }
@@ -146,7 +147,7 @@
     margin-top: 15px;
     font-size: 18px;
 
-    @media screen and (max-width: 470px) {
+    @media screen and (width <= 470px) {
       font-size: 16px;
     }
   }
@@ -158,24 +159,23 @@
 
   &__title {
     font-size: 32px;
-
     text-align: center;
   }
 
   &__img {
+    margin-right: 50px;
     background: url('../assets/rs_school_js.svg') center no-repeat;
-    width: 250px;
-    height: 100%;
     background-size: contain;
+    height: 100%;
+    width: 250px;
     cursor: pointer;
     transition: all 0.5s;
-    margin-right: 50px;
 
     &:hover {
       transform: scale(1.05);
     }
 
-    @media screen and (max-width: 750px) {
+    @media screen and (width <= 750px) {
       display: none;
     }
   }
@@ -185,11 +185,11 @@
   }
 
   &__block {
-    max-width: 900px;
     align-items: center;
+    max-width: 900px;
     font-size: 18px;
 
-    @media screen and (max-width: 750px) {
+    @media screen and (width <= 750px) {
       font-size: 16px;
     }
   }
@@ -203,21 +203,21 @@
   }
 
   &__RSlink {
-    color: #0080ff !important;
-    font-weight: 500;
-    text-decoration: none;
     background-color: transparent;
+    text-decoration: none;
+    font-weight: 500;
+    color: #0080ff !important;
 
     &:hover {
-      color: #005ab3;
       text-decoration: underline;
+      color: #005ab3;
     }
   }
 }
 
 .team {
-  padding: 20px 0 50px;
   background: $backgroundGraphiQLPage;
+  padding: 20px 0 50px;
 
   &__main-title {
     font-size: 32px;
@@ -245,26 +245,25 @@
 
   &__list {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
-    justify-content: center;
   }
 
   &__item {
+    border-radius: 0 0 4px 4px;
+    margin: 15px;
     background: $panelColor;
     width: 270px;
-    margin: 15px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-      0px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 0px 0px 4px 4px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 1px rgb(0 0 0 / 14%), 0 2px 1px rgb(0 0 0 / 20%);
   }
 
   &__info {
-    font-size: 18px;
     padding: 20px 0;
+    font-size: 18px;
 
-    @media screen and (max-width: 750px) {
+    @media screen and (width <= 750px) {
       font-size: 16px;
     }
   }
@@ -291,8 +290,8 @@
 
   &__chome {
     background: url('../assets/icon-chrome.png') center/cover no-repeat;
-    width: 30px;
     height: 30px;
+    width: 30px;
     transition: all 0.5s;
 
     &:hover {
@@ -302,8 +301,8 @@
 
   &__telegram {
     background: url('../assets/icons-telegram.png') center/cover no-repeat;
-    width: 30px;
     height: 30px;
+    width: 30px;
     transition: all 0.5s;
 
     &:hover {
@@ -313,8 +312,8 @@
 
   &__discord {
     background: url('../assets/icons-discord.png') center/cover no-repeat;
-    width: 30px;
     height: 30px;
+    width: 30px;
     transition: all 0.5s;
 
     &:hover {
@@ -324,8 +323,8 @@
 
   &__github {
     background: url('../assets/icons-github.png') center/cover no-repeat;
-    width: 30px;
     height: 30px;
+    width: 30px;
     transition: all 0.5s;
 
     &:hover {

@@ -1,36 +1,36 @@
-@import './variables.scss';
+@import './variables';
 
 .modal-overlay {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
   z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 .modal-window {
-  padding: 10px 10px;
-  box-sizing: border-box;
-  width: 230px;
-  height: 140px;
   position: absolute;
-  right: 20px;
   top: 65px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 5px 2px 20px rgba(0, 0, 0, 0.25);
+  right: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 8px;
+  background-color: white;
+  height: 140px;
+  width: 230px;
+  box-sizing: border-box;
+  padding: 10px;
   animation: appear-from-right 0.4s forwards;
+  box-shadow: 5px 2px 20px rgba(0, 0, 0, 25%);
 
   &__account {
-    text-align: left;
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     font-size: 12px;
     font-weight: 500;
     color: black;
+    text-align: left;
   }
 
   &__person {
@@ -53,10 +53,10 @@
   }
 
   &__log-out {
-    box-sizing: border-box;
-    margin: 5px 0px;
+    margin: 5px 0;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: black;
@@ -72,34 +72,34 @@
 .modal-person {
   &__logo {
     display: flex;
-    box-sizing: border-box;
-    align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    font-weight: 400;
+    align-items: center;
     border-radius: 50%;
-    font-size: 16px;
-    color: white;
     background: $headerGreen;
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
   }
 
   &__name-email {
     display: flex;
     flex-direction: column;
-    gap: 6px;
     align-items: flex-start;
+    gap: 6px;
   }
 
   &__name {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: black;
   }
 
   &__email {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     font-size: 12px;
     font-weight: 400;
     color: rgba(black, 0.5);

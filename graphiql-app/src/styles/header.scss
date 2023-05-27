@@ -1,74 +1,72 @@
-@import './variables.scss';
+@import './variables';
 
 .header {
-  background: #f1f1f1;
-  width: 100%;
   z-index: 5;
   position: fixed;
+  background: #f1f1f1;
+  width: 100%;
   transition: background-color 0.3s ease-in-out;
-  
+
   &.scroll {
     background-color: #e5fff6;
   }
 
   &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: 10px;
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (width <= 1100px) {
       padding: 1vw 2vw;
       gap: 1vw;
     }
   }
 
-
   &__line {
     border: 0.5px solid rgba($headerGreen, 0.3);
     width: 100%;
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (width <= 1100px) {
       border-width: 0.2vw;
-    } 
+    }
   }
-
 
   &-auth__btn {
     position: relative;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    background: linear-gradient(90deg, $mintGreen 50%, $headerGreen 100%);
+    padding: 5px 10px;
     font-size: 22px;
     font-weight: 600;
     color: #f1f1f1;
-    padding: 5px 10px;
-    margin-right: 10px;
-    border-radius: 20px;
-    border: none;
-    background: linear-gradient(90deg, $mintGreen 50%, $headerGreen 100%);
     cursor: pointer;
 
     &:visited {
       color: #f1f1f1;
     }
 
-    @media screen and (max-width: 800px) {
-      font-size: 18px;
+    @media screen and (width <= 800px) {
       margin-right: 1vw;
+      font-size: 18px;
     }
   }
 
   &-auth__btn::after {
-    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 20px;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 2px 2px 2px rgba($mintGreen, 0.5);
+    content: '';
     opacity: 0;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
     transition: opacity 0.3s ease-in-out;
+    box-shadow: 0 2px 2px 2px rgba($mintGreen, 0.5);
   }
 
   &-auth__btn:hover::after {
@@ -102,32 +100,32 @@
     align-items: center;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (width <= 800px) {
     z-index: 1;
     position: fixed;
     top: 0;
-    right: 0px;
-    width: 323px;
-    height: 100%;
-    background: $backgroundGraphiQLPage;
+    right: 0;
     transform: translateX(100%);
+    background: $backgroundGraphiQLPage;
+    height: 100%;
+    width: 323px;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
     &.is-open {
       transform: translateX(0%);
-      box-shadow: 0 0 0 9999px rgba(41, 41, 41, 0.6);
+      box-shadow: 0 0 0 9999px rgb(41 41 41 / 60%);
     }
 
     &-contents {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2vw;
       margin-top: 10vw;
+      gap: 2vw;
     }
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (width <= 400px) {
     width: 100%;
   }
 }
@@ -146,7 +144,6 @@
   }
 
   100% {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 }
-

@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getResources } from '../API/api';
 import { IGetRescourcesRet } from '../@types/api';
 import ApiErrorModal from '../components/ApiErrorModa';
+import PreloaderSpinner from '../components/PreloaderSpinner';
 
 function GraphiQLPage() {
   const [isResult, setIsResult] = useState('');
@@ -14,12 +15,15 @@ function GraphiQLPage() {
   const [sourcesHeaders, setSourceHeaders] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const [error, setError] = useState<IGetRescourcesRet>();
+  const [isLoading, setIsLoading] = useState(false);
   const [execute, setExecute] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       if (execute) {
+        setIsLoading(true);
         const data = await getResources(sourcesQuery, sourcesVariables, sourcesHeaders);
+        setIsLoading(false);
         if (data.type !== 'error') {
           setIsResult(data.contents);
         } else {
@@ -68,6 +72,7 @@ function GraphiQLPage() {
           onClickOutside={handleModalClick}
         />
       )}
+      {isLoading && <PreloaderSpinner />}
     </div>
   );
 }
