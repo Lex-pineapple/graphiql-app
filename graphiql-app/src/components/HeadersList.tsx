@@ -14,7 +14,6 @@ export function HeaderList({ textAreaHeaders }: IHeaderListType) {
     handleAddHeader();
     setHeadersValue((prevHeaders) => ({ ...prevHeaders, [1]: 'application/json' }));
     setHeadersKey((prevHeaders) => ({ ...prevHeaders, [1]: 'Content-Type' }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

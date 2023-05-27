@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './styles/App.scss';
 import Page404 from './routes/Page404';
 import Header from './components/Header';
@@ -11,21 +11,30 @@ import Footer from './components/Footer';
 import LoginPage from './routes/LoginPage';
 import WelcomePage from './routes/WelcomePage';
 import { checkForAuthStatus } from './auth/firebase';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PreloaderSpinner from './components/PreloaderSpinner';
 
 function App() {
   const { currentLocale, setLocale } = LanguagesManager();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     checkForAuthStatus((user) => {
+      setIsLoading(false);
       dispatch({ type: 'login/loggedIn', payload: user.status });
       dispatch({ type: 'auth/addUser', payload: user.data });
-      // if (!user.status) navigate('/');
+      if (!user.status) {
+        if (pathname !== '/signin' && pathname !== '/signup' && pathname !== '/reset') {
+          navigate('/');
+        }
+      }
     });
-  }, [dispatch, navigate]);
+  }, []);
+  if (isLoading) return <PreloaderSpinner />;
 
   return (
     <IntlProvider
