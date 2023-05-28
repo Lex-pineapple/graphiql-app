@@ -12,7 +12,7 @@ import QueryField from './QueryField';
 
 const getDocsData = getSchema(getIntrospectionQuery());
 
-function Docs({ handleShowDocs }: { handleShowDocs: () => void }) {
+function Docs() {
   const [queryDetails, setQueryDetails] = useState<ITypeField>();
   const [showQueryDetails, setShowQueryDetails] = useState(false);
   const [showField, setShowField] = useState<IArg | ITypeField | null>();
@@ -32,7 +32,6 @@ function Docs({ handleShowDocs }: { handleShowDocs: () => void }) {
     if (docs instanceof Error)
       return 'Error occured during loading of the documentation. Please try again later.';
     else {
-      handleShowDocs();
       const queries = getQueries(docs);
       if (queries)
         return (
