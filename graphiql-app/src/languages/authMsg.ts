@@ -44,4 +44,8 @@ export enum AuthMsg {
 
   APIErrorEmailInUse = 'API error email already in use',
   APIErrorNotAllowed = 'API error not allowed',
+
+  logOutMsg = 'log out msg',
+  logOutNo = 'log out no',
+  logOutYes = 'log out yes',
 }
