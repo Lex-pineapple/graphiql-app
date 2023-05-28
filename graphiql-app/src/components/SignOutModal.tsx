@@ -2,6 +2,8 @@ import '../styles/signOutModal.scss';
 import { logout } from '../auth/firebase';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import { AuthMsg } from '../languages/authMsg';
 
 function SignOutModal({ onClickOutside, hidden }: { onClickOutside: () => void; hidden: boolean }) {
   const navigate = useNavigate();
@@ -9,9 +11,11 @@ function SignOutModal({ onClickOutside, hidden }: { onClickOutside: () => void; 
   return (
     <div className="signout__modal-overlay" onClick={onClickOutside}>
       <div className={`signout__modal ${!hidden ? 'hidden' : ''}`}>
-        <div className="signout__modal-bigtext">Are you sure you want to sign out?</div>
+        <div className="signout__modal-bigtext">
+          <FormattedMessage id={AuthMsg.logOutMsg} />
+        </div>
         <button className="signout__modal-btn-stay" onClick={onClickOutside}>
-          No, get me back
+          <FormattedMessage id={AuthMsg.logOutNo} />
         </button>
         <button
           className="signout__modal-btn-leave"
@@ -21,7 +25,7 @@ function SignOutModal({ onClickOutside, hidden }: { onClickOutside: () => void; 
             navigate('/');
           }}
         >
-          Yes, Log me out
+          <FormattedMessage id={AuthMsg.logOutYes} />
         </button>
       </div>
     </div>
