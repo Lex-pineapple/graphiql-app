@@ -9,6 +9,7 @@ import { IStore } from '../../@types/store';
 import AuthSignUpInput from './authSignUpInput';
 import { AuthMsg } from '../../languages/authMsg';
 import { FormattedMessage } from 'react-intl';
+import { ApiMsg } from '../../languages/apiMsg';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -63,6 +64,11 @@ function SignUp() {
     }
     if (user) {
       if (!userName) {
+        setAPIError({
+          type: '',
+          message: '',
+          format: false,
+        });
         setShowModal(true);
         dispatch({ type: 'login/loggedIn', payload: true });
         setTimeout(() => {
@@ -126,7 +132,7 @@ function SignUp() {
       </div>
       {showModal && (
         <InfoModal
-          formatId={AuthMsg.signUpSuccess}
+          formatId={APIError.message ? ApiMsg.apiGenError : AuthMsg.signUpSuccess}
           text={APIError.type === 'other' ? APIError.message : 'Sign up successful'}
           onClickOutside={handleCloseModalClick}
         />

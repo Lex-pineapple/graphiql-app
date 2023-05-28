@@ -19,5 +19,6 @@ export interface IProfileLinks {
 }
 
 export interface IWelcomeComponentProps {
-  handleClick: () => void;
+  handleUserIconClick: () => void;
+  handleSignOutClick: () => void;
 }

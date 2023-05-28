@@ -218,23 +218,27 @@ const sendPasswordReset = async (email: string) => {
   let ret = {
     res: '',
     success: false,
+    formatId: '',
   };
   try {
     await sendPasswordResetEmail(auth, email);
     ret = {
-      res: AuthMsg.resetPwdResOk,
+      res: '',
       success: true,
+      formatId: AuthMsg.resetPwdResOk,
     };
   } catch (error) {
     if (error instanceof Error) {
       ret = {
         res: error.message,
         success: false,
+        formatId: AuthMsg.resetPwdResError,
       };
     } else {
       ret = {
-        res: AuthMsg.resetPwdResError,
+        res: '',
         success: false,
+        formatId: AuthMsg.resetPwdResError,
       };
     }
   }

@@ -8,6 +8,7 @@ import { IStore } from '../../@types/store';
 import AuthSignInInput from './authSignInInput';
 import { FormattedMessage } from 'react-intl';
 import { AuthMsg } from '../../languages/authMsg';
+import { ApiMsg } from '../../languages/apiMsg';
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -43,14 +44,20 @@ function SignIn() {
 
   useEffect(() => {
     if (loading) {
+      return;
     }
     if (user) {
       if (!userName) {
+        setAPIError({
+          type: '',
+          message: '',
+          format: false,
+        });
         setShowModal(true);
         dispatch({ type: 'login/loggedIn', payload: true });
         setTimeout(() => {
           navigate('/graphiql');
-        }, 1000);
+        }, 3000);
       } else {
         navigate('/graphiql');
       }
@@ -108,7 +115,7 @@ function SignIn() {
       </div>
       {showModal && (
         <InfoModal
-          formatId={AuthMsg.signInSuccess}
+          formatId={APIError.message ? ApiMsg.apiGenError : AuthMsg.signInSuccess}
           text={APIError.message || 'Successfully logged in'}
           onClickOutside={handleCloseModalClick}
         />

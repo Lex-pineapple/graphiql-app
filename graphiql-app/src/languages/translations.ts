@@ -151,7 +151,7 @@ export const translations = {
     [AuthMsg.signInLogInBtn]: 'Вход',
     [AuthMsg.signInSignUp]: 'Зарегистрироваться',
     [AuthMsg.signInNoAccount]: 'Нет аккаунта?',
-    [AuthMsg.signInSuccess]: 'Вход произвежен успешно',
+    [AuthMsg.signInSuccess]: 'Вход произведен успешно',
     [AuthMsg.signUpMainHeader]: 'Регистрация',
     [AuthMsg.signUpSubheader]: 'Присоединяйтесь к сообществу GraphQl.',
     [AuthMsg.signUpNameLabel]: 'Имя',
