@@ -1,0 +1,96 @@
+@import './variables';
+
+.signout {
+  &-container {
+    background: url('../assets/signIn-background-3.jpg') center/cover no-repeat;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__modal {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+    margin-top: -150px;
+    margin-left: -250px;
+    background: $lightGrey;
+    height: 300px;
+    width: 500px;
+    padding: 40px;
+    transition: top 0.8s ease-in-out;
+    text-align: center;
+    box-shadow: 0 0 11px 5px rgba($mintGreen, 0.5);
+
+    @media screen and (width <= 600px) {
+      top: 140px;
+      left: 0;
+      margin-left: 0;
+      height: 80vw;
+      width: 100%;
+    }
+  }
+
+  &__modal.hidden {
+    top: -1000px;
+  }
+
+  &__modal-bigtext {
+    font-size: 32px;
+    font-weight: 500;
+
+    @media screen and (width <= 600px) {
+      margin-top: 10vw;
+      font-size: 6vw;
+    }
+  }
+
+  &__modal-btn-leave,
+  &__modal-btn-stay {
+    position: relative;
+    border-radius: 20px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+
+    @media screen and (width <= 600px) {
+      padding: 2vw;
+      font-size: 4vw;
+    }
+  }
+
+  &__modal-btn-stay {
+    border: 1px solid $mintGreen;
+    margin-top: 30px;
+    background: $mintGreen;
+    transition: background-color 0.3s ease-in-out;
+
+    @media screen and (width <= 600px) {
+      margin-top: 3vw;
+    }
+  }
+
+  &__modal-btn-stay::after,
+  &__modal-btn-leave::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    opacity: 0;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    transition: opacity 0.3s ease-in-out;
+    box-shadow: 0 4px 2px 3px rgba($mintGreen, 0.5);
+  }
+
+  &__modal-btn-stay:hover::after,
+  &__modal-btn-leave:hover::after {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,59 @@
+@import './variables';
+
+.page404 {
+  &-container {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  &__bigTxt,
+  &__mainTxt,
+  &__subTxt {
+    margin-bottom: 10px;
+  }
+
+  &__bigTxt {
+    font-size: 64px;
+    font-weight: 900;
+    color: $mintGreen;
+  }
+
+  &__mainTxt {
+    font-size: 32px;
+    color: $dkerGrey;
+  }
+
+  &__subTxt {
+    font-size: 28px;
+    color: $dkerGrey;
+  }
+
+  &__link,
+  &__link:visited {
+    font-weight: 500;
+    color: $mintGreen;
+  }
+
+  @media only screen and (width <= 900px) {
+    &__bigTxt,
+    &__mainTxt,
+    &__subTxt {
+      margin-bottom: 1vw;
+    }
+
+    &__bigTxt {
+      font-size: 10vw;
+    }
+
+    &__mainTxt {
+      font-size: 5vw;
+    }
+
+    &__subTxt {
+      font-size: 4vw;
+    }
+  }
+}

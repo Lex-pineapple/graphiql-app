@@ -1,0 +1,334 @@
+@import './variables';
+
+.hero {
+  background: url('../assets/signIn-background-1.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+
+  &__info {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 150px 0;
+    text-align: center;
+
+    @media screen and (width <= 800px) {
+      padding: 20vh 0;
+      font-size: 1vw;
+    }
+  }
+
+  &__graph {
+    margin-bottom: 20px;
+    font-size: 72px;
+    font-weight: 700;
+    color: #e3e56f;
+
+    @media screen and (width <= 800px) {
+      margin-bottom: 2vw;
+      font-size: 10vh;
+    }
+  }
+
+  &__text {
+    font-size: 28px;
+    font-weight: 500;
+    color: #fff;
+
+    @media screen and (width <= 800px) {
+      font-size: 3vh;
+    }
+
+    @media screen and (orientation: landscape) {
+      font-size: 2vw;
+    }
+  }
+
+  &__button {
+    border: none;
+    border-radius: 6px;
+    margin-top: 50px;
+    background: $mintGreen;
+    height: 50px;
+    width: 200px;
+    font-size: 17px;
+    line-height: 1;
+    font-weight: 600;
+    color: $panelColor;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    @media screen and (width <= 800px) {
+      margin-top: 5vh;
+      height: 6vh;
+      width: 25vh;
+      font-size: 3vh;
+    }
+  }
+
+  &__button:hover {
+    transform: scale(1.05);
+    background: $headerGreenHoverButton;
+  }
+
+  @media screen and (width <= 800px) {
+    height: 100vh;
+  }
+
+  @media screen and (orientation: landscape) {
+    height: 86vh;
+  }
+}
+
+.aboutProject {
+  background: $backgroundGraphiQLPage;
+  padding: 40px;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    display: block;
+    margin: 0 10px;
+    max-width: 440px;
+    padding-bottom: 20px;
+
+    @media screen and (width <= 1380px) {
+      margin: 10px;
+    }
+  }
+
+  &__main-title {
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-align: center;
+  }
+
+  &__img-query {
+    background: url('../assets/query-language.jpg') center/cover no-repeat;
+  }
+
+  &__img-what-you-need {
+    background: url('../assets/Ask-for-what-you-need.jpg') center/cover no-repeat;
+  }
+
+  &__img-request {
+    background: url('../assets/rest-and-graph.jpg') center/cover no-repeat;
+  }
+
+  &__img-query,
+  &__img-what-you-need,
+  &__img-request {
+    margin: 0 auto;
+    height: 300px;
+    width: 440px;
+
+    @media screen and (width <= 470px) {
+      height: 170px;
+      width: 300px;
+    }
+  }
+
+  &__info {
+    margin-top: 15px;
+  }
+
+  &__title {
+    font-size: 22px;
+    text-align: center;
+
+    @media screen and (width <= 470px) {
+      font-size: 18px;
+    }
+  }
+
+  &__text {
+    margin-top: 15px;
+    font-size: 18px;
+
+    @media screen and (width <= 470px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.aboutCourse {
+  display: flex;
+  padding: 40px;
+
+  &__title {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  &__img {
+    margin-right: 50px;
+    background: url('../assets/rs_school_js.svg') center no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 250px;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @media screen and (width <= 750px) {
+      display: none;
+    }
+  }
+
+  &__info {
+    display: flex;
+  }
+
+  &__block {
+    align-items: center;
+    max-width: 900px;
+    font-size: 18px;
+
+    @media screen and (width <= 750px) {
+      font-size: 16px;
+    }
+  }
+
+  &__text {
+    margin-top: 15px;
+  }
+
+  &__name {
+    font-weight: 500;
+  }
+
+  &__RSlink {
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: 500;
+    color: #0080ff !important;
+
+    &:hover {
+      text-decoration: underline;
+      color: #005ab3;
+    }
+  }
+}
+
+.team {
+  background: $backgroundGraphiQLPage;
+  padding: 20px 0 50px;
+
+  &__main-title {
+    font-size: 32px;
+  }
+
+  &__container {
+    display: block;
+    text-align: center;
+  }
+
+  &__img-Sasha {
+    background: url('../assets/girl.jpg') center/cover no-repeat;
+    height: 300px;
+  }
+
+  &__img-Alixei {
+    background: url('../assets/Alexei.jpg') center/cover no-repeat;
+    height: 300px;
+  }
+
+  &__img-Anatoliy {
+    background: url('../assets/Anatoliy.jpg') center/cover no-repeat;
+    height: 300px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    border-radius: 0 0 4px 4px;
+    margin: 15px;
+    background: $panelColor;
+    width: 270px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 1px rgb(0 0 0 / 14%), 0 2px 1px rgb(0 0 0 / 20%);
+  }
+
+  &__info {
+    padding: 20px 0;
+    font-size: 18px;
+
+    @media screen and (width <= 750px) {
+      font-size: 16px;
+    }
+  }
+
+  &__name {
+    margin-bottom: 10px;
+  }
+
+  &__contacts {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  &__contacts-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  &__chome {
+    background: url('../assets/icon-chrome.png') center/cover no-repeat;
+    height: 30px;
+    width: 30px;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__telegram {
+    background: url('../assets/icons-telegram.png') center/cover no-repeat;
+    height: 30px;
+    width: 30px;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__discord {
+    background: url('../assets/icons-discord.png') center/cover no-repeat;
+    height: 30px;
+    width: 30px;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__github {
+    background: url('../assets/icons-github.png') center/cover no-repeat;
+    height: 30px;
+    width: 30px;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import './variables';
+
+.headers-section {
+  &__inputs {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+  }
+
+  &__input {
+    outline-color: $mintGreen;
+    border: 1px solid $mintGreen;
+    border-radius: 3px;
+    margin: 5px;
+  }
+
+  &__delete {
+    border-radius: 3px;
+    margin: 5px;
+    background: url('../assets/urna.png') center/cover no-repeat;
+    height: 15px;
+    width: 15px;
+
+    &:hover {
+      cursor: pointer;
+      animation: shake-urna 0.5s ease;
+    }
+  }
+
+  &__btn-add {
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    background: linear-gradient(45deg, $mintGreen 10%, $headerGreen 50%, $mintGreen 80%);
+    padding: 3px 6px;
+    font-weight: 500;
+    color: $lightGrey;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+      animation: background-gradient 2s infinite alternate;
+      box-shadow: 0 0 5px 0 rgb(30 60 80 / 40%);
+    }
+
+    &:active {
+      transform: scale(1);
+      transition: transform 0.1s ease-in-out;
+    }
+  }
+}

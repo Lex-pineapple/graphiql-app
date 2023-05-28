@@ -1,0 +1,36 @@
+@import './variables';
+
+@media screen and (width <= 800px) {
+  .hamburger {
+    z-index: 2;
+    position: absolute;
+    top: 2vw;
+    right: 3vw;
+    display: flex;
+    flex-direction: column;
+    width: 5vw;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .hamburger-line {
+    z-index: 15;
+    margin: 0.6vw 0;
+    background: $headerGreen;
+    height: 0.3vw;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .hamburger.open .line1 {
+    transform: rotate(45deg) translate(0.7vw, 1.1vw);
+  }
+
+  .hamburger.open .line2 {
+    transform: rotate(135deg) translate(0.1vw, 0.3vw);
+  }
+
+  .hamburger.open .line3 {
+    transform: rotate(45deg) translate(-1.3vw, -1vw);
+  }
+}
