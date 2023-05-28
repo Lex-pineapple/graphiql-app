@@ -7,7 +7,6 @@ import { GraphiQlMsg } from '../../languages/graphiQlMsg';
 
 function SidePanel() {
   const [togglePanel, setTogglePanel] = useState(false);
-  const [showDocs, setShowDocs] = useState(false);
 
   const handleToggleClick = () => {
     setTogglePanel(!togglePanel);
@@ -16,11 +15,7 @@ function SidePanel() {
   return (
     <div className={`sidePanel ${togglePanel ? 'open' : ''}`}>
       <div className="sidePanel-menu">
-        <div
-          id="docs"
-          className={`sidePanel-menu__button ${showDocs ? 'loaded' : ''}`}
-          onClick={handleToggleClick}
-        >
+        <div id="docs" className="sidePanel-menu__button loaded" onClick={handleToggleClick}>
           <FormattedMessage id={GraphiQlMsg.docsHeader} />
         </div>
       </div>
@@ -29,11 +24,7 @@ function SidePanel() {
           <FormattedMessage id={GraphiQlMsg.queriesHeader} />
         </div>
         <Suspense fallback={<PreloaderSpinner />}>
-          <Docs
-            handleShowDocs={() => {
-              setShowDocs(true);
-            }}
-          />
+          <Docs />
         </Suspense>
       </div>
     </div>

@@ -28,7 +28,7 @@ function App() {
       dispatch({ type: 'login/loggedIn', payload: user.status });
       dispatch({ type: 'auth/addUser', payload: user.data });
       if (!user.status) {
-        if (pathname !== '/signin' && pathname !== '/signup' && pathname !== '/reset') {
+        if (pathname === '/graphiql') {
           navigate('/');
         }
       }
