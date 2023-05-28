@@ -1,5 +1,5 @@
 import '../../styles/sidePanelDocs.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getSchema } from '../../API/api';
 import { findTypeByObject, getQueries, getTypeKind } from '../../graphql/parseDocsSchema';
 import getIntrospectionQuery from '../../graphql/getIntrospectionQuery';
