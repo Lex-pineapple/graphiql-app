@@ -10,7 +10,11 @@ import { AuthMsg } from '../../languages/authMsg';
 function ResetPassword() {
   const [email, setEmail] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [modalText, setModalText] = useState('');
+  const [modalRes, setModalRes] = useState({
+    res: '',
+    success: false,
+    formatId: '',
+  });
   const [user, loading] = useAuthState(auth);
   const intl = useIntl();
 
@@ -22,7 +26,7 @@ function ResetPassword() {
 
   async function managePassowrdReset(email: string) {
     const response = await sendPasswordReset(email);
-    setModalText(response.res);
+    setModalRes(response);
     setShowModal(true);
     if (response.success) {
       setTimeout(() => {
@@ -65,7 +69,11 @@ function ResetPassword() {
         </Link>
       </p>
       {showModal && (
-        <InfoModal formatId={null} text={modalText} onClickOutside={handleCloseModalClick} />
+        <InfoModal
+          formatId={modalRes.formatId}
+          text={modalRes.res}
+          onClickOutside={handleCloseModalClick}
+        />
       )}
     </div>
   );

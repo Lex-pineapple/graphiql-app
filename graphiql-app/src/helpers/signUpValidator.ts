@@ -44,7 +44,12 @@ class SignUpValidator {
   }
 
   ValidatePassword(password: string) {
-    if (password.length > 8 && password.match(/[A-Z]/) && password.match(/[0-9]/))
+    if (
+      password.length > 8 &&
+      password.match(
+        /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[-\#\$\.\%\&\*\=\/\,\+\_\}\{\[\]\(\)\^\@\!\~\`\"\'\\\|\?\<\>\;\:])(?=.*[a-zA-Z]).{8,}$/g
+      )
+    )
       return {
         res: true,
         message: '',

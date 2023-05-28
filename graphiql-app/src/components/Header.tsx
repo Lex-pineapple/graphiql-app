@@ -71,7 +71,10 @@ function Header({ currentLocale, setLocale }: IHeaderProps) {
         <div className={`header-nav${isOpen ? ' is-open' : ''}`} onClick={toggleMenu}>
           <div className="header-nav-contents">
             {logInStatus ? (
-              <WelcomeComponent handleClick={handleUserIconClick} />
+              <WelcomeComponent
+                handleUserIconClick={handleUserIconClick}
+                handleSignOutClick={handleLogOutClick}
+              />
             ) : location.pathname !== '/signin' && location.pathname !== '/signup' ? (
               <AuthComponent />
             ) : (

@@ -68,7 +68,7 @@ export const translations = {
     [AuthMsg.signUpNameError]: 'The name must be longer that 3 characters',
     [AuthMsg.signUpEmailError]: 'Please input the correct email',
     [AuthMsg.signUpPwdError]:
-      'The password must be at least 8 characters long, contain at least 1 uppercase letter and at least 1 number',
+      'The password must be at least 8 characters long, contain at least 1 letter, 1 number and 1 special character',
     [AuthMsg.signUpSuccess]: 'Sign up successful',
     [AuthMsg.resetPwdHeader]: 'Reset password',
     [AuthMsg.resetPwdSubHeader]:
@@ -151,7 +151,7 @@ export const translations = {
     [AuthMsg.signInLogInBtn]: 'Вход',
     [AuthMsg.signInSignUp]: 'Зарегистрироваться',
     [AuthMsg.signInNoAccount]: 'Нет аккаунта?',
-    [AuthMsg.signInSuccess]: 'Вход произвежен успешно',
+    [AuthMsg.signInSuccess]: 'Вход произведен успешно',
     [AuthMsg.signUpMainHeader]: 'Регистрация',
     [AuthMsg.signUpSubheader]: 'Присоединяйтесь к сообществу GraphQl.',
     [AuthMsg.signUpNameLabel]: 'Имя',
@@ -166,7 +166,7 @@ export const translations = {
     [AuthMsg.signUpNameError]: 'Имя должно быть длиннее 3 символов',
     [AuthMsg.signUpEmailError]: 'Пожалуйста, введите правильный адрес электронной почты',
     [AuthMsg.signUpPwdError]:
-      'Пароль должен состоять не менее чем из 8 символов, содержать как минимум 1 прописную букву и как минимум 1 цифру',
+      'Пароль должен состоять не менее чем из 8 символов, содержать как минимум 1 букву, 1 цифру и 1 спецсимвол',
     [AuthMsg.signUpSuccess]: 'Регистрация прошла успешно',
     [AuthMsg.resetPwdEmailPlh]: 'Электронная почта',
     [GraphiQlMsg.variablesHeader]: 'Переменные',
