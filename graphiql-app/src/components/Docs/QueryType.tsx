@@ -13,6 +13,8 @@ function QueryType({ returnType, onClick, mode }: IQueryTypeProps) {
       <div className="query-ret-type-details">
         {mode == 'OBJECT' ? (
           <QueryTypeObj returnType={returnType} onClick={onClick} />
+        ) : mode == 'INPUT_OBJECT' ? (
+          <QueryTypeObj returnType={returnType} onClick={onClick} />
         ) : (
           <QueryTypeNonObj returnType={returnType} />
         )}

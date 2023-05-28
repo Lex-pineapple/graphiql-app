@@ -10,6 +10,8 @@ function QueryTypeObj({ returnType, onClick }: IQueryTypeProps) {
       <div className="query-ret-type-fields">
         {returnType.fields &&
           styleFieldWithLinks(returnType.fields, 'query-ret-type-fields', onClick)}
+        {returnType.inputFields &&
+          styleFieldWithLinks(returnType.inputFields, 'query-ret-type-fields', onClick)}
       </div>
       {'}'}
     </>
