@@ -38,6 +38,7 @@
   height: 0;
 
   &__button {
+    display: none;
     z-index: 2;
     transform: rotate(-90deg);
     border-radius: 2px 2px 0 0;
@@ -55,6 +56,10 @@
     box-shadow: contentshadow;
     text-align: center;
     transform-origin: left bottom;
+
+    &.loaded {
+      display: block;
+    }
 
     @media screen and (width <= 450px) {
       padding: 1.5vw;
