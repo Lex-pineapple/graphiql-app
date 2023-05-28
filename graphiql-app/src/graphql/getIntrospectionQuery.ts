@@ -3,7 +3,15 @@ function getIntrospectionQuery() {
   query IntrospectionQuery {
     __schema {
       queryType { name }
+      mutationType { name }
+      subscriptionType { name }
       types { ...FullType }
+      directives {
+        name
+        description
+        locations
+        args { ...InputValue }
+      }
     }
   }
 
@@ -11,18 +19,30 @@ function getIntrospectionQuery() {
     kind
     name
     description
-    fields(includeDeprecated: false) {
+    fields(includeDeprecated: true) {
       name
       description
       args { ...InputValue }
       type { ...TypeRef }
+      isDeprecated
+      deprecationReason
     }
+    inputFields { ...InputValue }
+    interfaces { ...TypeRef }
+    enumValues(includeDeprecated: true) {
+      name
+      description
+      isDeprecated
+      deprecationReason
+    }
+    possibleTypes { ...TypeRef }
   }
 
   fragment InputValue on __InputValue {
     name
     description
     type { ...TypeRef }
+    defaultValue
   }
 
   fragment TypeRef on __Type {

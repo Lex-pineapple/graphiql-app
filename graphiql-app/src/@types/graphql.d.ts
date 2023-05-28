@@ -16,6 +16,7 @@ export interface IType {
   name: string;
   description: string;
   fields: ITypeField[] | null;
+  inputFields: ITypeField[] | null;
 }
 
 export interface ITypeField {
