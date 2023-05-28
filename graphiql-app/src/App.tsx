@@ -33,7 +33,7 @@ function App() {
         }
       }
     });
-  }, []);
+  }, [navigate]);
   if (isLoading) return <PreloaderSpinner />;
 
   return (
